@@ -56,18 +56,14 @@
   </ul>
      
 </nav>
-<div class="container">
-	<div class="col-md-12">
-    	<br />
-        <br />
-        <div class="col-md-4 well">
-        	<div style="text-align:center">
-          		<ul class="nav nav-pills nav-stacked">
-           			<li class="active"><a href="crearadmin.php"> <span class="add-on"><i class="icon-plus"></i></span> Crear </a></li>
-              		<li><a href="principal.php"> <span class="add-on"><i class="icon-arrow-left"></i></span> Atrás</a></li>
-          		</ul>
-      		</div>
-        </div>
+      <div class="row">
+          <div class="col-md-2" align="center">
+             <ul class="nav nav-pills nav-stacked">
+ 			 <li class="active"><a href="#">Atras</a></li>
+  			 <li><a href="#">Crear</a></li>
+ 			 <li><a href="#">Restaurar</a></li>
+			 </ul>
+       </div>
         
         <div class="col-md-8">
         <table width="100%" class="footable table-striped table-hover" data-page-size="5">
@@ -114,7 +110,6 @@
 		</tbody>	
 	</table>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
-	</div>
     </div>
 </div>
 
