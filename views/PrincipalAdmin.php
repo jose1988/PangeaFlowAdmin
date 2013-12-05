@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<img src="../images/LOGOTIPO-FINAL-7.jpg" width="900" height="130" />
 <nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -26,7 +27,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">PangeaFlow</a>
+    <a class="navbar-brand" href="#"><img src="../images/LOGOTIPO-FINAL-7.jpg" width="200" height="30" /></a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
