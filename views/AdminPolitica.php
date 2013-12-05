@@ -60,6 +60,19 @@
 </nav>
 
 
+      <div class="row">
+              <div class="col-md-2" align="center">
+              
+             <ul class="nav nav-pills nav-stacked">
+ 			 <li class="active"><a href="#">Atras</a></li>
+  			 <li><a href="#">Crear</a></li>
+ 			 <li><a href="#">Restaurar</a></li>
+			 </ul>
+             
+             </div>
+      
+      <div class="col-md-10"></div>
+      </div>
 
 </body>
 </html>
