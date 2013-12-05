@@ -111,10 +111,10 @@
 			echo '</tr>';
 			}
 		?>
-	</tbody>	
-</table>
-<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
-</div>
+		</tbody>	
+	</table>
+	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
+	</div>
     </div>
 </div>
 
