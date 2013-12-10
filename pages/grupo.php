@@ -6,5 +6,5 @@
 	
 	$resultadoListaGrupo = $client->listarGrupos();
 	
-	include("../views/adminGrupo.php");
+	include("../views/grupo.php");
 ?>

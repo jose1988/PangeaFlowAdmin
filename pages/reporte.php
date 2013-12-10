@@ -6,5 +6,5 @@
 	
 	$resultadoListaReporte = $client->listarReporte();
 	
-	include("../views/adminReporte.php");
+	include("../views/reporte.php");
 ?>

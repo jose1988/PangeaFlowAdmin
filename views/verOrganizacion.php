@@ -57,104 +57,141 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/grupo.php">Atrás</a></li>
+ 			 <li><a href="../pages/organizacion.php">Atrás</a></li>
   			 <li><a href="#">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>
        </div>
-       
+  
        	<div class="col-md-2">
         </div>
         
         <div class="col-md-4">
+        <?php 
+	   	if(isset($resultadoBuscarOrganizacion)){
+	   ?>
         
-       <?php 
-	   	if(isset($resultadoBuscarGrupo)){
-	   ?>        
-        <h2 align="center">Datos del Grupo</h2>        
+        <h2 align="center">Datos de la Organización</h2>        
         <table width="100%" class="table-striped table-bordered table-condensed">
         	<?php
 			echo '<tr>';
-			echo '<th width="40%">Id</th>';
-			echo '<td>'.$resultadoBuscarGrupo->return->id.'</td>';
+			echo '<th>Id</th>';
+			echo '<td>'.$resultadoBuscarOrganizacion->return->id.'</td>';
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Nombre</th>';
-			if(!isset($resultadoBuscarGrupo->return->nombre)){
+			echo '<th>Nombre</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->nombre)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->nombre.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->nombre.'</td>';
 			}
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Descripión</th>';
-			if(!isset($resultadoBuscarGrupo->return->descripcion)){
+			echo '<th>Descripión</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->descripcion)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->descripcion.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizaciono->return->descripcion.'</td>';
 			}
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Documentación</th>';
-			if(!isset($resultadoBuscarGrupo->return->documentacion)){
+			echo '<th>Tipo</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->tipo)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->documentacion.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->tipo.'</td>';
 			}
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Fecha de Creación</th>';
-			if(!isset($resultadoBuscarGrupo->return->fecha_creacion)){
+			echo '<th>Dirección</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->direccion)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->fecha_creacion.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->direccion.'</td>';
 			}
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Tipo</th>';
-			if(!isset($resultadoBuscarGrupo->return->tipo)){
+			echo '<th>Telefóno</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->telefono)){
+				echo'<td> </td>';
+			}
+			else{
+				echo '<td>'.$resultadoBuscarOrganizacion->return->telefono.'</td>';
+			}
+			echo '</tr>';
+			
+			echo '<tr>';
+			echo '<th>Fax</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->fax)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->tipo.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->fax.'</td>';
 			}
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Organización</th>';
-			if(!isset($resultadoBuscarGrupo->return->id_organizacion->id)){
+			echo '<th>Mail</th>';
+			if(!isset($resultadoBuscarOrganizacion->return)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->id_organizacion->id.'</td>';
+				echo '<td> </td>';
 			}
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Estado</th>';
-			if(!isset($resultadoBuscarGrupo->return->estado)){
+			echo '<th>Ciudad</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->ciudad)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->estado.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->ciudad.'</td>';
 			}
 			echo '</tr>';
+			
 			echo '<tr>';
-			echo '<th width="40%">Borrado</th>';
-			if(!isset($resultadoBuscarGrupo->return->borrado)){
+			echo '<th>Estado</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->estado)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->borrado.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->estado.'</td>';
+			}
+			echo '</tr>';
+			
+			echo '<tr>';
+			echo '<th>Borrado</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->borrado)){
+				echo '<td> </td>';
+			}
+			else{
+				echo '<td>'.$resultadoBuscarOrganizacion->return->borrado.'</td>';
+			}
+			echo '</tr>';
+			
+			echo '<tr>';
+			echo '<th>Id de la Organización Padre</th>';
+			if(!isset($resultadoBuscarOrganizacion->return->id_organizacion_padre)){
+				echo '<td> </td>';
+			}
+			else{
+				echo '<td>'.$resultadoBuscarOrganizacion->return->id_organizacion_padre.'</td>';
 			}
 			echo '</tr>';
 		?>	
-	</table>
-	<?php }?>    
-    </div>    
-
+	</table> 
+    <?php } ?>
+    </div>
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
@@ -165,5 +202,6 @@
       $('table').footable();
     });
   </script>
-  </body>
+
+</body>
 </html>

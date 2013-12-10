@@ -4,7 +4,21 @@
 	$client = new SOAPClient($wsdl_url);	
     $client->decode_utf8 = false;
 	
-	$resultadoListaReporte = $client->listarReporte();
+	$id = $_GET["id"];
 	
-	include("../views/adminReporte.php");
+	if($id==""){
+		$id=0;		
+	}	
+	$idR = array('idReporte' => $id);	
+	
+	$resultadoBuscarReporte = $client->buscarReporte($idR);
+	if(!isset($resultadoBuscarReporte->return)){
+		$reporte = "Reporte No encontrado";
+	}else{
+		$reporte = $resultadoBuscarReporte->return->nombre;
+	}
+	
+	//print_r($reporte);
+	
+	include("../views/verReporte.php");
 ?>

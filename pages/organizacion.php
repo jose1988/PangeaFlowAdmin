@@ -6,5 +6,5 @@
 	
 	$resultadoListaOrganizacion = $client->listarOrganizacion();
 	
-	include("../views/adminOrganizacion.php");
+	include("../views/organizacion.php");
 ?>
