@@ -78,29 +78,29 @@
       <div class="col-md-8">
       
      <?php
-					if($regPo!=0){
+					if($regSk!=0){
 					?>
 						<table class="footable table table-striped table-bordered"  align="center" data-page-size="7">
                         	<thead bgcolor="#B9B9B9">
 								<tr>
 								   <th style="width:10%; text-align:center">Id</th>
                                    <th style="width:30; text-align:center">Nombre</th>
-                                   <th style="width:30%; text-align:center">Estado</th>
-                                   <th style="width:10%; text-align:center">Ver</th>
-                                   <th style="width:10%; text-align:center">Editar</th>
-                                   <th style="width:10%; text-align:center">Eliminar</th>  
+                                   <th style="width:30%; text-align:center">Borrado</th>
+                                  
+                                   <th style="width:15%; text-align:center">Editar</th>
+                                   <th style="width:15%; text-align:center">Eliminar</th>  
 								 </tr>
 							  </thead>
                              <tbody>
                              	<tr>
 								<?php
-								if($regPo>1){
+								if($regSk>1){
 									$j=0;
-								    while($j<$regPo){ ?>
-                                  	<td style="text-align:center"> <?php echo $politicas->return[$j]->id?></td>
-                                  	<td style="text-align:center">  <?php echo $politicas->return[$j]->nombre ?></td>
-                                  	<td style="text-align:center"> <?php echo $politicas->return[$j]->estado ?></td>
-                                    <td style="text-align:center"><button type="button" class="btn">Ver</button></td>
+								    while($j<$regSk){ ?>
+                                  	<td style="text-align:center"> <?php echo $skin->return[$j]->id?></td>
+                                  	<td style="text-align:center">  <?php echo $skin->return[$j]->nombre ?></td>
+                                  	<td style="text-align:center"> <?php echo $skin->return[$j]->borrado ?></td>
+                                    
                                     <td style="text-align:center"><button type="button" class="btn">Editar</button></td>
                                     <td style="text-align:center"><button type="button" class="btn">Eliminar</button></td>
                                </tr>
@@ -109,16 +109,16 @@
 									 $j++;
 									 } 
 									 }else{  ?>
-								  		<td style="text-align:center"> <?php echo $politicas->return->id ?></td>
-                                  		<td style="text-align:center">  <?php echo $politicas->return->nombre ?></td> 
-                                  		<td style="text-align:center"> <?php echo $politicas->return->estado ?></td>
+								  		<td style="text-align:center"> <?php echo $skin->return->id ?></td>
+                                  		<td style="text-align:center">  <?php echo $skin->return->nombre ?></td> 
+                                  		<td style="text-align:center"> <?php echo $skin->return->borrado ?></td>
                                 </tr>
 								<?php		 
 									 }
 								   }   else { ?>
 										  <div class="alert alert-block" align="center">
    										  <h2 style="color:rgb(255,255,255)" align="center">Atención</h2>
-    									  <h4 align="center"> No hay Politicas en el sistema </h4>
+    									  <h4 align="center"> No hay Skins en el sistema </h4>
    			    					 </div> 
 									 <?php
 									 }

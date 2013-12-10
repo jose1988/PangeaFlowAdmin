@@ -83,12 +83,9 @@
 						<table class="footable table table-striped table-bordered"  align="center" data-page-size="7">
                         	<thead bgcolor="#B9B9B9">
 								<tr>
-								   <th style="width:10%; text-align:center">Id</th>
-                                   <th style="width:30; text-align:center">Nombre</th>
-                                   <th style="width:30%; text-align:center">Estado</th>
-                                   <th style="width:10%; text-align:center">Ver</th>
-                                   <th style="width:10%; text-align:center">Editar</th>
-                                   <th style="width:10%; text-align:center">Eliminar</th>  
+								   <th style="width:10%; text-align:center">Datos de</th>
+                                   <th style="width:30; text-align:center">la politica</th>
+                                Eliminar</th>  
 								 </tr>
 							  </thead>
                              <tbody>

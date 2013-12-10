@@ -1,10 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-</head>
-
-<body>
-</body>
-</html>
+<?php
+	require_once("../lib/nusoap.php");
+  	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDepolitica?WSDL';	
+	$client = new SOAPClient($wsdl_url);	
+    $client->decode_utf8 = false;
+	
+	//
+	$politica = $client->listar();
+	
+				  if(!isset($politica->return)){
+						  $regPo=0;
+				  }else{
+						 $politicas=$politica;
+						 $regPo=count($politica->return);
+				  }
+   
+	// echo '<pre>';
+// print_r($politicas);
+	//<input name="ver" type="button" />echo '<pre>';
+	
+	include("../views/adminPolitica.php");
+?>
