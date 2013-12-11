@@ -60,45 +60,58 @@
  			 <li><a href="../pages/grupo.php">Atrás</a></li>
   			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
-			 </ul>
-       </div>
+		</ul>
+      </div>
        
        	<div class="col-md-2">
         </div>
         
-        <div class="col-md-4 panel">     
-        <table width="100%" class="table-condensed table-bordered">
-        	<tr>
-        		<th>Nombre:</th>
-            	<td><input type="text" id="nombre" name="nombre" /></td>
-            </tr>
-            <tr>
-        		<th>Descripción:</th>
-            	<td><input type="text" id="descripcion" name="descripcion" /></td>
-            </tr>
-            <tr>
-        		<th>Documentación:</th>
-            	<td><input type="text" id="documentacion" name="documentacion" /></td>
-            </tr>
-            <tr>
-        		<th>Fecha de Creación:</th>
-            	<td><input type="text" id="fecha" name="fecha" /></td>
-            </tr>
-            <tr>
-        		<th>Tipo:</th>
-            	<td><input type="text" id="tipo" name="tipo" /></td>
-            </tr>
-            <tr>
-        		<th>Estado:</th>
-            	<td><input type="text" id="estado" name="estado" /></td>
-            </tr>
-            <tr>
-        		<th>Borrado:</th>
-            	<td><input type="text" id="borrado" name="borrado" /></td>
-            </tr>
-		</table> 
-    </div>    
-
+        <div class="col-md-4">  
+         <form method="POST">    
+        <table width="100%" class="table-striped table-bordered table-condensed">
+			 <tr>
+			 <th width="40%">Nombre</th>
+				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Grupo" autofocus required></td>
+			 </tr>
+			 <tr>
+			 <th width="40%">Descripión</th>
+				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Grupo" required="required"></td>
+			 </tr>
+			 <tr>
+			 <th width="40%">Documentación</th>
+				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
+			 </tr>
+              <tr>
+              <th width="40%">Fecha de Creación</th>
+				 <td><output><?php echo $fecha;?></output></td>		
+			 </tr>
+             <th width="40%">Tipo</th>
+				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx " required="required"></td>		
+			 </tr>
+             <th width="40%">Estado</th>
+				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
+			 </tr>
+			 <tr>
+			 <th width="40%">Organización</th>
+				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
+                  <option value="" style="display:none">Seleccionar:</option> 
+				 <?php
+				 	for ($i=0;$i<$canOrga;$i++)
+					{
+						echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
+					}
+				  ?>
+                 </select></td>
+			 </tr>
+			 <tr>
+			 <th width="40%">Habilitado</th>
+				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no presiona estará deshabilitado"> </td>
+			 </tr>
+	</table>
+     <div class="col-md-9" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
+    <div class="col-md-9" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
+</form>  
+</div>
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>

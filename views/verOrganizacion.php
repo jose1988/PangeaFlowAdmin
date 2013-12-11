@@ -95,7 +95,7 @@
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarOrganizaciono->return->descripcion.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->descripcion.'</td>';
 			}
 			echo '</tr>';
 			
@@ -141,11 +141,11 @@
 			
 			echo '<tr>';
 			echo '<th>Mail</th>';
-			if(!isset($resultadoBuscarOrganizacion->return)){
+			if(!isset($resultadoBuscarOrganizacion->return->mail)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td> </td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->mail.'</td>';
 			}
 			echo '</tr>';
 			
