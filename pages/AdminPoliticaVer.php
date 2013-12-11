@@ -14,9 +14,7 @@
 						 $regPo=count($bPolitica->return);
 				  }
    
-	 echo '<pre>';
- print_r($bpoliticas);
-	echo '<pre>';
+	 
 	
-	//include("../views/adminPoliticaVer.php");
+	include("../views/adminPoliticaVer.php");
 ?>
