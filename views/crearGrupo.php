@@ -57,80 +57,48 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="#">Atrás</a></li>
+ 			 <li><a href="../pages/grupo.php">Atrás</a></li>
   			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>
        </div>
- 
-        <div class="col-md-1">
+       
+       	<div class="col-md-2">
         </div>
         
-        <div class="col-md-8">
-        <?php 
-	   	if(isset($resultadoListaGrupo)){
-	   ?>
-        <table width="100%" class="footable table-hover" data-page-size="7">
-      		<thead>
-				<tr>
-				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
-					<span>Id</span>
-				  </th>
-				  <th data-sort-ignore="true">
-					<span>Nombre</span>
-				  </th>
-				  <th data-hide="phone" data-sort-ignore="true">
-					Descripción
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-					Editar 
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-					Eliminar 
-				  </th>
-          		 <th data-hide="phone,mediatablet" data-sort-ignore="true">
-					Ver 
-				  </th>
-				</tr>
-	 </thead>
-  <tbody>
-      <?php
-	  if(count($resultadoListaGrupo->return)>1){   
-		for ($i=0;$i<count($resultadoListaGrupo->return);$i++){
-			echo '<tr>';
-			echo '<td width="10%">'.$resultadoListaGrupo->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaGrupo->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaGrupo->return[$i]->descripcion.'</td>';
-			echo '<td width="15%"><a href="../pages/editarGrupo.php?id='.$resultadoListaGrupo->return[$i]->id.'"><button class="btn">Editar</button></td>';
-			echo '<td width="15%"><a href="../pages/eliminarGrupo.php?id='.$resultadoListaGrupo->return[$i]->id.'"><button class="btn">Eliminar</button></td>';
-			echo '<td width="15%"><a href="../pages/verGrupo.php?id='.$resultadoListaGrupo->return[$i]->id.'"><button class="btn">Ver</button></td>';
-			echo '</tr>';
-			}
-	  }
-	  else{
-		  	echo '<tr>';
-			echo '<td width="10%">'.$resultadoListaGrupo->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaGrupo->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaGrupo->return->descripcion.'</td>';
-			echo '<td width="15%"><a href="../pages/editarGrupo.php?id='.$resultadoListaGrupo->return->id.'"><button class="btn">Editar</button></td>';
-			echo '<td width="15%"><a href="../pages/eliminarGrupo.php?id='.$resultadoListaGrupo->return->id.'"><button class="btn">Eliminar</button></td>';
-			echo '<td width="15%"><a href="../pages/verGrupo.php?id='.$resultadoListaGrupo->return->id.'"><button class="btn">Ver</button></td>';
-			echo '</tr>';
-		  
-		  }
-		?>
-		</tbody>	
-	</table>
-	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
-    
-   <?php }	
-		else{ ?>
-			<div class="alert alert-block" align="center">
-   				<h2 style="color:#666">Atención</h2>
-    			<h4>No Existen Registros en Grupo</h4>
-   			</div>
-	<?php }?>
-    </div>
+        <div class="col-md-4 panel">     
+        <table width="100%" class="table-condensed table-bordered">
+        	<tr>
+        		<th>Nombre:</th>
+            	<td><input type="text" id="nombre" name="nombre" /></td>
+            </tr>
+            <tr>
+        		<th>Descripción:</th>
+            	<td><input type="text" id="descripcion" name="descripcion" /></td>
+            </tr>
+            <tr>
+        		<th>Documentación:</th>
+            	<td><input type="text" id="documentacion" name="documentacion" /></td>
+            </tr>
+            <tr>
+        		<th>Fecha de Creación:</th>
+            	<td><input type="text" id="fecha" name="fecha" /></td>
+            </tr>
+            <tr>
+        		<th>Tipo:</th>
+            	<td><input type="text" id="tipo" name="tipo" /></td>
+            </tr>
+            <tr>
+        		<th>Estado:</th>
+            	<td><input type="text" id="estado" name="estado" /></td>
+            </tr>
+            <tr>
+        		<th>Borrado:</th>
+            	<td><input type="text" id="borrado" name="borrado" /></td>
+            </tr>
+		</table> 
+    </div>    
+
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
@@ -141,6 +109,5 @@
       $('table').footable();
     });
   </script>
-
-</body>
+  </body>
 </html>
