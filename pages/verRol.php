@@ -12,6 +12,6 @@
 						 $cantRol=count($rowRol->return);
 				  }
 	//			   echo '<pre>';
-  //print_r($rowRol);			  
+ //print_r($rowRol);			  
   include("../views/verRol.php"); 
 ?>

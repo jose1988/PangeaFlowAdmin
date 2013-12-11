@@ -19,5 +19,5 @@
 				  }else{
 						 $cantUsuarios=count($rowUsuario->return);
 				  }
-	include("../views/usuariox.php"); 
+	include("../views/usuario.php"); 
 ?>

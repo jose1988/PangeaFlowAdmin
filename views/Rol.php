@@ -58,15 +58,15 @@
       <li><a href="#">Skin</a></li>
        </ul>
    </nav>  
-   <div class="row">
-          <div class="col-md-2" align="center">
-             <ul class="nav nav-pills nav-stacked">
- 			 <li class="active"><a href="#">Atrás</a></li>
+   </div>
+      <div class="col-md-2" align="center">
+        <ul class="nav nav-stacked nav-tabs-justified">
+ 			 <li><a href="#">Atrás</a></li>
   			 <li><a href="#">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>
        </div>
-        
+       
         <div class="col-md-9">
 		 <?php
 	if($cantRol == 0){
@@ -108,9 +108,9 @@
 			echo '<td width="15%">'.$rowRol->return->id.'</td>';
 			echo '<td width="20%">'.$rowRol->return->nombre.'</td>';
 			echo '<td width="20%">'.$rowRol->return->descripcion.'</td>';
-			echo '<td width="15%"><a href="editarproducto.php?id='.$rowRol->return->id.'"><button class="btn btn-primary"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarproducto.php?id='.$rowRol->return->id.'"> <button class="btn btn-primary" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
-			echo '<td width="13%"><a href="verRol.php?id='.$rowRol->return->id.'"> <button class="btn btn-primary"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '<td width="15%"><a href="editarproducto.php?id='.$rowRol->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td width="16%"><a href="eliminarproducto.php?id='.$rowRol->return->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td width="13%"><a href="verRol.php?id='.$rowRol->return->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 	  }elseif($cantRol>1){      
 		for ($i=0;$i<$cantRol;$i++)
@@ -118,9 +118,9 @@
 			echo '<td width="15%">'.$rowRol->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$rowRol->return[$i]->nombre.'</td>';
 			echo '<td width="20%">'.$rowRol->return[$i]->descripcion.'</td>';
-			echo '<td width="15%"><a href="editarClasifRol.php?id='.$rowRol->return[$i]->id.'"><button class="btn btn-primary"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarClasifRol.php?id='.$rowRol->return[$i]->id.'"> <button class="btn btn-primary" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
-			echo '<td width="13%"><a href="verRol.php?id='.$rowRol->return[$i]->id.'"> <button class="btn btn-primary"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '<td width="15%"><a href="editarClasifRol.php?id='.$rowRol->return[$i]->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td width="16%"><a href="eliminarClasifRol.php?id='.$rowRol->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td width="13%"><a href="verRol.php?id='.$rowRol->return[$i]->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 			}
 	    }

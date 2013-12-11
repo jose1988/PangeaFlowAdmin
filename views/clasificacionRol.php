@@ -32,7 +32,7 @@
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
@@ -58,10 +58,10 @@
       <li><a href="#">Skin</a></li>
        </ul>
    </nav>  
-   <div class="row">
-          <div class="col-md-2" align="center">
-             <ul class="nav nav-pills nav-stacked">
- 			 <li class="active"><a href="#">Atrás</a></li>
+   </div>
+      <div class="col-md-2" align="center">
+        <ul class="nav nav-stacked nav-tabs-justified">
+ 			 <li><a href="#">Atrás</a></li>
   			 <li><a href="#">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>

@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <title>Documento sin título</title>
 
 	<!-- javascript -->
 	
 	<script type="text/javascript" src="../js/jquery-2.0.2.js"></script>
-	<script type='text/javascript' src="../js/bootstrap.js"></script>
+	<script type=text/javascript src="../js/bootstrap.js"></script>
 	
 	
 	<!-- styles -->
@@ -58,8 +58,8 @@
       <li><a href="#">Skin</a></li>
        </ul>
    </nav>  
-   </div>
-      <div class="col-md-2" align="center">
+  
+<div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="rol.php">Atrás</a></li>
   			 <li><a href="#">Crear</a></li>
@@ -68,81 +68,54 @@
        </div>
 	   	<div class="col-md-2">
         </div>
-                <div class="col-md-4">
-        
-        <h2 align="center">Datos del Rol</h2>
-        
+         <div class="col-md-4">  
+         <form method="POST">    
         <table width="100%" class="table-striped table-bordered table-condensed">
-        	<?php
-			echo '<tr>';
-			echo '<th width="40%">Id</th>';
-			echo '<td>'.$rowRol->return->id.'</td>';
-			echo '</tr>';
-			echo '<tr>';
-			echo '<th width="40%">Nombre</th>';
-			if(!isset($rowRol->return->nombre)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowRol->return->nombre.'</td>';
-			}
-			echo '</tr>';
-			echo '<tr>';
-			echo '<th width="40%">Descripión</th>';
-			if(!isset($rowRol->return->descripcion)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowRol->return->descripcion.'</td>';
-			}
-			echo '</tr>';
-			echo '<tr>';
-			echo '<th width="40%">Documentación</th>';
-			if(!isset($rowRol->return->documentacion)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowRol->return->documentacion.'</td>';
-			}
-			echo '</tr>';
-			echo '<tr>';
-			echo '<th width="40%">Clasificación de Rol</th>';
-			if(!isset($rowRol->return->idClasificacionRol->nombre)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowRol->return->idClasificacionRol->nombre.'</td>';
-			}
-			echo '</tr>';
-			echo '<tr>';
-			echo '<th width="40%">Borrado</th>';
-			if(!isset($rowRol->return->borrado)){
-				echo'<td> </td>';
-			}
-			else{
-			if($rowRol->return->borrado == '1'){
-			$rowRol->return->borrado='Habilitado';
-			}else{
-			$rowRol->return->borrado='Deshabilitado';
-			}
-				echo '<td>'.$rowRol->return->borrado.'</td>';
-			}
-			echo '</tr>';
-		?>	
+			 <tr>
+			 <th width="40%">Nombre</th>
+				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Administrador" autofocus required></td>
+			 </tr>
+			 <tr>
+			 <th width="40%">Descripión</th>
+				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Usuario que realiza mantenimiento " required="required"></td>
+			 </tr>
+			 <tr>
+			 <th width="40%">Documentación</th>
+				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
+			 </tr>
+              <tr>
+			 <th width="40%">Estado</th>
+				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
+			 </tr>
+			 <tr>
+			 <th width="40%">Clasificación de Rol</th>
+				 <td><select id="clasificacion" name="clasificacion"  required  title="Ingrese la clasificación del rol">
+                  <option value="" style="display:none">Seleccionar:</option> 
+				 <?php
+				 	for ($i=0;$i<$cantClasifRol;$i++)
+					{
+					echo '<option value="'.$rowClasifRol->return[$i]->id.'">'.$rowClasifRol->return[$i]->nombre.'</option>';
+					}
+				  ?>
+                 </select></td>
+			 </tr>
+			 <tr>
+			 <th width="40%">Habilitado</th>
+				 <td><input type="checkbox" name="borrado" id="borrado" title="si no presiona estara deshabilitado"> </td>
+			 </tr>
 	</table>
+     <div class="col-md-9" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
+    <div class="col-md-9" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y añadir otro</button></div>
+</form>  
     </div>
-        
-
-
-
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
 <script src="../js/footable.sortable.js" type="text/javascript"></script>
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
-    });
+      $(table).footable()
+    })
   </script>
 
 </body>

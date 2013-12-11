@@ -6,9 +6,6 @@
   $client->decode_utf8 = false; 
   $estadoBorrado= array('borrado' => '0');
   $rowClasifRol = $client->listarClasificacionRol($estadoBorrado);
-  //$client->eliminarUsuario($param);
-
-  
 				  if(!isset($rowClasifRol->return)){
 						  $cantClasifRol=0;
 				  }else{
