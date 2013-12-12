@@ -15,7 +15,7 @@
 	if(!isset($resultadoBuscarOrganizacion->return)){
 		$organizacion = "Organización No encontrado";
 	}else{
-		$organizacion = $resultadoBuscarOrganizacion->return->nombre;
+		$organizacion = $resultadoBuscarOrganizacion->return;
 	}
 	
 	//print_r($organizacion);

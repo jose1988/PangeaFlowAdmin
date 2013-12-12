@@ -57,8 +57,8 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/grupo.php">Atrás</a></li>
-  			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
+ 			 <li><a href="../pages/organizacion.php">Atrás</a></li>
+  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 		</ul>
       </div>
@@ -71,27 +71,39 @@
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Grupo" autofocus required></td>
+				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Organización" autofocus required></td>
 			 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Grupo" required="required"></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
-			 </tr>
-              <tr>
-              <th width="40%">Fecha de Creación</th>
-				 <td><output><?php echo $fecha;?></output></td>		
+				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Organización" required="required"></td>
 			 </tr>
              <tr>
              <th width="40%">Tipo</th>
-				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx " required="required"></td>		
+				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx" required="required"></td>		
+			 </tr>
+             <tr>
+             <th width="40%">Dirección</th>
+				 <td><input type="text" name="direccion" id="direccion" maxlength="149" size="80" title="Ingrese la dirección" placeholder="Ej. Direcciónxx" required="required"></td>		
+			 </tr>
+             <tr>
+             <th width="40%">Teléfono</th>
+				 <td><input type="text" name="telefono" id="telefono" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 0416-1234567" required="required"></td>		
+			 </tr>
+             <tr>
+             <th width="40%">Fax</th>
+				 <td><input type="text" name="fax" id="fax" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 0276-1234567" required="required"></td>		
+			 </tr>
+             <tr>
+             <th width="40%">Correo</th>
+				 <td><input type="text" name="correo" id="correo" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@gmail.com" required="required"></td>		
+			 </tr>
+             <tr>
+             <th width="40%">Ciudad</th>
+				 <td><input type="text" name="ciudad" id="ciudad" maxlength="149" size="50" title="Ingrese la ciudad" placeholder="Ej. Ciudadxxx" required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
+				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxxx" required="required"></td>		
 			 </tr>
 			 <tr>
 			 <th width="40%">Organización</th>

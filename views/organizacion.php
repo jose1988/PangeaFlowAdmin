@@ -58,7 +58,7 @@
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="#">Atrás</a></li>
-  			 <li><a href="#">Crear</a></li>
+  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>
        </div>

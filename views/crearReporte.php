@@ -57,8 +57,8 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/grupo.php">Atrás</a></li>
-  			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
+ 			 <li><a href="../pages/reporte.php">Atrás</a></li>
+  			 <li><a href="../pages/crearReporte.php">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 		</ul>
       </div>
@@ -71,39 +71,15 @@
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Grupo" autofocus required></td>
+				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Reporte" autofocus required></td>
 			 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Grupo" required="required"></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
-			 </tr>
-              <tr>
-              <th width="40%">Fecha de Creación</th>
-				 <td><output><?php echo $fecha;?></output></td>		
+				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese el reporte" placeholder="Ej. Descripción Reporte" required="required"></td>
 			 </tr>
              <tr>
-             <th width="40%">Tipo</th>
-				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx " required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
-			 </tr>
-			 <tr>
-			 <th width="40%">Organización</th>
-				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
-                  <option value="" style="display:none">Seleccionar:</option> 
-				 <?php
-				 	for ($i=0;$i<$canOrga;$i++)
-					{
-						echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
-					}
-				  ?>
-                 </select></td>
+             <th width="40%">Url</th>
+				 <td><input type="text" name="url" id="url" maxlength="149" size="80" title="Ingrese el URL" placeholder="Ej. http//pangea.com " required="required"></td>		
 			 </tr>
 			 <tr>
 			 <th width="40%">Habilitado</th>

@@ -58,7 +58,7 @@
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/organizacion.php">Atrás</a></li>
-  			 <li><a href="#">Crear</a></li>
+  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>
        </div>
@@ -120,7 +120,7 @@
 			echo '</tr>';
 			
 			echo '<tr>';
-			echo '<th>Telefóno</th>';
+			echo '<th>Teléfono</th>';
 			if(!isset($resultadoBuscarOrganizacion->return->telefono)){
 				echo'<td> </td>';
 			}
@@ -175,17 +175,22 @@
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarOrganizacion->return->borrado.'</td>';
+				if($resultadoBuscarOrganizacion->return->borrado==1){
+					echo '<td>TRUE</td>';
+				}
+				else{
+					echo '<td>FALSE</td>';	
+				}
 			}
 			echo '</tr>';
 			
 			echo '<tr>';
 			echo '<th>Id de la Organización Padre</th>';
-			if(!isset($resultadoBuscarOrganizacion->return->id_organizacion_padre)){
+			if(!isset($resultadoBuscarOrganizacion->return->idOrganizacionPadre)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarOrganizacion->return->id_organizacion_padre.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre.'</td>';
 			}
 			echo '</tr>';
 		?>	

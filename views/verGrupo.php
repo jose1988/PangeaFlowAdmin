@@ -107,11 +107,11 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Fecha de Creación</th>';
-			if(!isset($resultadoBuscarGrupo->return->fecha_creacion)){
+			if(!isset($resultadoBuscarGrupo->return->fechaCreacion)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->fecha_creacion.'</td>';
+				echo '<td>'.$resultadoBuscarGrupo->return->fechaCreacion.'</td>';
 			}
 			echo '</tr>';
 			echo '<tr>';
@@ -125,11 +125,11 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Organización</th>';
-			if(!isset($resultadoBuscarGrupo->return->id_organizacion->id)){
+			if(!isset($resultadoBuscarGrupo->return->idOrganizacion->id)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->id_organizacion->id.'</td>';
+				echo '<td>'.$resultadoBuscarGrupo->return->idOrganizacion->id.'</td>';
 			}
 			echo '</tr>';
 			echo '<tr>';
@@ -147,7 +147,12 @@
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->borrado.'</td>';
+				if($resultadoBuscarGrupo->return->borrado==1){
+					echo '<td>TRUE</td>';
+				}
+				else{
+					echo '<td>FALSE</td>';	
+				}
 			}
 			echo '</tr>';
 		?>	

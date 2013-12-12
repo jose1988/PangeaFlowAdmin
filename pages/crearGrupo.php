@@ -1,5 +1,7 @@
 <?php
 	require_once("../lib/nusoap.php");
+	require_once("../lib/funciones.php");
+	
 	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
 	$client = new SOAPClient($wsdl_url);
     $client->decode_utf8 = false;
@@ -13,9 +15,9 @@
 	
 	if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 		
-	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["documentacion"]) && $_POST["documentacion"]!="" && 
-		isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && isset($_POST["estado"]) && $_POST["estado"]!="" && 
-		isset($_POST["organizacion"]) && $_POST["organizacion"]!="" && isset($_POST["tipo"]) && $_POST["tipo"]!="" ){
+	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
+			isset($_POST["documentacion"]) && $_POST["documentacion"]!="" && $fecha!="" && isset($_POST["tipo"]) && $_POST["tipo"]!="" && 
+			isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){
 				
 			 //Borrado 0 es FALSE y 1 TRUE
 			 if(!isset($_POST["borrado"])){
@@ -39,6 +41,15 @@
   			$client = new SOAPClient($wsdl_url);
  			$client->decode_utf8 = false;
 			$client->insertarGrupo($registroGrupo);
+			
+			javaalert("Grupo creado");
+			if(isset($_POST["crear_uno"])){
+				iraURL('../pages/grupo.php');
+			}
+			else{
+				iraURL('../pages/crearGrupo.php');
+			}
+			
 		}else{
 			javaalert("Debe agregar todos los campos, por favor verifique");
 		}
