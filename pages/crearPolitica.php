@@ -1,16 +1,17 @@
 <?php
 	require_once("../lib/nusoap.php");
+	require_once("../lib/funciones.php");
   	 $wsdl_url = 'http://localhost:15362/CapaDeServicios/GestionDepolitica?WSDL';
 				$client = new SOAPClient($wsdl_url);	
     $client->decode_utf8 = false;
 	
 	
 	if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
-	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["documentacion"]) && $_POST["documentacion"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["clasificacion"]) && $_POST["clasificacion"]!="" ){		
+	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["documentacion"]) && $_POST["documentacion"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && isset($_POST["estado"]) && $_POST["estado"]!=""){		
 			 if(!isset($_POST["borrado"])){
-			 $borrado="0";
-			 }else{
 			 $borrado="1";
+			 }else{
+			 $borrado="0";
 			 }
 			 
 			  $politica= 

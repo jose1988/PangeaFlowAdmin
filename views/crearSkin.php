@@ -68,31 +68,16 @@
        </div>
 	   	<div class="col-md-2">
         </div>
-         <div class="col-md-4">  
+         <div class="col-md-4"> 
+          
          <form method="POST">    
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Cola" autofocus required></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Primero que entra, primero que sale " required="required"></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
-			 </tr>
-             <tr>
-			 <th width="40%">Implementación</th>
-				 <td><textarea name="implementacion" id="implementacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
-			 </tr>
-              <tr>
-			 <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
+				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Azul Cielo" autofocus required></td>
 			 </tr>
 			 
-			 <tr>
+			 
 			 <th width="40%">Habilitado</th>
 				 <td><input type="checkbox" name="borrado" id="borrado" title="si no presiona estara deshabilitado"> </td>
 			 </tr>
@@ -110,3 +95,4 @@
       $(table).footable()
     })
   </script>
+  
