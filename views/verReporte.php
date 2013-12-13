@@ -59,7 +59,7 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/reporte.php">Atrás</a></li>
   			 <li><a href="../pages/crearReporte.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="../pages/restaurarReporte.php">Restaurar</a></li>
 			 </ul>
        </div>
 
@@ -69,8 +69,16 @@
         <div class="col-md-4">
         
         <?php 
-	   	if(isset($resultadoBuscarReporte)){
-	   ?>        
+	   	if(!isset($resultadoBuscarReporte->return)){
+	   ?>
+       		<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existe un Reporte con ese ID</h4>
+   			</div>
+            
+         <?php }
+		 	else{
+		 ?>        
         <h2 align="center">Datos del Reporte</h2>        
         <table width="100%" class="table-striped table-bordered table-condensed">
         	<?php

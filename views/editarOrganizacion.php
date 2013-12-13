@@ -66,53 +66,77 @@
        	<div class="col-md-2">
         </div>
         
-        <div class="col-md-4">  
+        <div class="col-md-4">
+        <?php 
+	   	if(!isset($resultadoBuscarOrganizacion->return)){
+	   ?>
+       		<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existe una Organización con ese ID</h4>
+   			</div>
+            
+         <?php }
+		 	else{
+		 ?>  
          <form method="POST">    
         <table width="100%" class="table-striped table-bordered table-condensed">
-			 <tr>
+			  <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Organización" autofocus required></td>
+				 <td><input type="text" name="nombre" id="nombre" value="<?php echo $resultadoBuscarOrganizacion->return->nombre;?>" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Organizacion" autofocus required></td>
 			 </tr>
-			 <tr>
+			  <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Organización" required="required"></td>
+				 <td><input type="text" name="descripcion" id="descripcion" value="<?php echo $resultadoBuscarOrganizacion->return->descripcion;?>" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Grupo" required="required"></td>
 			 </tr>
              <tr>
              <th width="40%">Tipo</th>
-				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx" required="required"></td>		
+				 <td><input type="text" name="tipo" id="tipo" value="<?php echo $resultadoBuscarOrganizacion->return->tipo;?>" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx " required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Dirección</th>
-				 <td><input type="text" name="direccion" id="direccion" maxlength="149" size="80" title="Ingrese la dirección" placeholder="Ej. Direcciónxx" required="required"></td>		
+				 <td><input type="text" name="direccion" id="direccion" value="<?php echo $resultadoBuscarOrganizacion->return->direccion;?>" maxlength="149" size="50" title="Ingrese la dirección" placeholder="Ej. Direcciónxx " required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Teléfono</th>
-				 <td><input type="text" name="telefono" id="telefono" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 04161234567" required="required"></td>		
+				 <td><input type="text" name="telefono" id="telefono" value="<?php echo $resultadoBuscarOrganizacion->return->telefono;?>" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 04161234567 " required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Fax</th>
-				 <td><input type="text" name="fax" id="fax" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 02769876543" required="required"></td>		
+				 <td><input type="text" name="fax" id="fax" value="<?php echo $resultadoBuscarOrganizacion->return->fax;?>" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 012769876543 " required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@gmail.com" required="required"></td>		
+				 <td><input type="text" name="correo" id="correo" value="<?php echo $resultadoBuscarOrganizacion->return->mail;?>" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@pangeatech.com.ve " required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Ciudad</th>
-				 <td><input type="text" name="ciudad" id="ciudad" maxlength="149" size="50" title="Ingrese la ciudad" placeholder="Ej. Ciudadxxx" required="required"></td>		
+				 <td><input type="text" name="ciudad" id="ciudad" value="<?php echo $resultadoBuscarOrganizacion->return->ciudad;?>" maxlength="149" size="50" title="Ingrese la ciudad" placeholder="Ej. Ciudadxx " required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxxx" required="required"></td>		
+				 <td><input type="text" name="estado" id="estado" value="<?php echo $resultadoBuscarOrganizacion->return->estado;?>" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
 			 </tr>
 			 <tr>
-			 <th width="40%">Organización</th>
+			 <th width="40%">Organización Padre</th>
 				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
-                  <option value="" style="display:none">Seleccionar:</option> 
 				 <?php
+				 if($resultadoBuscarOrganizacion->return->idOrganizacionPadre->id!=""){
+					echo '<option value="'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre->id.'" style="display:none">'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre->nombre.'</option>'; 
 				 	for ($i=0;$i<$canOrga;$i++)
 					{
-						echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
+						if(($resultadoListaOrganizacion->return[$i]->id)!=($resultadoBuscarOrganizacion->return->idOrganizacion->id)){
+							echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
+						}
+					}
+				 }
+				 else{?>
+					 <option value="" style="display:none">Seleccionar:</option> 
+				 <?php
+				 		for ($i=0;$i<$canOrga;$i++)
+						{
+							echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
+						}
+					 
 					}
 				  ?>
                  </select></td>
@@ -123,9 +147,9 @@
 			 </tr>
 	</table>
     <br />
-     <div class="col-md-12" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
-    <div class="col-md-12" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
-</form>  
+     <div class="col-md-12" align="center"><button class="btn" id="editar" name="editar" type="submit">Editar</button></div>
+    </form>
+  <?php }?> 
 </div>
 
 <script src="../js/footable.js" type="text/javascript"></script>

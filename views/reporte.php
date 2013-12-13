@@ -59,7 +59,7 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="#">Atrás</a></li>
   			 <li><a href="../pages/crearReporte.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="../pages/restaurarReporte.php">Restaurar</a></li>
 			 </ul>
        </div>
        <div class="col-md-1">
@@ -67,8 +67,14 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(isset($resultadoListaReporte)){
+	   	if(!isset($resultadoListaReporte->return)){
 	   ?>
+       		<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existen Registros en Reporte</h4>
+   			</div>
+        <?php }
+		else{ ?>
         <table width="100%" class="footable table-hover" data-page-size="7">
       		<thead>
 				<tr>
@@ -119,13 +125,7 @@
 		?>
 		</tbody>	
 	</table>
-	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>    
-    <?php }	
-		else{ ?>
-			<div class="alert alert-block" align="center">
-   				<h2 style="color:#666">Atención</h2>
-    			<h4>No Existen Registros en Reporte</h4>
-   			</div>
+	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
 	<?php }?>
 	</div>
 

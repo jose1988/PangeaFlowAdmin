@@ -12,11 +12,12 @@
 	$idG = array('idGrupo' => $id);	
 	
 	$resultadoBuscarGrupo = $client->buscarGrupo($idG);
-	if(!isset($resultadoBuscarGrupo->return)){
+	
+	/*if(!isset($resultadoBuscarGrupo->return)){
 		$grupo = "Grupo No encontrado";
 	}else{
 		$grupo = $resultadoBuscarGrupo->return->nombre;
-	}
+	}*/
 	
 	//print_r($grupo);
 	

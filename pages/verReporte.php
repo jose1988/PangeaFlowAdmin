@@ -12,11 +12,12 @@
 	$idR = array('idReporte' => $id);	
 	
 	$resultadoBuscarReporte = $client->buscarReporte($idR);
-	if(!isset($resultadoBuscarReporte->return)){
+	
+	/*if(!isset($resultadoBuscarReporte->return)){
 		$reporte = "Reporte No encontrado";
 	}else{
 		$reporte = $resultadoBuscarReporte->return->nombre;
-	}
+	}*/
 	
 	//print_r($reporte);
 	

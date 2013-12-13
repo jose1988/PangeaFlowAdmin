@@ -59,7 +59,7 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/reporte.php">Atrás</a></li>
   			 <li><a href="../pages/crearReporte.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="../pages/restaurarReporte.php">Restaurar</a></li>
 		</ul>
       </div>
        
@@ -86,8 +86,9 @@
 				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no presiona estará deshabilitado"> </td>
 			 </tr>
 	</table>
-     <div class="col-md-9" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
-    <div class="col-md-9" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
+    <br />
+     <div class="col-md-12" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
+    <div class="col-md-12" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
 </form>  
 </div>
 

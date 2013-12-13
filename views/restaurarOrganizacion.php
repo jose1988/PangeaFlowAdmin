@@ -32,7 +32,7 @@
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+ <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
 	<li><a href="#">Skin</a></li>
     <li class="dropdown">
@@ -57,64 +57,68 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/grupo.php">Atrás</a></li>
-  			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarGrupo.php">Restaurar</a></li>
-		</ul>
-      </div>
-       
-       	<div class="col-md-2">
+ 			 <li><a href="../pages/organizacion.php">Atrás</a></li>
+  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
+ 			 <li><a href="../pages/restaurarOrganizacion.php">Restaurar</a></li>
+			 </ul>
+       </div>
+        <div class="col-md-1">
         </div>
         
-        <div class="col-md-4">  
-         <form method="POST">    
-        <table width="100%" class="table-striped table-bordered table-condensed">
-			 <tr>
-			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Grupo" autofocus required></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Grupo" required="required"></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
-			 </tr>
-              <tr>
-              <th width="40%">Fecha de Creación</th>
-				 <td><output><?php echo $fecha;?></output></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Tipo</th>
-				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx " required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
-			 </tr>
-			 <tr>
-			 <th width="40%">Organización</th>
-				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
-                  <option value="" style="display:none">Seleccionar:</option> 
-				 <?php
-				 	for ($i=0;$i<$canOrga;$i++)
-					{
-						echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
-					}
-				  ?>
-                 </select></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no presiona estará deshabilitado"> </td>
-			 </tr>
+        <div class="col-md-8">
+        <?php 
+			if(!isset($resultadoListaOrganizacion->return)){
+		?>
+        	<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existen Registros en Organización para Restaurar</h4>
+   			</div>
+        <?php }
+			else{
+		?>   
+        <table width="100%" class="footable table-hover" data-page-size="7">
+      		<thead align="center">
+				<tr>
+				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
+					<span>Id</span>
+				  </th>
+				  <th data-sort-ignore="true">
+					<span>Nombre</span>
+				  </th>
+				  <th data-hide="phone" data-sort-ignore="true">
+					Ciudad
+				  </th>
+				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
+                  	Habilitar 
+				  </th>
+				</tr>
+	 </thead>
+  <tbody>
+      <?php
+	  if(count($resultadoListaOrganizacion->return)>1){   
+		for ($i=0;$i<count($resultadoListaOrganizacion->return);$i++){
+			echo '<tr>';
+			echo '<td width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaOrganizacion->return[$i]->nombre.'</td>';
+			echo '<td width="25%">'.$resultadoListaOrganizacion->return[$i]->ciudad.'</td>';
+			echo '<td width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Habilitar</button></td>';	
+			echo '</tr>';
+			}
+	  }
+	  else{
+		  	echo '<tr>';
+			echo '<td width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaOrganizacion->return->nombre.'</td>';
+			echo '<td width="25%">'.$resultadoListaOrganizacion->return->ciudad.'</td>';
+			echo '<td width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Habilitar</button></td>';
+			echo '</tr>';
+		  }
+		?>
+		</tbody>	
 	</table>
-    <br />
-     <div class="col-md-12" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
-    <div class="col-md-12" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
-</form>  
-</div>
+	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
+	<?php }?>
+	</div>
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
@@ -125,5 +129,6 @@
       $('table').footable();
     });
   </script>
-  </body>
+
+</body>
 </html>

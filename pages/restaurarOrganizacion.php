@@ -4,9 +4,9 @@
 	$client = new SOAPClient($wsdl_url);	
     $client->decode_utf8 = false;
 	
-	$estadoOrganizacion = array('borrado' => '0');
+	$estadoOrganizacion = array('borrado' => '1');
 	
 	$resultadoListaOrganizacion = $client->listarOrganizacionByBorrado($estadoOrganizacion);
 	
-	include("../views/organizacion.php");
+	include("../views/restaurarOrganizacion.php");
 ?>

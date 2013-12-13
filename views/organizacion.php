@@ -59,16 +59,23 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="#">Atrás</a></li>
   			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="../pages/restaurarOrganizacion.php">Restaurar</a></li>
 			 </ul>
        </div>
         <div class="col-md-1">
         </div>
         
         <div class="col-md-8">
-         <?php 
-	   	if(isset($resultadoListaOrganizacion)){
-	   ?>
+        <?php 
+			if(!isset($resultadoListaOrganizacion->return)){
+		?>
+        	<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existen Registros en Organización</h4>
+   			</div>
+        <?php }
+			else{
+		?>   
         <table width="100%" class="footable table-hover" data-page-size="7">
       		<thead align="center">
 				<tr>
@@ -120,13 +127,6 @@
 		</tbody>	
 	</table>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
-    
-   <?php }	
-		else{ ?>
-			<div class="alert alert-block" align="center">
-   				<h2 style="color:#666">Atención</h2>
-    			<h4>No Existen Registros en Organización</h4>
-   			</div>
 	<?php }?>
 	</div>
 

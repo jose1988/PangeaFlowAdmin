@@ -57,65 +57,40 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/organizacion.php">Atrás</a></li>
-  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarOrganizacion.php">Restaurar</a></li>
+ 			 <li><a href="../pages/reporte.php">Atrás</a></li>
+  			 <li><a href="../pages/crearReporte.php">Crear</a></li>
+ 			 <li><a href="../pages/restaurarReporte.php">Restaurar</a></li>
 		</ul>
       </div>
        
        	<div class="col-md-2">
         </div>
         
-        <div class="col-md-4">  
+        <div class="col-md-4">
+        <?php 
+	   	if(!isset($resultadoBuscarReporte->return)){
+	   ?>
+       		<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existe un Reporte con ese ID</h4>
+   			</div>
+            
+         <?php }
+		 	else{
+		 ?>
          <form method="POST">    
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Organización" autofocus required></td>
+				 <td><input type="text" name="nombre" id="nombre" value="<?php echo $resultadoBuscarReporte->return->nombre;?>" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Reporte" autofocus required></td>
 			 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Organización" required="required"></td>
+				 <td><input type="text" name="descripcion" id="descripcion" value="<?php echo $resultadoBuscarReporte->return->descripcion;?>" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Reporte" required="required"></td>
 			 </tr>
              <tr>
-             <th width="40%">Tipo</th>
-				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx" required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Dirección</th>
-				 <td><input type="text" name="direccion" id="direccion" maxlength="149" size="80" title="Ingrese la dirección" placeholder="Ej. Direcciónxx" required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Teléfono</th>
-				 <td><input type="text" name="telefono" id="telefono" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 04161234567" required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Fax</th>
-				 <td><input type="text" name="fax" id="fax" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 02769876543" required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@gmail.com" required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Ciudad</th>
-				 <td><input type="text" name="ciudad" id="ciudad" maxlength="149" size="50" title="Ingrese la ciudad" placeholder="Ej. Ciudadxxx" required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxxx" required="required"></td>		
-			 </tr>
-			 <tr>
-			 <th width="40%">Organización</th>
-				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
-                  <option value="" style="display:none">Seleccionar:</option> 
-				 <?php
-				 	for ($i=0;$i<$canOrga;$i++)
-					{
-						echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
-					}
-				  ?>
-                 </select></td>
+             <th width="40%">Url</th>
+				 <td><input type="text" name="url" id="url" value="<?php echo $resultadoBuscarReporte->return->url;?>" maxlength="149" size="80" title="Ingrese el URL" placeholder="Ej. http//pangea.com " required="required"></td>		
 			 </tr>
 			 <tr>
 			 <th width="40%">Habilitado</th>
@@ -123,9 +98,9 @@
 			 </tr>
 	</table>
     <br />
-     <div class="col-md-12" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
-    <div class="col-md-12" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
-</form>  
+     <div class="col-md-12" align="center"><button class="btn" id="editar" name="editar" type="submit">Editar</button></div>
+  </form>
+<?php }?>
 </div>
 
 <script src="../js/footable.js" type="text/javascript"></script>

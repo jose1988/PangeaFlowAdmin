@@ -59,7 +59,7 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/grupo.php">Atrás</a></li>
   			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="../pages/restaurarGrupo.php">Restaurar</a></li>
 			 </ul>
        </div>
        
@@ -69,8 +69,16 @@
         <div class="col-md-4">
         
        <?php 
-	   	if(isset($resultadoBuscarGrupo)){
-	   ?>        
+	   	if(!isset($resultadoBuscarGrupo->return)){
+	   ?>
+       		<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existe un Grupo con ese ID</h4>
+   			</div>
+            
+         <?php }
+		 	else{
+		 ?>       
         <h2 align="center">Datos del Grupo</h2>        
         <table width="100%" class="table-striped table-bordered table-condensed">
         	<?php

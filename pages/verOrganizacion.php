@@ -12,11 +12,12 @@
 	$idO = array('idOrganizacion' => $id);	
 	
 	$resultadoBuscarOrganizacion = $client->buscarOrganizacion($idO);
-	if(!isset($resultadoBuscarOrganizacion->return)){
+	
+	/*if(!isset($resultadoBuscarOrganizacion->return)){
 		$organizacion = "Organización No encontrado";
 	}else{
 		$organizacion = $resultadoBuscarOrganizacion->return;
-	}
+	}*/
 	
 	//print_r($organizacion);
 	

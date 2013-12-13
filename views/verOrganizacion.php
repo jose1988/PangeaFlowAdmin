@@ -59,7 +59,7 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/organizacion.php">Atrás</a></li>
   			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="../pages/restaurarOrganizacion.php">Restaurar</a></li>
 			 </ul>
        </div>
   
@@ -68,9 +68,16 @@
         
         <div class="col-md-4">
         <?php 
-	   	if(isset($resultadoBuscarOrganizacion)){
+	   	if(!isset($resultadoBuscarOrganizacion->return)){
 	   ?>
-        
+       		<div class="alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existe una Organización con ese ID</h4>
+   			</div>
+            
+         <?php }
+		 	else{
+		 ?>  
         <h2 align="center">Datos de la Organización</h2>        
         <table width="100%" class="table-striped table-bordered table-condensed">
         	<?php
@@ -186,11 +193,11 @@
 			
 			echo '<tr>';
 			echo '<th>Id de la Organización Padre</th>';
-			if(!isset($resultadoBuscarOrganizacion->return->idOrganizacionPadre)){
+			if(!isset($resultadoBuscarOrganizacion->return->idOrganizacionPadre->id)){
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre.'</td>';
+				echo '<td>'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre->nombre.'</td>';
 			}
 			echo '</tr>';
 		?>	
