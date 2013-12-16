@@ -60,7 +60,7 @@
 					'tipo' => $_POST["tipo"],
 					'estado' => $_POST["estado"],
 					'borrado' => $borrado,
-					'idOrganizacion'=>$organizacion);
+					'idOrganizacion' => $organizacion);
 				
 				$registroGrupo= array('registroGrupo' => $grupo);
 				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';

@@ -51,7 +51,7 @@
 					'ciudad' => $_POST["ciudad"],
 					'estado' => $_POST["estado"],
 					'borrado' => $borrado,
-					'idOrganizacionPadre'=>$organizacionPadre);
+					'idOrganizacionPadre' => $organizacionPadre);
 				
 				$registroOrganizacion= array('registroOrganizacion' => $organizacion);
 				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';

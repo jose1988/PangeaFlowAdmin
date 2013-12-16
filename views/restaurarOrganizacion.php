@@ -101,7 +101,7 @@
 			echo '<td width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaOrganizacion->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaOrganizacion->return[$i]->ciudad.'</td>';
-			echo '<td width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Habilitar</button></td>';	
+			echo '<td width="15%"><a href="javascript:habilitar('.$resultadoListaOrganizacion->return[$i]->id.')"><button class="btn">Habilitar</button></td>';	
 			echo '</tr>';
 			}
 	  }
@@ -110,7 +110,7 @@
 			echo '<td width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaOrganizacion->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaOrganizacion->return->ciudad.'</td>';
-			echo '<td width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Habilitar</button></td>';
+			echo '<td width="15%"><a href="javascript:habilitar('.$resultadoListaOrganizacion->return->id.')"><button class="btn">Habilitar</button></td>';	
 			echo '</tr>';
 		  }
 		?>
@@ -129,6 +129,18 @@
       $('table').footable();
     });
   </script>
+  
+  <script language="Javascript">
+	function habilitar(id){
+		confirmar=confirm("¿Está seguro que desea Habilitar la Organización?");
+		if (confirmar){
+			window.location.href="../pages/habilitarOrganizacion.php?id="+id;
+		}
+		else{
+			window.location.href="../pages/restaurarOrganizacion.php";
+		}
+	}
+</script>
 
 </body>
 </html>

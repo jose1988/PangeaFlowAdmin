@@ -103,7 +103,7 @@
 			echo '<td width="10%">'.$resultadoListaGrupo->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaGrupo->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaGrupo->return[$i]->descripcion.'</td>';
-			echo '<td width="15%"><a href="../pages/editarGrupo.php?id='.$resultadoListaGrupo->return[$i]->id.'"><button class="btn">Habilitar</button></td>';
+			echo '<td width="15%"><a href="javascript:habilitar('.$resultadoListaGrupo->return[$i]->id.')"><button class="btn">Habilitar</button></td>';
 			echo '</tr>';
 			}
 	  }
@@ -112,7 +112,7 @@
 			echo '<td width="10%">'.$resultadoListaGrupo->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaGrupo->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaGrupo->return->descripcion.'</td>';
-			echo '<td width="15%"><a href="../pages/editarGrupo.php?id='.$resultadoListaGrupo->return->id.'"><button class="btn">Habilitar</button></td>';
+			echo '<td width="15%"><a href="javascript:habilitar('.$resultadoListaGrupo->return->id.')"><button class="btn">Habilitar</button></td>';
 			echo '</tr>';
 		  
 		  }
@@ -132,6 +132,18 @@
       $('table').footable();
     });
   </script>
+  
+<script language="Javascript">
+	function habilitar(id){
+		confirmar=confirm("¿Está seguro que desea Habilitar el Grupo?");
+		if (confirmar){
+			window.location.href="../pages/habilitarGrupo.php?id="+id;
+		}
+		else{
+			window.location.href="../pages/restaurarGrupo.php";
+		}
+	}
+</script>
 
 </body>
 </html>

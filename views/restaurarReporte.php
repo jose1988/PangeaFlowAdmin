@@ -100,7 +100,7 @@
 			echo '<td width="10%">'.$resultadoListaReporte->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaReporte->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaReporte->return[$i]->descripcion.'</td>';
-			echo '<td width="15%"><a href="../pages/editarReporte.php?id='.$resultadoListaReporte->return[$i]->id.'"><button class="btn">Habilitar</button></td>';
+			echo '<td width="15%"><a href="javascript:habilitar('.$resultadoListaReporte->return[$i]->id.')"><button class="btn">Habilitar</button></td>';
 			echo '</tr>';
 			}
 	  }
@@ -109,7 +109,7 @@
 			echo '<td width="10%">'.$resultadoListaReporte->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaReporte->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaReporte->return->descripcion.'</td>';
-			echo '<td width="15%"><a href="../pages/editarReporte.php?id='.$resultadoListaReporte->return->id.'"><button class="btn">Habilitar</button></td>';
+			echo '<td width="15%"><a href="javascript:habilitar('.$resultadoListaReporte->return->id.')"><button class="btn">Habilitar</button></td>';
 			echo '</tr>';
 		  }
 		?>
@@ -128,6 +128,18 @@
       $('table').footable();
     });
   </script>
+  
+  <script language="Javascript">
+	function habilitar(id){
+		confirmar=confirm("¿Está seguro que desea Habilitar el Reporte?");
+		if (confirmar){
+			window.location.href="../pages/habilitarReporte.php?id="+id;
+		}
+		else{
+			window.location.href="../pages/restaurarReporte.php";
+		}
+	}
+</script>
 
 </body>
 </html>
