@@ -32,8 +32,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-   <li><a href="#">Skin</a></li>
-
+	<li><a href="#">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -55,6 +54,7 @@
       <li><a href="#">Organización</a></li>
       <li><a href="#">Política</a></li>
       <li><a href="#">Reporte</a></li>
+      
        </ul>
    </nav>  
   
@@ -67,40 +67,19 @@
        </div>
 	   	<div class="col-md-2">
         </div>
-         <div class="col-md-5">  
+         <div class="col-md-4">  
          <form method="POST">    
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
 				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Administrador" autofocus required>
-                 <div id="Info" style="float:right"></div>
+                 <div id="Info" style="float:right" align="center"></div>
                  </td>
 		 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
 				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Usuario que realiza mantenimiento " required="required"></td>
 			 </tr>
-			 <tr>
-			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la documentación" placeholder="Ej. " ></textarea></td>		
-			 </tr>
-              <tr>
-			 <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
-			 </tr>
-			 <tr>
-			 <th width="40%">Clasificación de Rol</th>
-				 <td><select id="clasificacion" name="clasificacion"  required  title="Ingrese la clasificación del rol">
-                  <option value="" style="display:none">Seleccionar:</option> 
-				 <?php
-				 	for ($i=0;$i<$cantClasifRol;$i++)
-					{
-					echo '<option value="'.$rowClasifRol->return[$i]->id.'">'.$rowClasifRol->return[$i]->nombre.'</option>';
-					}
-				  ?>
-                 </select></td>
-			 </tr>
-			 <tr>
 			 <th width="40%">Habilitado</th>
 				 <td><input type="checkbox" name="borrado" id="borrado" title="si no presiona estara deshabilitado"> </td>
 			 </tr>
@@ -125,7 +104,7 @@
         var dataString = 'nombre='+nombre;
         $.ajax({
             type: "POST",
-            url: "../ajax/chequeoNombreRol.php",
+            url: "../ajax/chequeoNombreClasifRol.php",
             data: dataString,
             success: function(data) {
                 $('#Info').fadeIn(1000).html(data);
