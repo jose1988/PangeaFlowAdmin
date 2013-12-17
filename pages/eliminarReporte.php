@@ -1,10 +1,17 @@
 <?php
 	require_once("../lib/nusoap.php");
-  	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';	
+	require_once("../lib/funciones.php");
+	
+	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';	
 	$client = new SOAPClient($wsdl_url);	
-    $client->decode_utf8 = false;
+    $client->decode_utf8 = false;	
+	$id = $_GET["id"];
 	
-	$resultadoListaReporte = $client->listarReporte();
+	if($id==""){
+		$id=0;		
+	}	
+	$idR = array('idReporte' => $id);	
+	$resultadoBuscarReporte = $client->buscarReporte($idR);
 	
-	include("../views/adminReporte.php");
+	include("../views/eliminarReporte.php");
 ?>
