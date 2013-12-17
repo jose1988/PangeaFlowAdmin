@@ -1,10 +1,17 @@
 <?php
 	require_once("../lib/nusoap.php");
-  	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';	
+	require_once("../lib/funciones.php");
+	
+	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';	
 	$client = new SOAPClient($wsdl_url);	
-    $client->decode_utf8 = false;
+    $client->decode_utf8 = false;	
+	$id = $_GET["id"];
 	
-	$resultadoListaGrupo = $client->listarGrupos();
+	if($id==""){
+		$id=0;		
+	}	
+	$idG = array('idGrupo' => $id);	
+	$resultadoBuscarGrupo = $client->buscarGrupo($idG);
 	
-	include("../views/adminGrupo.php");
+	include("../views/eliminarGrupo.php");
 ?>
