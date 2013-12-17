@@ -15,5 +15,6 @@
 	
 	$resultadoEliminarGrupo = $client->eliminarGrupo($idG);
 	
-	//iraURL('../pages/grupo.php');
+	javaalert("Grupo eliminado");
+	iraURL('../pages/grupo.php');
 ?>

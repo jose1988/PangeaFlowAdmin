@@ -102,7 +102,9 @@
   <tbody>
       <?php
 	  if(count($resultadoBuscarGrupo->return)){
-		  $id=$resultadoBuscarGrupo->return->id;
+			//id usado para la función javascript
+			$id=$resultadoBuscarGrupo->return->id;
+		  
 		  	echo '<tr>';
 			echo '<td width="10%">'.$resultadoBuscarGrupo->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoBuscarGrupo->return->nombre.'</td>';
@@ -113,7 +115,7 @@
 		?>
 		</tbody>	
 	</table>
-     <button id="si" name="si" value="si" class="btn text-center" type="button" onclick="eliminar('<?php echo $id; ?>')">Si</button>
+     <button id="si" name="si" value="si" class="btn text-center" type="button" onclick="eliminar()">Si</button>
     <button id="no" name="no" value="no" class="btn text-center" type="button" onclick="no_eliminar()">No</button>
     </form>
    <?php }?>
@@ -135,7 +137,8 @@
 		window.location.href="../pages/grupo.php";
 	}
 	
-	function eliminar(id){
+	function eliminar(){
+		var id = '<?php echo $id; ?>';
 		window.location.href="../pages/eliminandoGrupo.php?id="+id;
 	}
 </script>
