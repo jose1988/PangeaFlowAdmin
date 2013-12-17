@@ -8,18 +8,18 @@
 	$ID = array('ID' => $id);
 	$bPolitica = $client->buscarPolitica($ID);
 	
-	if(isset($_POST["si"])){
-	 
-  			   $registroPolitica=$bPolitica;
-				$client->eliminarPolitica($registroPolitica);				
+		if(isset($_POST["si"])){
+			
+				$client->eliminarPolitica($ID);	
+				iraURL("../pages/AdminPolitica.php");
+							
 		}
+		
 		if(isset($_POST["No"])){
+			javaalert("Politica eliminada");
 			iraURL("../pages/AdminPolitica.php");
+				
 		}
-	   	
-	
-	
+		
 	include("../views/eliminarPolitica.php");
-	
-	
 ?>
