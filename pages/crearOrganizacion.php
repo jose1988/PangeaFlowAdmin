@@ -21,17 +21,11 @@
 			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
   			$client = new SOAPClient($wsdl_url);
  			$client->decode_utf8 = false;
-			$rowOrganizacion=$client->listarOrganizacion();
+			$rowOrganizacion=$client->listarOrganizacion();			
+			$nombre= array('nombreOrganizacion' => $_REQUEST['nombre']);
+			$rowOrganizacion = $client->consultarOrganizacionXNombre($nombre);
 			
-			for($i=0; $i<count($rowOrganizacion->return);$i++)
-			{
-				 if($rowOrganizacion->return[$i]->nombre==$_POST["nombre"]){
-				 	$existeNombre=true;
-				 	break;
-				 }
-			}
-			
-			if($existeNombre!=true){
+			if(!isset($rowOrganizacion->return)){
 				
 				//Borrado 0 es FALSE y 1 TRUE
 			 	if(!isset($_POST["borrado"])){

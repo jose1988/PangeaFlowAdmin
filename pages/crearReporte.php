@@ -11,17 +11,11 @@
 			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';
   			$client = new SOAPClient($wsdl_url);
  			$client->decode_utf8 = false;
-			$rowReporte=$client->listarReporte();
+			$rowReporte=$client->listarReporte();			
+			$nombre= array('nombreReporte' => $_REQUEST['nombre']);
+			$rowReporte = $client->consultarReporteXNombre($nombre);
 			
-			for($i=0; $i<count($rowReporte->return);$i++)
-			{
-				 if($rowReporte->return[$i]->nombre==$_POST["nombre"]){
-				 	$existeNombre=true;
-				 	break;
-				 }
-			}
-			
-			if($existeNombre!=true){
+			if(!isset($rowReporte->return)){
 				
 				//Borrado 0 es FALSE y 1 TRUE
 			 	if(!isset($_POST["borrado"])){

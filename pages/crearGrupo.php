@@ -16,23 +16,16 @@
 	if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 		
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
-			isset($_POST["documentacion"]) && $_POST["documentacion"]!="" && $fecha!="" && isset($_POST["tipo"]) && $_POST["tipo"]!="" && 
-			isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){				
+			$fecha!="" && isset($_POST["tipo"]) && $_POST["tipo"]!="" && isset($_POST["estado"]) && 
+			$_POST["estado"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){				
 				
 			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
   			$client = new SOAPClient($wsdl_url);
  			$client->decode_utf8 = false;
-			$rowGrupo=$client->listarGrupos();
+			$nombre= array('nombreGrupo' => $_REQUEST['nombre']);
+			$rowGrupo = $client->consultarGrupoXNombre($nombre);
 			
-			for($i=0; $i<count($rowGrupo->return);$i++)
-			{
-				 if($rowGrupo->return[$i]->nombre==$_POST["nombre"]){
-				 	$existeNombre=true;
-				 	break;
-				 }
-			}
-			
-			if($existeNombre!=true){
+			if(!isset($rowGrupo->return)){
 					
 				//Borrado 0 es FALSE y 1 TRUE
 			 	if(!isset($_POST["borrado"])){
@@ -40,6 +33,12 @@
 			 	}else{
 			 		$borrado="1";
 			 	}
+				
+				if(!isset($_POST["documentacion"])){
+			 		$documentacion="";
+			 	}else{
+			 		$documentacion=$_POST["documentacion"];
+				}
 			 
 				$organizacion= array('id' => $_POST["organizacion"],'borrado'=>'0');
 			 	$grupo= array('nombre' => $_POST["nombre"],

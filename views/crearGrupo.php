@@ -71,7 +71,10 @@
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Grupo" autofocus required></td>
+				 <td>
+                 	<input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Grupo" autofocus required>
+                    <div align="center" id="Info" style="float:right"></div>
+                 </td>
 			 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
@@ -79,7 +82,7 @@
 			 </tr>
 			 <tr>
 			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
+				 <td><textarea name="documentacion" id="documentacion" maxlength="499" ></textarea></td>		
 			 </tr>
               <tr>
               <th width="40%">Fecha de Creación</th>
@@ -122,8 +125,30 @@
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
+      	$('table').footable();
     });
   </script>
+  
+  <script type="text/javascript">
+	$(document).ready(function() {
+ 	<!-- Codigo para verificar si el nombre del Grupo ya existe --> 
+   		$('#nombre').blur(function(){
+			if($(this).val()!=""){
+				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			}
+        	var nombre = $(this).val();        
+        	var dataString = 'nombre='+nombre;
+        	$.ajax({
+            	type: "POST",
+            	url: "../ajax/chequeoNombreGrupo.php",
+            	data: dataString,
+            	success: function(data) {
+                	$('#Info').fadeIn(1000).html(data);
+            	}
+        	});     
+ 		});
+	});
+ </script> 
+  
   </body>
 </html>

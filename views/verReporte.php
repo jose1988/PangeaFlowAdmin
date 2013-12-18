@@ -138,7 +138,7 @@
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
+      	$('table').footable();
     });
   </script>
 
