@@ -34,25 +34,25 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-	<li><a href="#">Skin</a></li>
+	<li><a href="../pages/skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificación Rol</a></li>
+          <li><a href="../pages/clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificación Usuario</a></li>
+          <li><a href="../pages/clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
           <li><a href="../pages/grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="../pages/usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>      
+          <li><a href="../pages/rol.php">Rol</a></li>      
         </ul>
       </li>  
       <li><a href="../pages/organizacion.php">Organización</a></li>
-      <li><a href="#">Política</a></li>
+      <li><a href="../pages/politica.php">Política</a></li>
       <li><a href="../pages/reporte.php">Reporte</a></li>    
-  </ul>     
+  </ul>    
 </nav>
 
       <div class="col-md-2" align="center">
@@ -70,7 +70,7 @@
         <?php 
 	   	if(!isset($resultadoBuscarOrganizacion->return)){
 	   ?>
-       		<div class="alert alert-block" align="center">
+       		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
     			<h4>No Existe una Organización con ese ID</h4>
    			</div>

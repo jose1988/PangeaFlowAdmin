@@ -34,23 +34,23 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-	<li><a href="#">Skin</a></li>
+	<li><a href="../pages/skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificación Rol</a></li>
+          <li><a href="../pages/clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificación Usuario</a></li>
+          <li><a href="../pages/clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
           <li><a href="../pages/grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="../pages/usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>      
+          <li><a href="../pages/rol.php">Rol</a></li>      
         </ul>
       </li>  
       <li><a href="../pages/organizacion.php">Organización</a></li>
-      <li><a href="#">Política</a></li>
+      <li><a href="../pages/politica.php">Política</a></li>
       <li><a href="../pages/reporte.php">Reporte</a></li>    
   </ul>     
 </nav>
@@ -69,7 +69,7 @@
         <?php 
 			if(!isset($resultadoListaOrganizacion->return)){
 		?>
-        	<div class="alert alert-block" align="center">
+        	<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
     			<h4>No Existen Registros en Organización</h4>
    			</div>
@@ -77,50 +77,38 @@
 			else{
 		?>   
         <table width="100%" class="footable table-hover" data-page-size="7">
-      		<thead align="center">
+      		<thead bgcolor="#B9B9B9">
 				<tr>
-				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
-					<span>Id</span>
-				  </th>
-				  <th data-sort-ignore="true">
-					<span>Nombre</span>
-				  </th>
-				  <th data-hide="phone" data-sort-ignore="true">
-					Ciudad
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-                  	Editar 
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-					Eliminar 
-				  </th>
-          		 <th data-hide="phone,mediatablet" data-sort-ignore="true">
-					Ver 
-				  </th>
+					<th style="width:10%; text-align:center">Id</th>
+                    <th style="width:20%; text-align:center">Nombre</th>
+                    <th style="width:25%; text-align:center">Ciudad</th>
+                    <th style="width:15%; text-align:center">Editar</th>
+                    <th style="width:15%; text-align:center">Eliminar</th>
+                    <th style="width:15%; text-align:center">Ver</th>  
 				</tr>
-	 </thead>
+			</thead>
   <tbody>
       <?php
 	  if(count($resultadoListaOrganizacion->return)>1){   
 		for ($i=0;$i<count($resultadoListaOrganizacion->return);$i++){
 			echo '<tr>';
-			echo '<td width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
+			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaOrganizacion->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaOrganizacion->return[$i]->ciudad.'</td>';
-			echo '<td width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Editar</button></td>';
-			echo '<td width="15%"><a href="../pages/eliminarOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Eliminar</button></td>';
-			echo '<td width="15%"><a href="../pages/verOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Ver</button></td>';	
+			echo '<td style="text-align:center" width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Editar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/eliminarOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Eliminar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/verOrganizacion.php?id='.$resultadoListaOrganizacion->return[$i]->id.'"><button class="btn">Ver</button></td>';	
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
+			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaOrganizacion->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaOrganizacion->return->ciudad.'</td>';
-			echo '<td width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Editar</button></td>';
-			echo '<td width="15%"><a href="../pages/eliminarOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Eliminar</button></td>';
-			echo '<td width="15%"><a href="../pages/verOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Ver</button></td>';	
+			echo '<td style="text-align:center" width="15%"><a href="../pages/editarOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Editar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/eliminarOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Eliminar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/verOrganizacion.php?id='.$resultadoListaOrganizacion->return->id.'"><button class="btn">Ver</button></td>';	
 			echo '</tr>';
 		  }
 		?>

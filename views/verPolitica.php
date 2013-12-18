@@ -34,45 +34,44 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-	<li><a href="#">Skin</a></li>
+	<li><a href="../pages/skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificación Rol</a></li>
+          <li><a href="../pages/clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificación Usuario</a></li>
+          <li><a href="../pages/clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="../pages/adminGrupo.php">Grupo</a></li>
+          <li><a href="../pages/grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="../pages/usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>      
+          <li><a href="../pages/rol.php">Rol</a></li>      
         </ul>
       </li>  
-      <li><a href="../pages/adminOrganizacion.php">Organización</a></li>
-      <li><a href="#">Política</a></li>
-      <li><a href="../pages/adminReporte.php">Reporte</a></li>    
+      <li><a href="../pages/organizacion.php">Organización</a></li>
+      <li><a href="../pages/politica.php">Política</a></li>
+      <li><a href="../pages/reporte.php">Reporte</a></li>    
   </ul>     
 </nav>
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="#">Atras</a></li>
-  			 <li><a href="#">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
-			 </ul>
-       </div>
-       
-       <?php 
-	   	if(isset($bpoliticas)){
-	   ?>
-       
+ 			 <li><a href="../pages/politica.php">Atrás</a></li>
+  			 <li><a href="../pages/crearPolitica.php">Crear</a></li>
+ 			 <li><a href="../pages/restaurarPolitica.php">Restaurar</a></li>
+		</ul>
+   	</div>
+    
        	<div class="col-md-2">
         </div>
         
         <div class="col-md-4">
         
-        <h2 align="center">Datos de la politica</h2>
+		<?php 
+	   	if(isset($bpoliticas)){
+	   ?>        
+        <h2 align="center">Datos de la Política</h2>
         
         <table width="100%" class="table-striped table-bordered table-condensed">
         	<?php
@@ -129,16 +128,27 @@
 			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
 			if(!isset($bpoliticas->return->borrado)){
-				echo'<td> </td>';
+				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$bpoliticas->return->borrado.'</td>';
+				if($bpoliticas->return->borrado==1){
+					echo '<td>TRUE</td>';
+				}
+				else{
+					echo '<td>FALSE</td>';	
+				}
 			}
 			echo '</tr>';
 		?>	
 	</table>
-    </div>    
-    <?php } ?>
+    <?php } 
+		else{ ?>
+			<div class="well well-sm alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existe una Política con ese ID</h4>
+   			</div>
+        <?php } ?>
+   </div>
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
@@ -146,7 +156,7 @@
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
+      	$('table').footable();
     });
   </script>
 
