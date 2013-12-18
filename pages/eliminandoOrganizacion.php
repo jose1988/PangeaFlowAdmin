@@ -15,6 +15,6 @@
 	
 	$resultadoEliminarOrganizacion = $client->eliminarOrganizacion($idO);
 	
-	javaalert("Organización eliminado");
+	javaalert("Organizacion eliminada");
 	iraURL('../pages/organizacion.php');
 ?>

@@ -58,7 +58,6 @@
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/reporte.php">Atrás</a></li>
-  			 <li><a href="../pages/crearReporte.php">Crear</a></li>
  			 <li><a href="../pages/restaurarReporte.php">Restaurar</a></li>
 		</ul>
       </div>
@@ -107,7 +106,7 @@
   
   <script type="text/javascript">
 	$(document).ready(function() {
- 	<!-- Codigo para verificar si el nombre del Grupo ya existe --> 
+ 	<!-- Codigo para verificar si el nombre del Reporte ya existe --> 
    		$('#nombre').blur(function(){
 			if($(this).val()!=""){
 				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);

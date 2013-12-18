@@ -59,7 +59,6 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/reporte.php">Atrás</a></li>
   			 <li><a href="../pages/crearReporte.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarReporte.php">Restaurar</a></li>
 			 </ul>
        </div>
        <div class="col-md-1">
@@ -125,11 +124,12 @@
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
+      	$('table').footable();
     });
   </script>
   
   <script language="Javascript">
+  <!-- Codigo para Restaurar el Reporte --> 
 	function habilitar(id){
 		confirmar=confirm("¿Está seguro que desea Habilitar el Reporte?");
 		if (confirmar){

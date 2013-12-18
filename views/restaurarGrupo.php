@@ -59,7 +59,6 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/grupo.php">Atrás</a></li>
   			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarGrupo.php">Restaurar</a></li>
 			 </ul>
        </div>
  
@@ -129,11 +128,12 @@
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
+      	$('table').footable();
     });
   </script>
   
 <script language="Javascript">
+<!-- Codigo para Restaurar el Grupo --> 
 	function habilitar(id){
 		confirmar=confirm("¿Está seguro que desea Habilitar el Grupo?");
 		if (confirmar){

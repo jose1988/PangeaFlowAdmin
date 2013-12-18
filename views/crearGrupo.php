@@ -58,7 +58,6 @@
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/grupo.php">Atrás</a></li>
-  			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
  			 <li><a href="../pages/restaurarGrupo.php">Restaurar</a></li>
 		</ul>
       </div>

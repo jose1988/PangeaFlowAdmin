@@ -58,7 +58,6 @@
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/organizacion.php">Atrás</a></li>
-  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
  			 <li><a href="../pages/restaurarOrganizacion.php">Restaurar</a></li>
 		</ul>
       </div>
@@ -146,7 +145,7 @@
   
   <script type="text/javascript">
 	$(document).ready(function() {
- 	<!-- Codigo para verificar si el nombre del Grupo ya existe --> 
+ 	<!-- Codigo para verificar si el nombre de la Organización ya existe --> 
    		$('#nombre').blur(function(){
 			if($(this).val()!=""){
 				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
@@ -163,12 +162,12 @@
         	});     
  		});
 		
-		
+	<!-- Codigo para verificar si el Correo lleva el formato correcto --> 
 		$('#correo').blur(function(){
 			if($(this).val()!=""){
 				$('#Info2').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
 			}
-        	var nombre = $(this).val();        
+			var correo = $(this).val();
         	var dataString = 'correo='+correo;
         	$.ajax({
             	type: "POST",
@@ -178,7 +177,7 @@
                 	$('#Info2').fadeIn(1000).html(data);
             	}
         	});     
- 		});
+ 		});	
 	});
  </script>
   </body>

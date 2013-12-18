@@ -59,7 +59,6 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="../pages/organizacion.php">Atrás</a></li>
   			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarOrganizacion.php">Restaurar</a></li>
 			 </ul>
        </div>
         <div class="col-md-1">
@@ -126,11 +125,12 @@
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
+      	$('table').footable();
     });
   </script>
   
   <script language="Javascript">
+  <!-- Codigo para Restaurar la Organización --> 
 	function habilitar(id){
 		confirmar=confirm("¿Está seguro que desea Habilitar la Organización?");
 		if (confirmar){
