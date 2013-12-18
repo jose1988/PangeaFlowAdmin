@@ -1,18 +1,23 @@
 <?php
- 
+ try {
+  include("../lib/funciones.php");
   require_once('../lib/nusoap.php'); 
-  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeRol?WSDL';
+  if(!isset($_GET['id'])){
+    iraURL('../pages/clasificacionRol.php');
+   }
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeClasificacion_rol?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 
-  $idRol= array('idRol' => $_GET['id']);
-  $rowRol = $client->consultarRol($idRol);
-				  if(!isset($rowRol->return)){
-						  $cantRol=0;
-				  }else{
-						 $cantRol=count($rowRol->return);
-				  }
-				   echo '<pre>';
-  print_r($rowRol);
+  $idClasiRol= array('idClasifRol' => $_GET['id']);
+  $rowClasificacionRol = $client->consultarClasifRolXNombre($idClasiRol);
+		if(!isset($rowClasificacionRol->return)){
+				javaalert('No existe el registro de clasificación de rol');
+	            iraURL('../pages/clasificacionRol.php');	
+		}
 				  
-	include("../views/verRol.php"); 
+	include("../views/verClaisificacionRol.php"); 
+	} catch (Exception $e) {
+	javaalert('Lo sentimos no hay conexión');
+	iraURL('../pages/index.php');	
+	}
 ?>

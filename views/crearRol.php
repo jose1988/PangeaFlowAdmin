@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
-<title>Documento sin título</title>
+<title>Pangea Flow</title>
 
 	
 	<!-- styles -->
@@ -31,37 +31,31 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-   <li><a href="#">Skin</a></li>
-
+   <ul class="nav navbar-nav">
+	<li><a href="skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificacion Rol</a></li>
+          <li><a href="clasificacionRol">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificacion Usuario</a></li>
+          <li><a href="clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Grupo</a></li>
+          <li><a href="grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>
-      
-      
+          <li><a href="rol.php">Rol</a></li>      
         </ul>
-      </li>
-   
-    
-      <li><a href="#">Organización</a></li>
-      <li><a href="#">Política</a></li>
-      <li><a href="#">Reporte</a></li>
-       </ul>
+      </li>  
+      <li><a href="organizacion.php">Organización</a></li>
+      <li><a href="politica.php">Política</a></li>
+      <li><a href="reporte.php">Reporte</a></li>    
+  </ul>     
    </nav>  
   
 <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="rol.php">Atrás</a></li>
-  			 <li><a href="#">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>
        </div>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Pangea Flow</title>
 
 	<!-- javascript -->
 	
@@ -33,36 +33,32 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
+<ul class="nav navbar-nav">
+	<li><a href="skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificacion Rol</a></li>
+          <li><a href="clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificacion Usuario</a></li>
+          <li><a href="clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Grupo</a></li>
+          <li><a href="grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>
-      
-      
+          <li><a href="rol.php">Rol</a></li>      
         </ul>
-      </li>
-   
-    
-      <li><a href="#">Organización</a></li>
-      <li><a href="#">Política</a></li>
-      <li><a href="#">Reporte</a></li>
-      <li><a href="#">Skin</a></li>
-       </ul>
+      </li>  
+      <li><a href="organizacion.php">Organización</a></li>
+      <li><a href="politica.php">Política</a></li>
+      <li><a href="reporte.php">Reporte</a></li>    
+  </ul>  
    </nav>  
    </div>
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="#">Atrás</a></li>
-  			 <li><a href="#">Crear</a></li>
+  			 <li><a href="crearRol.php">Crear</a></li>
  			 <li><a href="#">Restaurar</a></li>
 			 </ul>
        </div>
@@ -71,10 +67,10 @@
 		 <?php
 	if($cantRol == 0){
     ?>
-    <div class="alert alert-warning" align="center">
-   			<h2 style="color:rgb(255,255,255)"> Atención</h2>
-    <h4>No existen registros en Rol</h4>
-    </div>
+    <div class="well well-small alert alert-block" align="center">
+    		<h2 style="color:#666">Atención</h2>
+    		<h4>No Existen Registros en Rol</h4>
+    	</div>
      <?php 
 	}else{
 	
@@ -108,8 +104,8 @@
 			echo '<td width="15%">'.$rowRol->return->id.'</td>';
 			echo '<td width="20%">'.$rowRol->return->nombre.'</td>';
 			echo '<td width="20%">'.$rowRol->return->descripcion.'</td>';
-			echo '<td width="15%"><a href="editarproducto.php?id='.$rowRol->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarproducto.php?id='.$rowRol->return->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td width="15%"><a href="editarRol.php?id='.$rowRol->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td width="16%"><a href="eliminarRol.php?id='.$rowRol->return->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
 			echo '<td width="13%"><a href="verRol.php?id='.$rowRol->return->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 	  }elseif($cantRol>1){      
@@ -118,8 +114,8 @@
 			echo '<td width="15%">'.$rowRol->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$rowRol->return[$i]->nombre.'</td>';
 			echo '<td width="20%">'.$rowRol->return[$i]->descripcion.'</td>';
-			echo '<td width="15%"><a href="editarClasifRol.php?id='.$rowRol->return[$i]->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarClasifRol.php?id='.$rowRol->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td width="15%"><a href="editarRol.php?id='.$rowRol->return[$i]->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td width="16%"><a href="eliminarRol.php?id='.$rowRol->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
 			echo '<td width="13%"><a href="verRol.php?id='.$rowRol->return[$i]->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 			}
