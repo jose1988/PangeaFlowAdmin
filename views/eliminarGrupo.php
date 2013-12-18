@@ -70,7 +70,7 @@
         <?php 
 	   	if(!isset($resultadoBuscarGrupo->return)){
 	   ?>
-       		<div class="alert alert-block" align="center">
+       		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
     			<h4>No se puede Eliminar el Grupo</h4>
    			</div>
