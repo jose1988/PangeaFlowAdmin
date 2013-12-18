@@ -18,5 +18,5 @@
  //print_r($cUsuario);
  //echo '<pre>';
 	
-	include("../views/adminClasificacionUsuario.php");
+	include("../views/clasificacionUsuario.php");
 ?>

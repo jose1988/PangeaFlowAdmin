@@ -18,5 +18,5 @@
 // print_r($politicas);
 	//<input name="ver" type="button" />echo '<pre>';
 	
-	include("../views/adminPolitica.php");
+	include("../views/politica.php");
 ?>
