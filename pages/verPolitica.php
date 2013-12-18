@@ -16,5 +16,5 @@
    
 	 
 	
-	include("../views/adminPoliticaVer.php");
+	include("../views/verPolitica.php");
 ?>
