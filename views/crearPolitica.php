@@ -80,11 +80,11 @@
 			 </tr>
 			 <tr>
 			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. "  required="required"></textarea></td>		
+				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  title="Ingrese la doumentación" placeholder="Ej. Documentación Política"></textarea></td>		
 			 </tr>
              <tr>
 			 <th width="40%">Implementación</th>
-				 <td><textarea name="implementacion" id="implementacion" maxlength="499"  title="Ingrese la implementación" placeholder="Ej. "  required="required"></textarea></td>		
+				 <td><textarea name="implementacion" id="implementacion" maxlength="499"  title="Ingrese la implementación" placeholder="Ej. Implementación Política"  required="required"></textarea></td>		
 			 </tr>
               <tr>
 			 <th width="40%">Estado</th>
@@ -100,7 +100,8 @@
      <div class="col-md-12" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
     <div class="col-md-12" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y añadir otro</button></div>
 </form>  
-    </div>
+</div>
+
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
 <script src="../js/footable.sortable.js" type="text/javascript"></script>

@@ -81,7 +81,7 @@
 			 </tr>
 			 <tr>
 			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499" ></textarea></td>		
+				 <td><textarea name="documentacion" id="documentacion" maxlength="499" title="Ingrese la documentación" placeholder="Ej. Documentación Grupo" ></textarea></td>		
 			 </tr>
               <tr>
               <th width="40%">Fecha de Creación</th>
@@ -93,7 +93,7 @@
 			 </tr>
              <tr>
              <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
+				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx "></td>		
 			 </tr>
 			 <tr>
 			 <th width="40%">Organización</th>

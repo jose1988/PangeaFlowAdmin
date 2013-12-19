@@ -77,28 +77,28 @@
 			 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Organización" required="required"></td>
+				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Organización"></td>
 			 </tr>
              <tr>
              <th width="40%">Tipo</th>
-				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx" required="required"></td>		
+				 <td><input type="text" name="tipo" id="tipo" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx"></td>		
 			 </tr>
              <tr>
              <th width="40%">Dirección</th>
-				 <td><input type="text" name="direccion" id="direccion" maxlength="149" size="50" title="Ingrese la dirección" placeholder="Ej. Direcciónxx" required="required"></td>		
+				 <td><input type="text" name="direccion" id="direccion" maxlength="149" size="50" title="Ingrese la dirección" placeholder="Ej. Direcciónxx"></td>		
 			 </tr>
              <tr>
              <th width="40%">Teléfono</th>
-				 <td><input type="text" name="telefono" id="telefono" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 04161234567" required="required"></td>		
+				 <td><input type="text" name="telefono" id="telefono" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 04161234567"></td>		
 			 </tr>
              <tr>
              <th width="40%">Fax</th>
-				 <td><input type="text" name="fax" id="fax" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 02769876543" required="required"></td>		
+				 <td><input type="text" name="fax" id="fax" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 02769876543"></td>		
 			 </tr>
              <tr>
              <th width="40%">Correo</th>
 				 <td>
-                 	<input type="text" name="correo" id="correo" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@gmail.com" required="required">
+                 	<input type="text" name="correo" id="correo" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@gmail.com">
                  	<div id="Info2" style="float:right"></div>
                  </td>		
 			 </tr>
@@ -112,7 +112,7 @@
 			 </tr>
 			 <tr>
 			 <th width="40%">Organización</th>
-				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
+				 <td><select id="organizacion" name="organizacion"  title="Ingrese la organización">
                   <option value="" style="display:none">Seleccionar:</option> 
 				 <?php
 				 	for ($i=0;$i<$canOrga;$i++)
