@@ -90,7 +90,7 @@
 			echo '<td style="text-align:center" width="10%">'.$resultadoListaReporte->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaReporte->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaReporte->return[$i]->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><a href="javascript:habilitar('.$resultadoListaReporte->return[$i]->id.')"><button class="btn">Habilitar</button></td>';
+			echo '<td style="text-align:center" width="15%"><button id="habilitar" name="habilitar" value='.$resultadoListaReporte->return[$i]->id.' class="btn">Habilitar</button></td>';
 			echo '</tr>';
 			}
 	  }
@@ -99,7 +99,7 @@
 			echo '<td style="text-align:center" width="10%">'.$resultadoListaReporte->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaReporte->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaReporte->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><a href="javascript:habilitar('.$resultadoListaReporte->return->id.')"><button class="btn">Habilitar</button></td>';
+			echo '<td style="text-align:center" width="15%"><button id="habilitar" name="habilitar" value='.$resultadoListaReporte->return[$i]->id.' class="btn">Habilitar</button></td>';
 			echo '</tr>';
 		  }
 		?>

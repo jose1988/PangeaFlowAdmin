@@ -115,8 +115,9 @@
 		?>
 		</tbody>	
 	</table>
-     <button id="si" name="si" value="si" class="btn text-center" type="button" onclick="eliminar()">Si</button>
-    <button id="no" name="no" value="no" class="btn text-center" type="button" onclick="no_eliminar()">No</button>
+    <br/>
+     <button class="btn" id="si" name="si" type="submit">Sí</button>
+	 <button class="btn" id="no" name="no" type="submit">No</button>
     </form>
    <?php }?>
 	
@@ -131,17 +132,6 @@
       $('table').footable();
     });
   </script>
-
-<script language="Javascript">
-	function no_eliminar(){
-		window.location.href="../pages/reporte.php";
-	}
-	
-	function eliminar(){
-		var id = '<?php echo $id; ?>';
-		window.location.href="../pages/eliminandoReporte.php?id="+id;
-	}
-</script>
 
 </body>
 </html>

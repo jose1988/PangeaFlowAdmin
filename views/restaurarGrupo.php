@@ -77,6 +77,7 @@
          <?php }
 		 	else{
 		 ?>
+         <form method="post">
         <table width="100%" class="footable table-hover" data-page-size="7">
       		<thead bgcolor="#B9B9B9">
 				<tr>
@@ -94,7 +95,7 @@
 			echo '<td style="text-align:center" width="10%">'.$resultadoListaGrupo->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaGrupo->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaGrupo->return[$i]->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><a href="javascript:habilitar('.$resultadoListaGrupo->return[$i]->id.')"><button class="btn">Habilitar</button></td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaGrupo->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
@@ -103,13 +104,18 @@
 			echo '<td style="text-align:center" width="10%">'.$resultadoListaGrupo->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaGrupo->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaGrupo->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><a href="javascript:habilitar('.$resultadoListaGrupo->return->id.')"><button class="btn">Habilitar</button></td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaGrupo->return->id.'></td>';
 			echo '</tr>';
 		  
 		  }
 		?>
 		</tbody>	
 	</table>
+    <br />
+    <div align="right">
+    	<button id="habilitar" name="habilitar" class="btn">Habilitar</button>
+    </div>
+    </form>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
 	<?php }?>
     </div>
@@ -124,18 +130,5 @@
     });
   </script>
   
-<script language="Javascript">
-<!-- Codigo para Restaurar el Grupo --> 
-	function habilitar(id){
-		confirmar=confirm("¿Está seguro que desea Habilitar el Grupo?");
-		if (confirmar){
-			window.location.href="../pages/habilitarGrupo.php?id="+id;
-		}
-		else{
-			window.location.href="../pages/restaurarGrupo.php";
-		}
-	}
-</script>
-
 </body>
 </html>

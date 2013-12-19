@@ -116,8 +116,9 @@
 		?>
 		</tbody>	
 	</table>
-    <button id="si" name="si" class="btn btn-primary text-center " type="submit">  Si  </button>
-     <button id="no" name="no" class="btn btn-primary text-center " type="submit">  No </button>
+    <br/>
+     <button class="btn" id="si" name="si" type="submit">Sí</button>
+	 <button class="btn" id="no" name="no" type="submit">No</button>
     </form>
    <?php }?>
 	
@@ -132,8 +133,6 @@
       $('table').footable();
     });
   </script>
-
-
 
 </body>
 </html>

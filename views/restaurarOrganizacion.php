@@ -74,7 +74,8 @@
    			</div>
         <?php }
 			else{
-		?>   
+		?>
+        <form method="post">  
         <table width="100%" class="footable table-hover" data-page-size="7">
       		<thead bgcolor="#B9B9B9">
 				<tr>
@@ -93,7 +94,7 @@
 			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaOrganizacion->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaOrganizacion->return[$i]->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><a href="javascript:habilitar('.$resultadoListaOrganizacion->return[$i]->id.')"><button class="btn">Habilitar</button></td>';	
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaOrganizacion->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
@@ -102,12 +103,17 @@
 			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaOrganizacion->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaOrganizacion->return->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><a href="javascript:habilitar('.$resultadoListaOrganizacion->return->id.')"><button class="btn">Habilitar</button></td>';	
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaOrganizacion->return->id.'></td>';
 			echo '</tr>';
 		  }
 		?>
 		</tbody>	
 	</table>
+    <br />
+    <div align="right">
+    	<button id="habilitar" name="habilitar" class="btn">Habilitar</button>
+    </div>
+  </form>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
 	<?php }?>
 	</div>
