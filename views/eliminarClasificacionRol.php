@@ -34,32 +34,32 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-	<li><a href="#">Skin</a></li>
+	<li><a href="skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificación Rol</a></li>
+          <li><a href="clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificación Usuario</a></li>
+          <li><a href="clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="../pages/grupo.php">Grupo</a></li>
+          <li><a href="grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>      
+          <li><a href="rol.php">Rol</a></li>      
         </ul>
       </li>  
-      <li><a href="../pages/organizacion.php">Organización</a></li>
-      <li><a href="#">Política</a></li>
-      <li><a href="../pages/reporte.php">Reporte</a></li>    
+      <li><a href="organizacion.php">Organización</a></li>
+      <li><a href="politica.php">Política</a></li>
+      <li><a href="reporte.php">Reporte</a></li>    
   </ul>     
 </nav>
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/grupo.php">Atrás</a></li>
-  			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarGrupo.php">Restaurar</a></li>
+ 			 <li><a href="../pages/clasificacionRol.php">Atrás</a></li>
+  			 <li><a href="../pages/crearClasificacionRol.php">Crear</a></li>
+ 			 <li><a href="../pages/restaurarClasificacionRol.php">Restaurar</a></li>
 			 </ul>
        </div>
  

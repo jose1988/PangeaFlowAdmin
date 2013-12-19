@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
  try {
   include("../lib/funciones.php");
@@ -5,12 +6,12 @@
   if(!isset($_GET['id'])){
     iraURL('../pages/usuario.php');
    }
-  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeRol?WSDL';
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 
   $idUsuario= array('idUsuario' => $_GET['id']);
-  $rowRol = $client->consultarUsuario($idUsuario);
-		if(!isset($rowClasificacionRol->return)){
+  $rowUsuario = $client->consultarUsuario($idUsuario);
+		if(!isset($rowUsuario->return)){
 				javaalert('No existe el registro de usuario');
 	            iraURL('../pages/usuario.php');	
 		}

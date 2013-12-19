@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Pangea Flow</title>
 
-	<!-- javascript -->	
+	<!-- javascript -->
+	
 	<script type="text/javascript" src="../js/jquery-2.0.2.js"></script>
-	<script type='text/javascript' src="../js/bootstrap.js"></script>	
+	<script type='text/javascript' src="../js/bootstrap.js"></script>
+	
 	
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-    
-   	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
+	 	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
-	
 </head>
 
 <body>
@@ -33,7 +33,7 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
+<ul class="nav navbar-nav">
 	<li><a href="skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
@@ -53,72 +53,65 @@
       <li><a href="politica.php">Política</a></li>
       <li><a href="reporte.php">Reporte</a></li>    
   </ul>  
-</nav>
-
+   </nav>  
+   </div>
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/rol.php">Atrás</a></li>
-  			 <li><a href="../pages/crearRol.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarRol.php">Restaurar</a></li>
+ 			 <li><a href="clasificacionRol.php">Atrás</a></li>
+  			 <li><a href="crearClasificacionRol.php">Crear</a></li>
+ 			 <li><a href="restaurarClasificacionRol">Restaurar</a></li>
 			 </ul>
        </div>
- 
-        <div class="col-md-1">
+	   	<div class="col-md-2">
         </div>
+                <div class="col-md-4">
         
-        <div class="col-md-8">
-        <?php 
-	   	if(!isset($rowRol->return)){
-	   ?>
-       		<div class="alert alert-block" align="center">
-   				<h2 style="color:#666">Atención</h2>
-    			<h4>No se puede eliminar el registro de rol</h4>
-   			</div>
-            
-         <?php }
-		 	else{
-		 ?>
-         
-         <div class="well well-small alert alert-block" align="center">
-    		<h2 style="color:#666">Atención</h2>
-    		<h4>¿Desea eliminar el Rol?</h4>
-    	</div>
-         
-        <form method="post">
-        <table width="100%" class="footable table-hover" data-page-size="7">
-      		<thead>
-				<tr>
-				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
-					<span>Id</span>
-				  </th>
-				  <th data-sort-ignore="true">
-					<span>Nombre</span>
-				  </th>
-				  <th data-hide="phone" data-sort-ignore="true">
-					Descripción
-				  </th>
-				</tr>
-	 </thead>
-  <tbody>
-      <?php
-	  if(count($rowRol->return)){
-
-		  	echo '<tr>';
-			echo '<td width="10%">'.$rowRol->return->id.'</td>';
-			echo '<td width="20%">'.$rowRol->return->nombre.'</td>';
-			echo '<td width="25%">'.$rowRol->return->descripcion.'</td>';
+        <h2 align="center">Datos de Clasificación de Rol</h2>
+        
+        <table width="100%" class="table-striped table-bordered table-condensed">
+        	<?php
+			echo '<tr>';
+			echo '<th width="40%">Id</th>';
+			echo '<td>'.$rowClasificacionRol->return->id.'</td>';
 			echo '</tr>';
-		  
-		  }
-		?>
-		</tbody>	
-	</table><br>
-	 <button class="btn" id="si" name="si" type="submit">Sí</button>
-	 <button class="btn" id="no" name="no" type="submit">No</button>
-    </form>
-   <?php }?>
-	
+			echo '<tr>';
+			echo '<th width="40%">Nombre</th>';
+			if(!isset($rowClasificacionRol->return->nombre)){
+				echo'<td> </td>';
+			}
+			else{
+				echo '<td>'.$rowClasificacionRol->return->nombre.'</td>';
+			}
+			echo '</tr>';
+			echo '<tr>';
+			echo '<th width="40%">Descripión</th>';
+			if(!isset($rowClasificacionRol->return->descripcion)){
+				echo'<td> </td>';
+			}
+			else{
+				echo '<td>'.$rowClasificacionRol->return->descripcion.'</td>';
+			}
+			echo '</tr>';
+			echo '<tr>';
+			echo '<th width="40%">Borrado</th>';
+			if(!isset($rowClasificacionRol->return->borrado)){
+				echo'<td> </td>';
+			}
+			else{
+			if($rowClasificacionRol->return->borrado == '1'){
+			$rowClasificacionRol->return->borrado='Habilitado';
+			}else{
+			$rowClasificacionRol->return->borrado='Deshabilitado';
+			}
+				echo '<td>'.$rowClasificacionRol->return->borrado.'</td>';
+			}
+			echo '</tr>';
+		?>	
+	</table>
     </div>
+        
+
+
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>

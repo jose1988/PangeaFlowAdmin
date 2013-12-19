@@ -57,7 +57,7 @@
 <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="usuario.php">Atrás</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="restaurarUsuario">Restaurar</a></li>
 			 </ul>
        </div>
 	   	<div class="col-md-2">

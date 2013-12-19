@@ -33,33 +33,33 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-	<li><a href="#">Skin</a></li>
+   <ul class="nav navbar-nav">
+	<li><a href="skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificación Rol</a></li>
+          <li><a href="clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificación Usuario</a></li>
+          <li><a href="clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="../pages/grupo.php">Grupo</a></li>
+          <li><a href="grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>      
+          <li><a href="rol.php">Rol</a></li>      
         </ul>
       </li>  
-      <li><a href="../pages/organizacion.php">Organización</a></li>
-      <li><a href="#">Política</a></li>
-      <li><a href="../pages/reporte.php">Reporte</a></li>    
-  </ul>     
+      <li><a href="organizacion.php">Organización</a></li>
+      <li><a href="politica.php">Política</a></li>
+      <li><a href="reporte.php">Reporte</a></li>    
+  </ul>   
 </nav>
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/grupo.php">Atrás</a></li>
-  			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarGrupo.php">Restaurar</a></li>
+ 			 <li><a href="usuario.php">Atrás</a></li>
+  			 <li><a href="crearUsuario.php">Crear</a></li>
+ 			 <li><a href="restaurarUsuario.php">Restaurar</a></li>
 			 </ul>
        </div>
  
@@ -92,10 +92,10 @@
 					<span>Nombre de usuario</span>
 				  </th>
 				  <th >
-					<span>Primer Nombre</span>
+					<span>Primer nombre</span>
 				  </th>
 				  <th>
-					<span>Primer Apellido<span>
+					<span>Primer apellido<span>
 				  </th>
 				</tr>
 	 </thead>
@@ -105,7 +105,7 @@
 
 		  	echo '<tr>';
 			echo '<td width="10%">'.$rowUsuario->return->id.'</td>';
-			echo '<td width="20%">'.$rowUsuario->return->primerNombre.'</td>';
+		echo '<td width="20%">'.$rowUsuario->return->primerNombre.'</td>';
 			echo '<td width="25%">'.$rowUsuario->return->primerApellido.'</td>';
 			echo '</tr>';
 		  
