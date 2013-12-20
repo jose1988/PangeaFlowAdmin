@@ -32,7 +32,7 @@
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
 	<li><a href="../pages/skin.php">Skin</a></li>
     <li class="dropdown">
@@ -57,53 +57,50 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/organizacion.php">Atrás</a></li>
-  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
+ 			 <li><a href="../pages/politica.php">Atrás</a></li>
+  			 <li><a href="../pages/crearPolitica.php">Crear</a></li>
 			 </ul>
        </div>
-        <div class="col-md-1">
+       <div class="col-md-1">
         </div>
         
         <div class="col-md-8">
         <?php 
-			if(!isset($resultadoListaOrganizacion->return)){
-		?>
-        	<div class="well well-small alert alert-block" align="center">
+	   	if(!isset($resultadoListaPolitica->return)){
+	   ?>
+       		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
-    			<h4>No Existen Registros en Organización para Restaurar</h4>
+    			<h4>No Existen Registros en Política para Restaurar</h4>
    			</div>
         <?php }
-			else{
-		?>
-        <form method="post">  
+		else{ ?>
+        <form method="post">
         <table width="100%" class="footable table-hover" data-page-size="7">
       		<thead bgcolor="#B9B9B9">
 				<tr>
 					<th style="width:10%; text-align:center">Id</th>
                     <th style="width:20%; text-align:center">Nombre</th>
-                    <th style="width:25%; text-align:center">Ciudad</th>
+                    <th style="width:25%; text-align:center">Descripción</th>
                     <th style="width:15%; text-align:center">Habilitar</th>
-				</tr>
-			</thead></tr>
-	 </thead>
+			</thead>
   <tbody>
       <?php
-	  if(count($resultadoListaOrganizacion->return)>1){   
-		for ($i=0;$i<count($resultadoListaOrganizacion->return);$i++){
+	  if(count($resultadoListaPolitica->return)>1){   
+		for ($i=0;$i<count($resultadoListaPolitica->return);$i++){
 			echo '<tr>';
-			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaOrganizacion->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaOrganizacion->return[$i]->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaOrganizacion->return[$i]->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$resultadoListaPolitica->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaPolitica->return[$i]->nombre.'</td>';
+			echo '<td width="25%">'.$resultadoListaPolitica->return[$i]->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaPolitica->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaOrganizacion->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaOrganizacion->return->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaOrganizacion->return->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$resultadoListaPolitica->return->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaPolitica->return->nombre.'</td>';
+			echo '<td width="25%">'.$resultadoListaPolitica->return->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaPolitica->return->id.'></td>';
 			echo '</tr>';
 		  }
 		?>
@@ -113,7 +110,7 @@
     <div align="right">
     	<button id="habilitar" name="habilitar" class="btn">Habilitar</button>
     </div>
-  </form>
+    </form>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
 	<?php }?>
 	</div>

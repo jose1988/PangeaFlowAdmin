@@ -107,7 +107,7 @@
 			}
 			echo '</tr>';
 			echo '<tr>';
-			echo '<th width="40%">Fecha de Creación</th>';
+			echo '<th width="40%">Implementación</th>';
 			if(!isset($bpoliticas->return->implementacion)){
 				echo'<td> </td>';
 			}
@@ -116,7 +116,7 @@
 			}
 			echo '</tr>';
 			echo '<tr>';
-			echo '<th width="40%">Tipo</th>';
+			echo '<th width="40%">Estado</th>';
 			if(!isset($bpoliticas->return->estado)){
 				echo'<td> </td>';
 			}

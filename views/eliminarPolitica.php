@@ -57,9 +57,9 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/grupo.php">Atrás</a></li>
-  			 <li><a href="../pages/crearGrupo.php">Crear</a></li>
- 			 <li><a href="../pages/restaurarGrupo.php">Restaurar</a></li>
+ 			 <li><a href="../pages/politica.php">Atrás</a></li>
+  			 <li><a href="../pages/crearPolitica.php">Crear</a></li>
+ 			 <li><a href="../pages/restaurarPolitica.php">Restaurar</a></li>
 			 </ul>
        </div>
  
@@ -68,11 +68,11 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($bPolitica->return)){
+	   	if(!isset($resultadoBuscarPolitica->return)){
 	   ?>
        		<div class="alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
-    			<h4>No se puede Eliminar el Grupo</h4>
+    			<h4>No se puede Eliminar la Política</h4>
    			</div>
             
          <?php }
@@ -81,7 +81,7 @@
          
          <div class="well well-small alert alert-block" align="center">
     		<h2 style="color:#666">Atención</h2>
-    		<h4>¿Desea Eliminar la Politica?</h4>
+    		<h4>¿Desea Eliminar la Política?</h4>
     	</div>
          
         <form method="post">
@@ -101,14 +101,14 @@
 	 </thead>
   <tbody>
       <?php
-	  if(count($bPolitica->return)){
+	  if(count($resultadoBuscarPolitica->return)){
 			//id usado para la función javascript
-			$id=$bPolitica->return->id;
+			$id=$resultadoBuscarPolitica->return->id;
 		  
 		  	echo '<tr>';
-			echo '<td width="10%">'.$bPolitica->return->id.'</td>';
-			echo '<td width="20%">'.$bPolitica->return->nombre.'</td>';
-			echo '<td width="25%">'.$bPolitica->return->descripcion.'</td>';
+			echo '<td width="10%">'.$resultadoBuscarPolitica->return->id.'</td>';
+			echo '<td width="20%">'.$resultadoBuscarPolitica->return->nombre.'</td>';
+			echo '<td width="25%">'.$resultadoBuscarPolitica->return->descripcion.'</td>';
 
 			echo '</tr>';
 		  

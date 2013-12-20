@@ -32,7 +32,7 @@
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
 	<li><a href="../pages/skin.php">Skin</a></li>
     <li class="dropdown">
@@ -57,66 +57,61 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/organizacion.php">Atrás</a></li>
-  			 <li><a href="../pages/crearOrganizacion.php">Crear</a></li>
-			 </ul>
-       </div>
-        <div class="col-md-1">
+ 			 <li><a href="../pages/skin.php">Atrás</a></li>
+  			 <li><a href="../pages/crearSkin.php">Crear</a></li>
+ 			 <li><a href="../pages/restaurarSkin.php">Restaurar</a></li>
+		</ul>
+   	</div>
+    
+       	<div class="col-md-2">
         </div>
         
-        <div class="col-md-8">
-        <?php 
-			if(!isset($resultadoListaOrganizacion->return)){
-		?>
-        	<div class="well well-small alert alert-block" align="center">
-   				<h2 style="color:#666">Atención</h2>
-    			<h4>No Existen Registros en Organización para Restaurar</h4>
-   			</div>
-        <?php }
-			else{
-		?>
-        <form method="post">  
-        <table width="100%" class="footable table-hover" data-page-size="7">
-      		<thead bgcolor="#B9B9B9">
-				<tr>
-					<th style="width:10%; text-align:center">Id</th>
-                    <th style="width:20%; text-align:center">Nombre</th>
-                    <th style="width:25%; text-align:center">Ciudad</th>
-                    <th style="width:15%; text-align:center">Habilitar</th>
-				</tr>
-			</thead></tr>
-	 </thead>
-  <tbody>
-      <?php
-	  if(count($resultadoListaOrganizacion->return)>1){   
-		for ($i=0;$i<count($resultadoListaOrganizacion->return);$i++){
+        <div class="col-md-4">
+        
+		<?php 
+	   	if(isset($bpoliticas)){
+	   ?>        
+        <h2 align="center">Datos del Skin</h2>
+        
+        <table width="100%" class="table-striped table-bordered table-condensed">
+        	<?php
 			echo '<tr>';
-			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaOrganizacion->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaOrganizacion->return[$i]->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaOrganizacion->return[$i]->id.'></td>';
+			echo '<th width="40%">Id</th>';
+			echo '<td>'.$bskin->return->id.'</td>';
 			echo '</tr>';
+			echo '<tr>';
+			echo '<th width="40%">Nombre</th>';
+			if(!isset($bskin->return->nombre)){
+				echo'<td> </td>';
 			}
-	  }
-	  else{
-		  	echo '<tr>';
-			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaOrganizacion->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaOrganizacion->return->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaOrganizacion->return->id.'></td>';
+			else{
+				echo '<td>'.$bskin->return->nombre.'</td>';
+			}
 			echo '</tr>';
-		  }
-		?>
-		</tbody>	
+			echo '<tr>';
+			echo '<th width="40%">Borrado</th>';
+			if(!isset($bskin->return->borrado)){
+				echo '<td> </td>';
+			}
+			else{
+				if($bskin->return->borrado==1){
+					echo '<td>TRUE</td>';
+				}
+				else{
+					echo '<td>FALSE</td>';	
+				}
+			}
+			echo '</tr>';
+		?>	
 	</table>
-    <br />
-    <div align="right">
-    	<button id="habilitar" name="habilitar" class="btn">Habilitar</button>
-    </div>
-  </form>
-	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
-	<?php }?>
-	</div>
+    <?php } 
+		else{ ?>
+			<div class="well well-sm alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existe un Skin con ese ID</h4>
+   			</div>
+        <?php } ?>
+   </div>
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>

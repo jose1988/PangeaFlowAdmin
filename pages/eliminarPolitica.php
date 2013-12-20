@@ -23,7 +23,7 @@
 	
 	if(isset($_POST["si"])){
 	 try{	  
-		  $resultadoEliminarPolitica = $client->eliminarPoliticia($idP);
+		  $resultadoEliminarPolitica = $client->eliminarPolitica($idP);
 		  } catch (Exception $e) {
 				javaalert('Lo sentimos no hay conexión');
 				iraURL('../pages/index.php');

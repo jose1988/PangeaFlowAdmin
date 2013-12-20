@@ -2,15 +2,15 @@
 	try{
 		require_once("../lib/nusoap.php");
 		require_once("../lib/funciones.php");
-  		$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';	
+  		$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDepolitica?wsdl';	
 		$client = new SOAPClient($wsdl_url);	
     	$client->decode_utf8 = false;
 	
-		$estadoReporte = array('borrado' => '1');
+		$estadoPolitica = array('borrado' => '1');
 	
-		$resultadoListaReporte = $client->listarReporteByBorrado($estadoReporte);
+		$resultadoListaPolitica = $client->listarPoliticaByBorrado($estadoPolitica);
 	
-		include("../views/restaurarReporte.php");
+		include("../views/restaurarPolitica.php");
 	
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');
@@ -19,17 +19,17 @@
 	
 	if(isset($_POST["habilitar"]) && isset($_POST["ide"])){
 		try{
-			$rowReporte=$_POST["ide"];
+			$rowPolitica=$_POST["ide"];
 			for($j=0; $j<count($_POST["ide"]); $j++){
 				
-				$idR = array('idReporte' => $rowReporte[$j]);
-				$resultadoRestaurarReporte = $client->restaurarReporte($idR);
+				$idP = array('idPolitica' => $rowPolitica[$j]);
+				$resultadoRestaurarPolitica = $client->restaurarPolitica($idP);
 			}
 		} catch (Exception $e) {			 
 			javaalert('Lo sentimos no hay conexión');
 			iraURL('../pages/index.php');
 		}	
 		javaalert("El registro ha sido habilitado");
-		iraURL('../pages/reporte.php');
+		iraURL('../pages/politica.php');
 	}
 ?>

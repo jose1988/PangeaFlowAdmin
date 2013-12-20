@@ -74,6 +74,7 @@
    			</div>
         <?php }
 		else{ ?>
+        <form method="post">
         <table width="100%" class="footable table-hover" data-page-size="7">
       		<thead bgcolor="#B9B9B9">
 				<tr>
@@ -90,7 +91,7 @@
 			echo '<td style="text-align:center" width="10%">'.$resultadoListaReporte->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaReporte->return[$i]->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaReporte->return[$i]->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><button id="habilitar" name="habilitar" value='.$resultadoListaReporte->return[$i]->id.' class="btn">Habilitar</button></td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaReporte->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
@@ -99,12 +100,17 @@
 			echo '<td style="text-align:center" width="10%">'.$resultadoListaReporte->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoListaReporte->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoListaReporte->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><button id="habilitar" name="habilitar" value='.$resultadoListaReporte->return[$i]->id.' class="btn">Habilitar</button></td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaReporte->return->id.'></td>';
 			echo '</tr>';
 		  }
 		?>
 		</tbody>	
 	</table>
+    <br />
+    <div align="right">
+    	<button id="habilitar" name="habilitar" class="btn">Habilitar</button>
+    </div>
+  </form>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
 	<?php }?>
 	</div>
@@ -119,18 +125,5 @@
     });
   </script>
   
-  <script language="Javascript">
-  <!-- Codigo para Restaurar el Reporte --> 
-	function habilitar(id){
-		confirmar=confirm("¿Está seguro que desea Habilitar el Reporte?");
-		if (confirmar){
-			window.location.href="../pages/habilitarReporte.php?id="+id;
-		}
-		else{
-			window.location.href="../pages/restaurarReporte.php";
-		}
-	}
-</script>
-
 </body>
 </html>
