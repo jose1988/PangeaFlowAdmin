@@ -69,7 +69,7 @@
         <div class="col-md-4">
         
 		<?php 
-	   	if(isset($bpoliticas)){
+	   	if(isset($bskins)){
 	   ?>        
         <h2 align="center">Datos del Skin</h2>
         
@@ -77,24 +77,24 @@
         	<?php
 			echo '<tr>';
 			echo '<th width="40%">Id</th>';
-			echo '<td>'.$bskin->return->id.'</td>';
+			echo '<td>'.$bskins->return->id.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Nombre</th>';
-			if(!isset($bskin->return->nombre)){
+			if(!isset($bskins->return->nombre)){
 				echo'<td> </td>';
 			}
 			else{
-				echo '<td>'.$bskin->return->nombre.'</td>';
+				echo '<td>'.$bskins->return->nombre.'</td>';
 			}
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
-			if(!isset($bskin->return->borrado)){
+			if(!isset($bskins->return->borrado)){
 				echo '<td> </td>';
 			}
 			else{
-				if($bskin->return->borrado==1){
+				if($bskins->return->borrado==1){
 					echo '<td>TRUE</td>';
 				}
 				else{

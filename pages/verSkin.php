@@ -10,7 +10,7 @@
 		if(!isset($bSkin->return)){
 			$regSkin=0;
 		}else{
-			$bskin=$bSkin;
+			$bskins=$bSkin;
 			$regSkin=count($bSkin->return);
 		}	 
 	
