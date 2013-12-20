@@ -2,15 +2,21 @@
 <?php
   try {
   include("../lib/funciones.php");
-  require_once('../lib/nusoap.php'); 
+  require_once('../lib/nusoap.php');
+   if(!isset($_GET['id'])){
+    iraURL('../pages/usuario.php');
+   }  
   $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeClasificacion_usuario?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 
   $estadoBorrado= array('borrado' => '0');
-  $rowUsuario = $client->listarClasificacionUsuario($estadoBorrado);
-  $cantUsuario=count($rowUsuario->return);
- // echo '<pre>';print_r($rowUsuario);
-  
+  $rowClasiUsuario = $client->listarClasificacionUsuario($estadoBorrado);
+  $cantClaUsuario=count($rowClasiUsuario->return);
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarSkin?WSDL';
+  $client = new SOAPClient($wsdl_url);
+  $client->decode_utf8 = false; 
+  $rowSkin = $client->listarXBorrado($estadoBorrado);
+  $cantSkin=count($rowSkin->return);
   $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 
@@ -19,24 +25,32 @@
   if(!isset($rowOrganizacion->return)){
   javaalert("Lo sentimos no se pueden crear usuarios porque no hay ninguna organización existente");
   iraURL('../pages/usuario.php');
-  }elseif(!isset($rowUsuario->return)){
+  }elseif(!isset($rowClasiUsuario->return)){
   javaalert("Lo sentimos no se pueden crear usuarios porque no hay ninguna clasificación de usuario existente");
   iraURL('../pages/usuario.php');
   }
- 
-if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
-	 	if(isset($_POST["primernombre"]) && $_POST["primernombre"]!="" && isset($_POST["cedula"]) && $_POST["cedula"]!="" && isset($_POST["primerapellido"]) && $_POST["primerapellido"]!="" && isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["direccionp"]) && $_POST["direccionp"]!="" && isset($_POST["direcciono"]) && $_POST["direcciono"]!="" && isset($_POST["clasificacion"]) && $_POST["clasificacion"]!="" && isset($_POST["usuario"]) && $_POST["usuario"]!="" && isset($_POST["contrasena"]) && $_POST["contrasena"]!="" && isset($_POST["contrasena_c"]) && $_POST["contrasena_c"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){		
-		 try {
-		 require_once('../lib/nusoap.php'); 
-	     $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
-				$client = new SOAPClient($wsdl_url);
-				$client->decode_utf8 = false; 
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
+  $client = new SOAPClient($wsdl_url);
+  $client->decode_utf8 = false; 
+  $idUsuario= array('idUsuario' => $_GET['id']);
+  $rowUsuario = $client->consultarUsuario($idUsuario);
+   // echo '<pre>';print_r($rowUsuario);
+
+		if(!isset($rowUsuario->return)){
+				javaalert('No existe el registro de usuario');
+	            iraURL('../pages/usuario.php');	
+		}
+if(isset($_POST["modificar"])){
+	 	if(isset($_POST["primernombre"]) && $_POST["primernombre"]!="" && isset($_POST["cedula"]) && $_POST["cedula"]!="" && isset($_POST["primerapellido"]) && $_POST["primerapellido"]!="" && isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["direccionp"]) && $_POST["direccionp"]!="" && isset($_POST["direcciono"]) && $_POST["direcciono"]!="" && isset($_POST["clasificacion"]) && $_POST["clasificacion"]!="" && isset($_POST["usuario"]) && $_POST["usuario"]!="" && isset($_POST["contrasena"]) && $_POST["contrasena"]!="" && isset($_POST["contrasena_c"]) && $_POST["contrasena_c"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""  && isset($_POST["skin"]) && $_POST["skin"]!=""){		
+		 if($_POST["usuario"]!=$rowUsuario->return->id){
+			 try {
 				$Nombre= array('idUsuario' => $_POST['usuario']);
 				$rowNombreUsuario = $client->consultarUsuario($Nombre);
 	    	}catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
 					iraURL('../pages/index.php');
-					}		
+					}	
+		 }		
 			if(!isset($rowNombreUsuario->return)){				
 			 if(!isset($_POST["borrado"])){
 			 $borrado="0";
@@ -114,19 +128,12 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 				'idClasificacionUsuario'=>$clasificacionUsuario);
 				$registroUsu= array('registroUsuario' => $Usuario);				
 				try {
-			    $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
-  			   	$client = new SOAPClient($wsdl_url);
- 			    $client->decode_utf8 = false; 
-				$client->insertarUsuario($registroUsu);
+				$client->editarUsuario($registroUsu);
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
 					iraURL('../pages/index.php');
 					}
-				if(isset($_POST["crear_uno"])){
 						iraURL('../pages/usuario.php');		
-						}else{
-						iraURL('../pages/crearUsuario.php');	
-							}	
 		}else{
 				javaalert('El nombre de usuario ya existe , por favor verifique');
 				} 				
@@ -135,7 +142,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 		}
 		
 	  } 	
-  include("../views/crearUsuario.php");
+  include("../views/editarUsuario.php");
   } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
 	iraURL('../pages/index.php');

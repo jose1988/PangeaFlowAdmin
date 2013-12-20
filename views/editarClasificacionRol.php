@@ -15,31 +15,15 @@
 	
 	
 </head>
-	<?php 
+<?php 
 	$nombre="";
 	$descripcion="";
-	$documentacion="";
-	$estado="";
-	$idClasificacion="";
-	$clasificacion="Seleccionar:";
-	if(isset($rowRol->return->nombre)){
-	$nombre=$rowRol->return->nombre;
+	if(isset($rowClasificacionRol->return->nombre)){
+	$nombre=$rowClasificacionRol->return->nombre;
 	}
-	if(isset($rowRol->return->descripcion)){
-	$descripcion=$rowRol->return->descripcion;
+	if(isset($rowClasificacionRol->return->descripcion)){
+	$descripcion=$rowClasificacionRol->return->descripcion;
 	}
-	if(isset($rowRol->return->documentacion)){
-	$documentacion=$rowRol->return->documentacion;
-	}
-	if(isset($rowRol->return->estado)){
-	$estado=$rowRol->return->estado;
-	}
-	if(isset($rowRol->return->idClasificacionRol->id)){
-	$idClasificacion=$rowRol->return->idClasificacionRol->id;
-	$clasificacion=$rowRol->return->idClasificacionRol->nombre;
-	}
-	
-
 				?>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -80,51 +64,28 @@
   
 <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="rol.php">Atrás</a></li>
-			  <li><a href="crearRol.php">Crear</a></li>
- 			 <li><a href="restaurarRol.php">Restaurar</a></li>
+ 			 <li><a href="clasificacionRol.php">Atrás</a></li>   			 
+			<li><a href="crearClasificacionRol.php">Crear</a></li>
+ 			 <li><a href="restaurarClasificacionRol">Restaurar</a></li>
 			 </ul>
        </div>
 	   	<div class="col-md-2">
         </div>
-         <div class="col-md-5">  
+         <div class="col-md-4">  
          <form method="POST">    
-        <table width="100%" class="table-striped table-bordered table-condensed"> 
-			<tr>
-			 <th width="40%">Nombre</th>			
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" value="<?php echo $nombre; ?>"  required>
-                 <div id="Info" style="float:right"></div>
+        <table width="100%" class="table-striped table-bordered table-condensed">
+			 <tr>
+			 <th width="40%">Nombre</th>
+				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" value="<?php echo $nombre; ?>" required>
+                 <div id="Info" style="float:right" align="center"></div>
                  </td>
 		 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" value="<?php echo $descripcion; ?>" required="required"></td>
+				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50"  value="<?php echo $descripcion; ?>" ></td>
 			 </tr>
-			 <tr>
-			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  value="<?php echo $documentacion; ?>" ></textarea></td>		
-			 </tr>
-              <tr>
-			 <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" value="<?php echo $estado; ?>" required="required"></td>		
-			 </tr>
-			 <tr>
-			 <th width="40%">Clasificación de Rol</th>
-				 <td><select id="clasificacion" name="clasificacion"    >
-                  <option value="<?php  echo $idClasificacion;?>" ><?php echo $clasificacion; ?></option> 
-				 <?php
-				 	for ($i=0;$i<$cantClasifRol;$i++)
-					{
-					if($rowClasifRol->return[$i]->id!=$idClasificacion){
-						echo '<option value="'.$rowClasifRol->return[$i]->id.'">'.$rowClasifRol->return[$i]->nombre.'</option>';
-					}
-					}
-				  ?>
-                 </select></td>
-			 </tr>
-			 <tr>
 			 <th width="40%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" value="<?php echo $rowRol->return->borrado; ?>" title="si no presiona estara deshabilitado"> </td>
+				 <td><input type="checkbox" name="borrado" id="borrado" value="<?php echo $rowRol->return->borrado; ?>"> </td>
 			 </tr>
 	</table><br>
      <div class="col-md-9" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>
@@ -146,7 +107,7 @@
         var dataString = 'nombre='+nombre;
         $.ajax({
             type: "POST",
-            url: "../ajax/chequeoNombreRol.php",
+            url: "../ajax/chequeoNombreClasifRol.php",
             data: dataString,
             success: function(data) {
                 $('#Info').fadeIn(1000).html(data);

@@ -62,7 +62,7 @@ if(isset($_POST["modificar"])){
 			javaalert("El nombre ya existe, por favor verifique");
 			}		
 		}else{
-			javaalert("Debe agregar todos los campos, por favor verifique");
+			javaalert("Debe agregar todos los campos obligatorios, por favor verifique");
 		}
 	  } 	
   include("../views/editarRol.php");

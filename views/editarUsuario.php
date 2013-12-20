@@ -15,7 +15,42 @@
 	
 	
 </head>
+<?php 
+	$segundoN="";
+	$segundoA="";
+	$cedula="";
+	$rif="";
+	$telfP="";
+	$telfO="";
+	$descripcion="";
+	$mail="";
+	$fax="";
+	if(isset($rowUsuario->return->segundoNombre)){
+	$segundoN=$rowUsuario->return->segundoNombre;
+	}
+	if(isset($rowUsuario->return->segundoApellido)){
+	$segundoA=$rowUsuario->return->segundoApellido;
+	}
+	if(isset($rowUsuario->return->rif)){
+	$rif=$rowUsuario->return->rif;
+	}
+	if(isset($rowUsuario->return->mail)){
+	$mail=$rowUsuario->return->mail;
+	}
+	if(isset($rowUsuario->return->fax)){
+	$fax=$rowUsuario->return->fax;
+	}
+	if(isset($rowUsuario->return->telefonosPersonal)){
+	$telfP=$rowUsuario->return->telefonosPersonal;
+	}
+	if(isset($rowUsuario->return->telefonosOficina)){
+	$telfO=$rowUsuario->return->telefonosOficina;
+	}
+	if(isset($rowUsuario->return->descripcion)){
+	$descripcion=$rowUsuario->return->descripcion;
+	}
 
+?>	
 <body>
   <form id="formulario" method="post">
 <nav class="navbar navbar-default" role="navigation">
@@ -57,6 +92,7 @@
 <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="usuario.php">Atrás</a></li>
+			 <li><a href="crearUsuario.php">Crear</a></li>
  			 <li><a href="restaurarUsuario">Restaurar</a></li>
 			 </ul>
        </div>
@@ -66,63 +102,63 @@
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="70%">Primer Nombre</th>
-				 <td><input type="text" name="primernombre" id="primernombre" maxlength="19" size="30" title="Ingrese el primer nombre" placeholder="Ej. Juan" autofocus required></td>
+				 <td><input type="text" name="primernombre" id="primernombre" maxlength="19" size="30" value="<?php echo $rowUsuario->return->primerNombre; ?>" required></td>
 		     </tr>
 			 <tr>
 			 <th width="70%">Segundo Nombre</th>
-				 <td><input type="text" name="segundonombre" id="segundonombre" maxlength="19" size="30" title="Ingrese el segundo nombre" placeholder="Ej. Carlos"  ></td>
+				 <td><input type="text" name="segundonombre" id="segundonombre" maxlength="19" size="30" value="<?php echo $segundoN; ?>"  ></td>
 		     </tr>
 			  <tr>
 			 <th width="70%">Primer Apellido</th>
-				 <td><input type="text" name="primerapellido" id="primerapellido" maxlength="19" size="30" title="Ingrese el primer apellido" placeholder="Ej. Arboleda"  required></td>
+				 <td><input type="text" name="primerapellido" id="primerapellido" maxlength="19" size="30" value="<?php echo $rowUsuario->return->primerApellido; ?>"  required></td>
 		     </tr>
 			 <tr>
 			 <th width="70%">Segundo Apellido</th>
-				 <td><input type="text" name="segundoapellido" id="segundoapellido" maxlength="19" size="30" title="Ingrese el segundo apellido" placeholder="Ej. Villamizar"  ></td>
+				 <td><input type="text" name="segundoapellido" id="segundoapellido" maxlength="19" size="30" value="<?php echo $segundoA; ?>"  ></td>
 		     </tr>
 
 			 <tr>
 			 <th width="70%">Cédula</th>
-				 <td><input type="text" name="cedula" id="cedula" maxlength="19" size="30" title="Ingrese la cédula de Identidad" placeholder="Ej. V-19887677"  required></td>
+				 <td><input type="text" name="cedula" id="cedula" maxlength="19" size="30" value="<?php echo $rowUsuario->return->cedula; ?>"  required></td>
 			 </tr>
               <tr>
 			 <th width="70%">RIF</th>
-				 <td><input type="text" name="rif" id="rif" maxlength="19" size="30" title="Ingrese el RIF" placeholder="Ej. V-19877699-9 " ></td>		
+				 <td><input type="text" name="rif" id="rif" maxlength="19" size="30" value="<?php echo $rif; ?>" ></td>		
 			 </tr>
 			 <th width="70%">Teléfono Personal</th>
-				 <td><input type="text" name="personal" id="personal" maxlength="19" size="30" title="Ingrese su teléfono personal" placeholder="Ej. 0424-1234532 " ></td>		
+				 <td><input type="text" name="personal" id="personal" maxlength="19" size="30" value="<?php echo $telfP; ?>" ></td>		
 			 </tr>
 			 <th width="70%">Teléfono de Oficina</th>
-				 <td><input type="text" name="oficina" id="oficina" maxlength="19" size="30" title="Ingrese un teléfono de oficina" placeholder="Ej. 0212-4563789" ></td>		
+				 <td><input type="text" name="oficina" id="oficina" maxlength="19" size="30" value="<?php echo $telfO; ?>" ></td>		
 			 </tr>
 			 <th width="70%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" title="Ingrese un correo" placeholder="Ej. juanvillamizar@gmail.com" ></td>		
+				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" value="<?php echo $mail; ?>" ></td>		
 			 </tr>
 			 <th width="70%">Fax</th>
-				 <td><input type="text" name="fax" id="fax" maxlength="19" size="30" title="Ingrese un número de fax" placeholder="Ej. 0212-4563789" ></td>		
+				 <td><input type="text" name="fax" id="fax" maxlength="19" size="30" value="<?php echo $fax; ?>" ></td>		
 			 </tr>
 			 <th width="70%">Dirección Personal</th>
-				 <td><textarea name="direccionp" id="direccionp" maxlength="149"  title="Ingrese su dirección personal" placeholder="Ej. ALtos de Paramillo" required></textarea></td>		
+				 <td><textarea name="direccionp" id="direccionp" maxlength="149"  required><?php echo $rowUsuario->return->direccionPersonal; ?></textarea></td>		
 			 </tr>
 			 <th width="70%">Dirección de Oficina</th>
-				 <td><textarea name="direcciono" id="direcciono" maxlength="149"  title="Ingrese la dirección de oficina" placeholder="Ej. Avenida Libertador" required></textarea></td>		
+				 <td><textarea name="direcciono" id="direcciono" maxlength="149" required><?php echo $rowUsuario->return->direccionOficina; ?></textarea></td>		
 			 </tr>
 			  <th width="70%">Descripción</th>
-				 <td><textarea name="descripcion" id="descripcion" maxlength="149"  title="Ingrese la descripción" placeholder="Ej. Realiza el mantenimiento de las tablas" ></textarea></td>		
+				 <td><textarea name="descripcion" id="descripcion" maxlength="149"  ><?php echo $descripcion; ?></textarea></td>		
 			 </tr>
 			 <tr>
 			 <th width="70%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="19" size="30" title="Ingrese el estado" placeholder="Ej. Estado  " required="required"></td>		
+				 <td><input type="text" name="estado" id="estado" maxlength="19" size="30" value="<?php echo $rowUsuario->return->estado; ?>" required="required"></td>		
 			 </tr>
 			  <tr>
 			 <th width="70%">Usuario</th>
-				 <td><input type="text" name="usuario" id="usuario" maxlength="19" size="30" title="Ingrese el nombre de usuario" placeholder="Ej.   " required="required">
+				 <td><input type="text" name="usuario" id="usuario" maxlength="19" size="30" value="<?php echo $rowUsuario->return->id; ?>" required="required">
 				 <div id="Info" style="float:right"></div>
 				 </td>		
 			 </tr>
 			  <tr>
 			 <th width="70%">Contraseña</th>
-				 <td><input type="password" name="contrasena" id="contrasena" maxlength="19" size="30" onkeyup="muestra_seguridad_clave(this.value, this.form)" pattern="[A-Za-z.0-9ñÑ]{6,34}" title="Debe agregar mínimo 6 letras, puntos o números" required/>
+				 <td><input type="password" name="contrasena" id="contrasena" maxlength="19" size="30" value="<?php echo $rowUsuario->return->clave; ?>" onkeyup="muestra_seguridad_clave(this.value, this.form)" pattern="[A-Za-z.0-9ñÑ]{6,34}" title="Debe agregar mínimo 6 letras, puntos o números" required/>
 				            <input id="fortaleza" name="fortaleza" type="text" size="10" style="border: 0px; text-decoration:italic;text-align:center;display:none" onfocus="blur()">
 
 				 <div id="contra" style="float:right"></div>		
@@ -131,41 +167,59 @@
 			 <tr> 
 			  <tr>
 			 <th width="70%">Confirmar Contraseña</th>
-				 <td><input type="password" name="contrasena_c" id="contrasena_c" maxlength="19" size="30" pattern="[A-Za-z.0-9ñÑ]{6,34}" title="Debe repetir la contraseña" required/>
+				 <td><input type="password" name="contrasena_c" id="contrasena_c" maxlength="19" size="30" value="<?php echo $rowUsuario->return->clave; ?>" pattern="[A-Za-z.0-9ñÑ]{6,34}" title="Debe repetir la contraseña" required/>
 				  <div id="contra1" style="float:right"></div>
 				 </td>		
 			 </tr>
 			 <tr> 
 			 <th width="70%">Clasificación de Usuario</th>
-				 <td><select id="clasificacion" name="clasificacion"  required  title="Seleccione la clasificación del usuario">
-                  <option value="" style="display:none">Seleccionar:</option> 
+				 <td><select id="clasificacion" name="clasificacion">
+                  <option value="<?php  echo $rowUsuario->return->idClasificacionUsuario->id; ?>" ><?php echo $rowUsuario->return->idClasificacionUsuario->nombre; ?></option> 
 				 <?php
-				 	for ($i=0;$i<$cantUsuario;$i++)
+				 	for ($i=0;$i<$cantClaUsuario;$i++)
 					{
-					echo '<option value="'.$rowUsuario->return[$i]->id.'">'.$rowUsuario->return[$i]->nombre.'</option>';
+					if($rowClasiUsuario->return[$i]->id!=$rowUsuario->return->idClasificacionUsuario->id){
+						echo '<option value="'.$rowClasiUsuario->return[$i]->id.'">'.$rowClasiUsuario->return[$i]->nombre.'</option>';
+					}
 					}
 				  ?>
                  </select></td>
 			 </tr>
 			 <tr> 
 			 <th width="70%">Organización</th>
-				 <td><select id="organizacion" name="organizacion"  required  title="Seleccione la organización a la que pertenece">
-                  <option value="" style="display:none">Seleccionar:</option> 
+				 <td><select id="organizacion" name="organizacion" >
+                  <option value="<?php  echo $rowUsuario->return->idOrganizacion->id; ?>" ><?php echo $rowUsuario->return->idOrganizacion->nombre; ?></option> 
 				 <?php
 				 	for ($i=0;$i<$cantOrganizacion;$i++)
 					{
+					if($rowUsuario->return->idOrganizacion->id!=$rowOrganizacion->return[$i]->id){
 					echo '<option value="'.$rowOrganizacion->return[$i]->id.'">'.$rowOrganizacion->return[$i]->nombre.'</option>';
+					}
 					}
 				  ?>
                  </select></td>
 			 </tr>
+			  <tr> 
+			 <th width="70%">Skin</th>
+				 <td><select id="skin" name="skin" >
+                  <option value="<?php  echo $rowUsuario->return->idSkin->id; ?>" ><?php echo $rowUsuario->return->idSkin->nombre; ?></option> 
+				 <?php
+				 	for ($i=0;$i<$cantSkin;$i++)
+					{
+					if($rowUsuario->return->idSkin->id!=$rowSkin->return[$i]->id){
+					echo '<option value="'.$rowSkin->return[$i]->id.'">'.$rowSkin->return[$i]->nombre.'</option>';
+					}
+					}
+				  ?>
+                 </select></td>
+			 </tr>
+			 
 			 <tr>
 			 <th width="70%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" title="si no presiona estara deshabilitado"> </td>
+				 <td><input type="checkbox" name="borrado" id="borrado" value="<?php echo $rowUsuario->return->borrado; ?>"> </td>
 			 </tr>
 	</table><br>
-     <div class="col-md-9" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
-    <div class="col-md-9" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y añadir otro</button></div>
+     <div class="col-md-9" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>
 </form>  
     </div>
 <script src="../js/footable.js" type="text/javascript"></script>

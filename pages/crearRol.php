@@ -60,7 +60,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 			javaalert("El nombre ya existe, por favor verifique");
 			}		
 		}else{
-			javaalert("Debe agregar todos los campos, por favor verifique");
+			javaalert("Debe agregar todos los campos obligatorios, por favor verifique");
 		}
 	  } 	
   include("../views/crearRol.php");
