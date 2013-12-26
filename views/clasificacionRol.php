@@ -59,7 +59,7 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="#">Atrás</a></li>
   			 <li><a href="crearClasificacionRol.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="restaurarClasificacionRol.php">Restaurar</a></li>
 			 </ul>
        </div>
         

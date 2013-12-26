@@ -57,8 +57,8 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/rol.php">Atrás</a></li>
-  			 <li><a href="../pages/crearRol.php">Crear</a></li>
+ 			 <li><a href="../pages/clasificacionRol.php">Atrás</a></li>
+  			 <li><a href="../pages/crearClasificacionRol.php">Crear</a></li>
 			 </ul>
        </div>
  
@@ -67,11 +67,11 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($rowRol->return)){
+	   	if(!isset($rowClasifRol->return)){
 	   ?>
        		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
-    			<h4>No Existen Registros en Rol para Restaurar</h4>
+    			<h4>No existen registros en clasificación de rol para restaurar</h4>
    			</div>
             
          <?php }
@@ -89,22 +89,22 @@
 			</thead>
   <tbody>
       <?php
-	  if(count($rowRol->return)>1){   
-		for ($i=0;$i<count($rowRol->return);$i++){
+	  if(count($rowClasifRol->return)>1){   
+		for ($i=0;$i<count($rowClasifRol->return);$i++){
 			echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$rowRol->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$rowRol->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$rowRol->return[$i]->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowRol->return[$i]->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowClasifRol->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$rowClasifRol->return[$i]->nombre.'</td>';
+			echo '<td width="25%">'.$rowClasifRol->return[$i]->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowClasifRol->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$rowRol->return->id.'</td>';
-			echo '<td width="20%">'.$rowRol->return->nombre.'</td>';
-			echo '<td width="25%">'.$rowRol->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowRol->return->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowClasifRol->return->id.'</td>';
+			echo '<td width="20%">'.$rowClasifRol->return->nombre.'</td>';
+			echo '<td width="25%">'.$rowClasifRol->return->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowClasifRol->return->id.'></td>';
 			echo '</tr>';
 		  
 		  }
