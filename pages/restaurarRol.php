@@ -12,6 +12,10 @@
 			$eliminadosRol=$_POST["ide"];
 			$contadorEliminados=0;
 			//echo '<pre>'; print_r($eliminadosRol) ;
+			if(count($eliminadosRol)==1){
+			   $idRol = array('idRol' => $eliminadosRol);
+				$client->restaurarRol($idRol);
+			}else{
 			for($j=0; $j<count($rowRol->return); $j++){
 			if(isset($eliminadosRol[$j])){
 			    $idRol = array('idRol' => $eliminadosRol[$j]);
@@ -20,6 +24,7 @@
 			}
 			if($contadorEliminados==count($eliminadosRol)){
 				break;
+			}
 			}
 			}
 		 } catch (Exception $e) {
