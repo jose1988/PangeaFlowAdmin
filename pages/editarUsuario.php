@@ -48,7 +48,7 @@ if(isset($_POST["modificar"])){
 				$rowNombreUsuario = $client->consultarUsuario($Nombre);
 	    	}catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}	
 		 }		
 			if(!isset($rowNombreUsuario->return)){				
@@ -131,7 +131,7 @@ if(isset($_POST["modificar"])){
 				$client->editarUsuario($registroUsu);
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}
 						iraURL('../pages/usuario.php');		
 		}else{
@@ -145,6 +145,6 @@ if(isset($_POST["modificar"])){
   include("../views/editarUsuario.php");
   } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');
+	iraURL('../views/index.php');
 	}	
 ?>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Pangea Flow</title>
 
 	<!-- javascript -->
 	
@@ -13,15 +13,13 @@
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-    <link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
+	 	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
-	
 </head>
 
 <body>
-<img src="../images/LOGOTIPO-FINAL-7.jpg" width="900" height="130" />
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" Usuarioe="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -30,108 +28,110 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#"><img src="../images/LOGOTIPO-FINAL-7.jpg" width="200" height="30" /></a>
+    <a class="navbar-brand" href="#">PangeaFlow</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
+	<li><a href="skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificacion Rol</a></li>
+          <li><a href="clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificacion Usuario</a></li>
+          <li><a href="clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Grupo</a></li>
+          <li><a href="grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>
-      
-      
+          <li><a href="rol.php">Rol</a></li>      
         </ul>
-      </li>
-   
-    
-      <li><a href="#">Organización</a></li>
-      <li><a href="#">Política</a></li>
-      <li><a href="#">Reporte</a></li>
-      <li><a href="#">Skin</a></li>
-       </ul>
-     
-</nav>
-
-
-      <div class="row">
-              <div class="col-md-2" align="center">
-              
-             <ul class="nav nav-pills nav-stacked">
- 			 <li class="active"><a href="#">Atras</a></li>
-  			 <li><a href="#">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+      </li>  
+      <li><a href="organizacion.php">Organización</a></li>
+      <li><a href="politica.php">Política</a></li>
+      <li><a href="reporte.php">Reporte</a></li>    
+  </ul>  
+   </nav>  
+   </div>
+      <div class="col-md-2" align="center">
+        <ul class="nav nav-stacked nav-tabs-justified">
+ 			 <li><a href="#">Atrás</a></li>
+  			 <li><a href="crearClasificacionUsuario.php">Crear</a></li>
+ 			 <li><a href="restaurarClasificacionUsuario.php">Restaurar</a></li>
 			 </ul>
-             
-             </div>
-             <div class="col-md-1"></div>
-      
-      <div class="col-md-8">
-      
-     <?php
-					if($regCu!=0){
-					?>
-						<table class="footable table table-striped table-bordered"  align="center" data-page-size="7">
-                        	<thead bgcolor="#B9B9B9">
-								<tr>
-								   <th style="width:10%; text-align:center">Id</th>
-                                   <th style="width:30; text-align:center">Nombre</th>
-                                   <th style="width:30%; text-align:center"> Fecha creacion</th>
-                                   <th style="width:10%; text-align:center">Ver</th>
-                                   <th style="width:10%; text-align:center">Editar</th>
-                                   <th style="width:10%; text-align:center">Eliminar</th>  
-								 </tr>
-							  </thead>
-                             <tbody>
-                             	<tr>
-								<?php
-								if($regCu>1){
-									$j=0;
-								    while($j<$regCu){ ?>
-                                  	<td style="text-align:center"> <?php echo $cUsuario->return[$j]->id?></td>
-                                  	<td style="text-align:center">  <?php echo $cUsuario->return[$j]->nombre ?></td>
-                                  	<td style="text-align:center"> <?php echo substr($cUsuario->return[$j]->fechaCreacion,0,10).' '.substr($cUsuario->return[$j]->fechaCreacion,20,25) ?></td>
-                                    <td style="text-align:center"><button type="button" class="btn">Ver</button></td>
-                                    <td style="text-align:center"><button type="button" class="btn">Editar</button></td>
-                                    <td style="text-align:center"><button type="button" class="btn">Eliminar</button></td>
-                               </tr>
-                                
-                               <?php
-									 $j++;
-									 } 
-									 }else{  ?>
-								  		<td style="text-align:center"> <?php echo $cUsuario->return->id ?></td>
-                                  		<td style="text-align:center">  <?php echo $cUsuario->return->nombre ?></td> 
-                                  		<td style="text-align:center"> <?php echo substr($cUsuario->return[$j]->fechaCreacion,0,10).' '.substr($cUsuario->return[$j]->fechaCreacion,20,25)?></td>
-                                </tr>
-								<?php		 
-									 }
-								   }   else { ?>
-										  <div class="alert alert-block" align="center">
-   										  <h2 style="color:rgb(255,255,255)" align="center">Atención</h2>
-    									  <h4 align="center"> No hay Clasificaciones de Usuario en el sistema </h4>
-   			    					 </div> 
-									 <?php
-									 }
-							     ?>
-                                 
-                              </tbody>
-                            </table>
+       </div>
+        
+        <div class="col-md-9">
+		 <?php
+	if($cantClasifUsuario == 0){
+    ?>
+	 <div class="well well-small alert alert-block" align="center">
+    		<h2 style="color:#666">Atención</h2>
+    		<h4>No existen registros en clasificación de usuario</h4>
+    	</div>
+     <?php 
+	}else{
+	
+	?>
+		<table width="100%" class="footable table-striped table-hover" data-page-size="5">
+      <thead>
+				<tr>
+				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
+					<span>Id</span>
+				  </th>
+				  <th data-hide="phone" data-sort-ignore="true">
+					Nombre
+				  </th>
+                    <th data-hide="phone" data-sort-ignore="true">
+					Descripción
+				  </th>
+				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
+					<span class="add-on"> <i class="icon-pencil"></i> </span> Editar 
+				  </th>
+				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
+				<span class="add-on"><i class="icon-trash"></i></span> Eliminar 
+				  </th>
+          		 <th data-hide="phone,mediatablet" data-sort-ignore="true">
+				<span class="add-on"><i class="icon-eye-open"></i></span> Ver 
+				  </th>
+				</tr>
+	 </thead>
+  <tbody>
+      <?php 
+	  if($cantClasifUsuario==1){
+			echo '<td width="15%">'.$rowClasifUsuario->return->id.'</td>';
+			echo '<td width="20%">'.$rowClasifUsuario->return->nombre.'</td>';
+			echo '<td width="20%">'.$rowClasifUsuario->return->descripcion.'</td>';
+			echo '<td width="15%"><a href="editarClasificacionUsuario.php?id='.$rowClasifUsuario->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td width="16%"><a href="eliminarClasificacionUsuario.php?id='.$rowClasifUsuario->return->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td width="13%"><a href="verClasificacionUsuario.php?id='.$rowClasifUsuario->return->id.'"> <button class="btn "> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '</tr>';
+	  }elseif($cantClasifUsuario>1){      
+		for ($i=0;$i<$cantClasifUsuario;$i++)
+			{
+			echo '<td width="15%">'.$rowClasifUsuario->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$rowClasifUsuario->return[$i]->nombre.'</td>';
+			echo '<td width="20%">'.$rowClasifUsuario->return[$i]->descripcion.'</td>';
+			echo '<td width="15%"><a href="editarClasificacionUsuario.php?id='.$rowClasifUsuario->return[$i]->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td width="16%"><a href="eliminarClasificacionUsuario.php?id='.$rowClasifUsuario->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td width="13%"><a href="verClasificacionUsuario.php?id='.$rowClasifUsuario->return[$i]->id.'"> <button class="btn "> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '</tr>';
+			}
+	    }
+		?>
+	</tbody>	
+</table>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
     </div>
-      </div>
-      </div>
+	 <?php 
+	}
+	
+	?>
+</div>
 
-</body>
+
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
 <script src="../js/footable.sortable.js" type="text/javascript"></script>
@@ -141,4 +141,6 @@
       $('table').footable();
     });
   </script>
+
+</body>
 </html>

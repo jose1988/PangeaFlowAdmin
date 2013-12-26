@@ -28,7 +28,7 @@
 			}
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');
-			iraURL('../pages/index.php');
+			iraURL('../views/index.php');
 		}
 		javaalert("Los registros han sido habilitados");
 		iraURL('../pages/clasificacionRol.php');
@@ -39,6 +39,6 @@
 
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');
-		iraURL('../pages/index.php');		
+		iraURL('../views/index.php');		
 	}
 ?>

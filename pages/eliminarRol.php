@@ -12,7 +12,7 @@
 	$rowRol = $client->consultarRol($idRol);
 	} catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');	
+	iraURL('../views/index.php');	
 	}
 	include("../views/eliminarRol.php");
 	if(isset($_POST["si"])){
@@ -20,7 +20,7 @@
 		  $client->eliminarRol($idRol);
 		  } catch (Exception $e) {
 				javaalert('Lo sentimos no hay conexión');
-				iraURL('../pages/index.php');
+				iraURL('../views/index.php');
 			}	
 			javaalert("El registro ha sido eliminado");
 			iraURL('../pages/rol.php');

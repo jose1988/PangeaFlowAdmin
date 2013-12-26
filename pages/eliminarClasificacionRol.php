@@ -12,7 +12,7 @@
 	$rowClasifRol = $client->consultarClasifRol($idClasifRol);
 	} catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');	
+	iraURL('../views/index.php');	
 	}
 	include("../views/eliminarClasificacionRol.php");
 	if(isset($_POST["si"])){
@@ -20,7 +20,7 @@
 		  $client->eliminarClasificacionRol($idClasifRol);
 		  } catch (Exception $e) {
 				javaalert('Lo sentimos no hay conexión');
-				iraURL('../pages/index.php');
+				iraURL('../views/index.php');
 			}	
 			javaalert("El registro ha sido eliminado");
 			iraURL('../pages/clasificacionRol.php');

@@ -24,7 +24,7 @@ if(isset($_POST["modificar"])){
 				$client->decode_utf8 = false; 
 				}catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}	
 			  if($_POST["nombre"]!=$rowClasificacionRol->return->nombre){
 			  try {
@@ -32,7 +32,7 @@ if(isset($_POST["modificar"])){
 				$rowClasifRol = $client->consultarClasifRolXNombre($Nombre);
 				}catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}	
 			  }  
 				
@@ -61,7 +61,7 @@ if(isset($_POST["modificar"])){
 				$client->editarClasificacionRol($registroClaRol);
 					} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}			
 			iraURL('../pages/clasificacionRol.php');		
 			}else{
@@ -74,6 +74,6 @@ if(isset($_POST["modificar"])){
   include("../views/editarClasificacionRol.php");
   } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');	
+	iraURL('../views/index.php');	
 	}
 ?>

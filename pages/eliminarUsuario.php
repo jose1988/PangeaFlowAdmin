@@ -12,7 +12,7 @@
 	$rowUsuario = $client->consultarUsuario($idUsuario);
 	} catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');	
+	iraURL('../views/index.php');	
 	}
 	include("../views/eliminarUsuario.php");
 	if(isset($_POST["si"])){
@@ -20,7 +20,7 @@
 		  $client->eliminarUsuario($idUsuario);
 		  } catch (Exception $e) {
 				javaalert('Lo sentimos no hay conexión');
-				iraURL('../pages/index.php');
+				iraURL('../views/index.php');
 			}	
 			javaalert("El registro ha sido eliminado");
 			iraURL('../pages/usuario.php');

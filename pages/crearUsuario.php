@@ -35,7 +35,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 				$rowNombreUsuario = $client->consultarUsuario($Nombre);
 	    	}catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}		
 			if(!isset($rowNombreUsuario->return)){				
 			 if(!isset($_POST["borrado"])){
@@ -120,7 +120,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 				$client->insertarUsuario($registroUsu);
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}
 				if(isset($_POST["crear_uno"])){
 						iraURL('../pages/usuario.php');		
@@ -138,6 +138,6 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
   include("../views/crearUsuario.php");
   } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');
+	iraURL('../views/index.php');
 	}	
 ?>

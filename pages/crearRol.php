@@ -20,7 +20,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 				$rowRol = $client->consultarRolXNombre($Nombre);
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}
 			if(!isset($rowRol->return)){
 			 if(!isset($_POST["borrado"])){
@@ -49,7 +49,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 				$client->insertarRol($registroRol);
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 					}
 						if(isset($_POST["crear_uno"])){
 						iraURL('../pages/rol.php');		
@@ -66,6 +66,6 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
   include("../views/crearRol.php");
   } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');	
+	iraURL('../views/index.php');	
 	}
 ?>
