@@ -57,50 +57,65 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/politica.php">Atrás</a></li>
- 			 <li><a href="../pages/restaurarPolitica.php">Restaurar</a></li>
-		</ul>
-      </div>
-       
-       	<div class="col-md-2">
+ 			 <li><a href="../pages/skin.php">Atrás</a></li>
+  			 <li><a href="../pages/crearSkin.php">Crear</a></li>
+			 </ul>
+       </div>
+ 
+        <div class="col-md-1">
         </div>
         
-        <div class="col-md-4">  
-         <form method="POST">    
-        <table width="100%" class="table-striped table-bordered table-condensed">
-			 <tr>
-			 <th width="40%">Nombre</th>
-				 <td>
-                 	<input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Cola" autofocus required>
-                    <div align="center" id="Info" style="float:right"></div>
-                 </td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Política" required="required"></td>
-			 </tr>
-			 <tr>
-			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499" title="Ingrese la documentación" placeholder="Ej. Documentación Grupo" ></textarea></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Implementación</th>
-				 <td><input type="text" name="implementacion" id="implementacion" maxlength="149" size="50" title="Ingrese la implementación" placeholder="Ej. Tipoxx " required="required"></td>		
-			 </tr>
-             <tr>
-             <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx "></td>		
-			 </tr>
-			 <tr>
-			 <th width="40%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no presiona estará deshabilitado"> </td>
-			 </tr>
+        <div class="col-md-8">
+        <?php 
+	   	if(!isset($resultadoListaSkin->return)){
+	   ?>
+       		<div class="well well-small alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existen Registros en Skin para Restaurar</h4>
+   			</div>
+            
+         <?php }
+		 	else{
+		 ?>
+         <form method="post">
+        <table width="100%" class="footable table-hover" data-page-size="7">
+      		<thead bgcolor="#B9B9B9">
+				<tr>
+					<th style="width:10%; text-align:center">Id</th>
+                    <th style="width:20%; text-align:center">Nombre</th>
+                    <th style="width:15%; text-align:center">Habilitar</th>
+				</tr>
+			</thead>
+  <tbody>
+      <?php
+	  if(count($resultadoListaSkin->return)>1){   
+		for ($i=0;$i<count($resultadoListaSkin->return);$i++){
+			echo '<tr>';
+			echo '<td style="text-align:center" width="10%">'.$resultadoListaSkin->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaSkin->return[$i]->nombre.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaSkin->return[$i]->id.'></td>';
+			echo '</tr>';
+			}
+	  }
+	  else{
+		  	echo '<tr>';
+			echo '<td style="text-align:center" width="10%">'.$resultadoListaSkin->return->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaSkin->return->nombre.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaSkin->return->id.'></td>';
+			echo '</tr>';
+		  
+		  }
+		?>
+		</tbody>	
 	</table>
     <br />
-     <div class="col-md-12" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
-    <div class="col-md-12" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
-</form>  
-</div>
+    <div align="right">
+    	<button id="habilitar" name="habilitar" class="btn">Habilitar</button>
+    </div>
+    </form>
+	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
+	<?php }?>
+    </div>
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
@@ -112,26 +127,5 @@
     });
   </script>
   
-  <script type="text/javascript">
-	$(document).ready(function() {
- 	<!-- Codigo para verificar si el nombre del Grupo ya existe --> 
-   		$('#nombre').blur(function(){
-			if($(this).val()!=""){
-				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
-			}
-        	var nombre = $(this).val();        
-        	var dataString = 'nombre='+nombre;
-        	$.ajax({
-            	type: "POST",
-            	url: "../ajax/chequeoNombrePolitica.php",
-            	data: dataString,
-            	success: function(data) {
-                	$('#Info').fadeIn(1000).html(data);
-            	}
-        	});     
- 		});
-	});
- </script> 
-  
-  </body>
+</body>
 </html>

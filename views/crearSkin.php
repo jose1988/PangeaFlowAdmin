@@ -1,21 +1,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
-<title>Documento sin título</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Pangea Flow</title>
 
-	<!-- javascript -->
-	
+	<!-- javascript -->	
 	<script type="text/javascript" src="../js/jquery-2.0.2.js"></script>
-	<script type=text/javascript src="../js/bootstrap.js"></script>
-	
+	<script type='text/javascript' src="../js/bootstrap.js"></script>	
 	
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-	 	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
+    
+   	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
+	
 </head>
 
 <body>
@@ -34,65 +34,88 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
+	<li><a href="../pages/skin.php">Skin</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Clasificacion Rol</a></li>
+          <li><a href="../pages/clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
-          <li><a href="#">Clasificacion Usuario</a></li>
+          <li><a href="../pages/clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Grupo</a></li>
+          <li><a href="../pages/grupo.php">Grupo</a></li>
           <li class="divider"></li>
-          <li><a href="#">Usuario</a></li>
+          <li><a href="../pages/usuario.php">Usuario</a></li>
           <li class="divider"></li>
-          <li><a href="#">Rol</a></li>
-      
-      
+          <li><a href="../pages/rol.php">Rol</a></li>      
         </ul>
-      </li>
-   
-    
-      <li><a href="#">Organización</a></li>
-      <li><a href="#">Política</a></li>
-      <li><a href="#">Reporte</a></li>
-      <li><a href="#">Skin</a></li>
-       </ul>
-   </nav>  
-  
-<div class="col-md-2" align="center">
+      </li>  
+      <li><a href="../pages/organizacion.php">Organización</a></li>
+      <li><a href="../pages/politica.php">Política</a></li>
+      <li><a href="../pages/reporte.php">Reporte</a></li>    
+  </ul>     
+</nav>
+
+      <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="rol.php">Atrás</a></li>
-  			 <li><a href="#">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
-			 </ul>
-       </div>
-	   	<div class="col-md-2">
+ 			 <li><a href="../pages/skin.php">Atrás</a></li>
+ 			 <li><a href="../pages/restaurarSkin.php">Restaurar</a></li>
+		</ul>
+      </div>
+       
+       	<div class="col-md-2">
         </div>
-         <div class="col-md-4"> 
-          
+        
+        <div class="col-md-4">  
          <form method="POST">    
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Azul Cielo" autofocus required></td>
+				 <td>
+                 	<input type="text" name="nombre" id="nombre" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Azul Cielo" autofocus required>
+                    <div align="center" id="Info" style="float:right"></div>
+                 </td>
 			 </tr>
-			 
-			 
+			 <tr>
 			 <th width="40%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" title="si no presiona estara deshabilitado"> </td>
+				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no presiona estará deshabilitado"> </td>
 			 </tr>
 	</table>
-     <div class="col-md-9" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
-    <div class="col-md-9" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y añadir otro</button></div>
+    <br />
+     <div class="col-md-12" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
+    <div class="col-md-12" align="center"> <button class="btn" id="crear_otro" name="crear_otro" type="submit">Guardar y Añadir Otro</button></div>
 </form>  
-    </div>
+</div>
+
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
 <script src="../js/footable.sortable.js" type="text/javascript"></script>
  
   <script type="text/javascript">
     $(function() {
-      $(table).footable()
-    })
+      	$('table').footable();
+    });
   </script>
   
+  <script type="text/javascript">
+	$(document).ready(function() {
+ 	<!-- Codigo para verificar si el nombre del Skin ya existe --> 
+   		$('#nombre').blur(function(){
+			if($(this).val()!=""){
+				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			}
+        	var nombre = $(this).val();        
+        	var dataString = 'nombre='+nombre;
+        	$.ajax({
+            	type: "POST",
+            	url: "../ajax/chequeoNombreSkin.php",
+            	data: dataString,
+            	success: function(data) {
+                	$('#Info').fadeIn(1000).html(data);
+            	}
+        	});     
+ 		});
+	});
+ </script> 
+  
+  </body>
+</html>

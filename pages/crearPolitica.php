@@ -8,8 +8,8 @@
 	
 	if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 		
-	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && 
-			isset($_POST["estado"]) && $_POST["estado"]!=""){
+	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
+			isset($_POST["implementacion"]) && $_POST["implementacion"]!="" && isset($_POST["estado"]) && $_POST["estado"]!=""){
 				
 			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDepolitica?WSDL';
 			$client = new SOAPClient($wsdl_url);
