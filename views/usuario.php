@@ -59,7 +59,7 @@
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="#">Atrás</a></li>
   			 <li><a href="crearUsuario.php">Crear</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="restaurarUsuario.php">Restaurar</a></li>
 			 </ul>
        </div>
         <div class="col-md-9">
@@ -78,7 +78,7 @@
       <thead>
 				<tr>
 				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
-					<span>Id</span>
+					<span>Usuario</span>
 				  </th>
 				  <th data-hide="phone" data-sort-ignore="true">
 					Primer Nombre

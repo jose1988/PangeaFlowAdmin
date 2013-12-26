@@ -57,8 +57,8 @@
 
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="../pages/clasificacionRol.php">Atrás</a></li>
-  			 <li><a href="../pages/crearClasificacionRol.php">Crear</a></li>
+ 			 <li><a href="../pages/usuario.php">Atrás</a></li>
+  			 <li><a href="../pages/crearUsuario.php">Crear</a></li>
 			 </ul>
        </div>
  
@@ -67,11 +67,11 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($rowClasifRol->return)){
+	   	if(!isset($rowUsuario->return)){
 	   ?>
        		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
-    			<h4>No existen registros en clasificación de rol para restaurar</h4>
+    			<h4>No existen registros en usuario para restaurar</h4>
    			</div>
             
          <?php }
@@ -81,30 +81,30 @@
         <table width="100%" class="footable table-hover" data-page-size="7">
       		<thead bgcolor="#B9B9B9">
 				<tr>
-					<th style="width:10%; text-align:center">Id</th>
-                    <th style="width:20%; text-align:center">Nombre</th>
-                    <th style="width:25%; text-align:center">Descripción</th>
+					<th style="width:10%; text-align:center">Usuario</th>
+                    <th style="width:20%; text-align:center">Primer Nombre</th>
+                    <th style="width:25%; text-align:center">Primer Apellido</th>
                     <th style="width:15%; text-align:center">Habilitar</th>
 				</tr>
 			</thead>
   <tbody>
       <?php
-	  if(count($rowClasifRol->return)>1){   
-		for ($i=0;$i<count($rowClasifRol->return);$i++){
+	  if(count($rowUsuario->return)>1){   
+		for ($i=0;$i<count($rowUsuario->return);$i++){
 			echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$rowClasifRol->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$rowClasifRol->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$rowClasifRol->return[$i]->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowClasifRol->return[$i]->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowUsuario->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$rowUsuario->return[$i]->primerNombre.'</td>';
+			echo '<td width="25%">'.$rowUsuario->return[$i]->primerApellido.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowUsuario->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$rowClasifRol->return->id.'</td>';
-			echo '<td width="20%">'.$rowClasifRol->return->nombre.'</td>';
-			echo '<td width="25%">'.$rowClasifRol->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowClasifRol->return->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowUsuario->return->id.'</td>';
+			echo '<td width="20%">'.$rowUsuario->return->primerNombre.'</td>';
+			echo '<td width="25%">'.$rowUsuario->return->primerApellido.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowUsuario->return->id.'></td>';
 			echo '</tr>';
 		  
 		  }

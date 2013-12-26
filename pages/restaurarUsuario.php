@@ -2,35 +2,37 @@
     try{
 		require_once("../lib/nusoap.php");
 		require_once("../lib/funciones.php");
-  		$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeClasificacion_rol?wsdl';	
+  		$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?wsdl';	
 		$client = new SOAPClient($wsdl_url);	
     	$client->decode_utf8 = false;
-	    $estadoBorrado = array('borrado' => '1');	
-		$rowClasifRol = $client->listarClasificacionRol($estadoBorrado);
+	    $estadoBorrado = array('borradoo' => '1');	
+		$rowUsuario = $client->listarUsuarios($estadoBorrado);
 	if(isset($_POST["habilitar"]) && isset($_POST["ide"])){
 		try{
 			$registrosAEliminar=$_POST["ide"];
 			$contadorEliminados=0;
-			for($j=0; $j<count($rowClasifRol->return); $j++){
+			//echo '<pre>'; print_r($_POST["ide"]);
+			for($j=0; $j<count($rowUsuario->return); $j++){
 			    if(isset($registrosAEliminar[$j])){
-				$idClasifRol = array('idClasifRol' => $registrosAEliminar[$j]);
-				$client->restaurarClasificacionRol($idClasifRol);
+				$idUsuario = array('idUsuario' => $registrosAEliminar[$j]);
+				$client->restaurarUsuario($idUsuario);
 				$contadorEliminados++;
-				}
+				}		
 				if($contadorEliminados==count($_POST["ide"])){
 					break;
 				}
 			}
+			
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');
 			iraURL('../pages/index.php');
 		}
 		javaalert("Los registros han sido habilitados");
-		iraURL('../pages/clasificacionRol.php');
+		iraURL('../pages/usuario.php');
 	}elseif(isset($_POST["habilitar"])){
 		javaalert("Debe seleccionar al menos un registro");
 	}
-		include("../views/restaurarclasificacionRol.php");
+		include("../views/restaurarUsuario.php");
 
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');
