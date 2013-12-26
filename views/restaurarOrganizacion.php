@@ -66,7 +66,7 @@
         
         <div class="col-md-8">
         <?php 
-			if(!isset($resultadoListaOrganizacion->return)){
+			if(!isset($rowOrganizacion->return)){
 		?>
         	<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
@@ -88,22 +88,22 @@
 	 </thead>
   <tbody>
       <?php
-	  if(count($resultadoListaOrganizacion->return)>1){   
-		for ($i=0;$i<count($resultadoListaOrganizacion->return);$i++){
+	  if(count($rowOrganizacion->return)>1){   
+		for ($i=0;$i<count($rowOrganizacion->return);$i++){
 			echo '<tr>';
-			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaOrganizacion->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaOrganizacion->return[$i]->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaOrganizacion->return[$i]->id.'></td>';
+			echo '<td style="text-align:center" width=10%">'.$rowOrganizacion->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$rowOrganizacion->return[$i]->nombre.'</td>';
+			echo '<td width="25%">'.$rowOrganizacion->return[$i]->ciudad.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowOrganizacion->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td style="text-align:center" width=10%">'.$resultadoListaOrganizacion->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaOrganizacion->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaOrganizacion->return->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaOrganizacion->return->id.'></td>';
+			echo '<td style="text-align:center" width=10%">'.$rowOrganizacion->return->id.'</td>';
+			echo '<td width="20%">'.$rowOrganizacion->return->nombre.'</td>';
+			echo '<td width="25%">'.$rowOrganizacion->return->ciudad.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowOrganizacion->return->id.'></td>';
 			echo '</tr>';
 		  }
 		?>

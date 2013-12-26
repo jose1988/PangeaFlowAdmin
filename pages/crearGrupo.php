@@ -1,6 +1,8 @@
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <?php
-	require_once("../lib/nusoap.php");
-	require_once("../lib/funciones.php");
+  try {
+  	include("../lib/funciones.php");
+  	require_once('../lib/nusoap.php');
 	
 	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
 	$client = new SOAPClient($wsdl_url);
@@ -17,12 +19,18 @@
 		
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
 			$fecha!="" && isset($_POST["tipo"]) && $_POST["tipo"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){				
-				
-			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
-  			$client = new SOAPClient($wsdl_url);
- 			$client->decode_utf8 = false;
-			$nombre= array('nombreGrupo' => $_REQUEST['nombre']);
-			$rowGrupo = $client->consultarGrupoXNombre($nombre);
+			
+			try{	
+				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
+  				$client = new SOAPClient($wsdl_url);
+ 				$client->decode_utf8 = false;
+				$nombre= array('nombreGrupo' => $_REQUEST['nombre']);
+				$rowGrupo = $client->consultarGrupoXNombre($nombre);
+			
+			} catch (Exception $e) {
+				javaalert('Lo sentimos no hay conexión');
+				iraURL('../pages/index.php');
+			}
 			
 			if(!isset($rowGrupo->return)){
 					
@@ -54,12 +62,18 @@
 					'estado' => $_POST["estado"],
 					'borrado' => $borrado,
 					'idOrganizacion' => $organizacion);
+					
+				try{
+					$registroGrupo= array('registroGrupo' => $grupo);
+					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
+  					$client = new SOAPClient($wsdl_url);
+ 					$client->decode_utf8 = false;
+					$client->insertarGrupo($registroGrupo);
 				
-				$registroGrupo= array('registroGrupo' => $grupo);
-				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
-  				$client = new SOAPClient($wsdl_url);
- 				$client->decode_utf8 = false;
-				$client->insertarGrupo($registroGrupo);
+				} catch (Exception $e) {
+					javaalert('Lo sentimos no hay conexión');
+					iraURL('../pages/index.php');
+				}
 			
 				javaalert("Grupo creado");
 				if(isset($_POST["crear_uno"])){
@@ -78,4 +92,9 @@
 		}
 	}	
 	include("../views/crearGrupo.php");
+	
+} catch (Exception $e) {
+	javaalert('Lo sentimos no hay conexión');
+	iraURL('../pages/index.php');	
+}
 ?>

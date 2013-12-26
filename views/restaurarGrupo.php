@@ -67,7 +67,7 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($resultadoListaGrupo->return)){
+	   	if(!isset($rowGrupo->return)){
 	   ?>
        		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
@@ -89,22 +89,22 @@
 			</thead>
   <tbody>
       <?php
-	  if(count($resultadoListaGrupo->return)>1){   
-		for ($i=0;$i<count($resultadoListaGrupo->return);$i++){
+	  if(count($rowGrupo->return)>1){   
+		for ($i=0;$i<count($rowGrupo->return);$i++){
 			echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$resultadoListaGrupo->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaGrupo->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaGrupo->return[$i]->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaGrupo->return[$i]->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowGrupo->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$rowGrupo->return[$i]->nombre.'</td>';
+			echo '<td width="25%">'.$rowGrupo->return[$i]->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowGrupo->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$resultadoListaGrupo->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaGrupo->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaGrupo->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaGrupo->return->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowGrupo->return->id.'</td>';
+			echo '<td width="20%">'.$rowGrupo->return->nombre.'</td>';
+			echo '<td width="25%">'.$rowGrupo->return->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowGrupo->return->id.'></td>';
 			echo '</tr>';
 		  
 		  }

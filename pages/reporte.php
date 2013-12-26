@@ -7,10 +7,8 @@
 	$client = new SOAPClient($wsdl_url);	
     $client->decode_utf8 = false;
 	
-	$estadoReporte = array('borrado' => '0');
-	
-	$resultadoListaReporte = $client->listarReporteByBorrado($estadoReporte);
-	
+	$estadoReporte = array('borrado' => '0');	
+	$resultadoListaReporte = $client->listarReporteByBorrado($estadoReporte);	
 	include("../views/reporte.php");
 	
 } catch (Exception $e) {

@@ -52,75 +52,74 @@
       <li><a href="../pages/organizacion.php">Organización</a></li>
       <li><a href="../pages/politica.php">Política</a></li>
       <li><a href="../pages/reporte.php">Reporte</a></li>    
-  </ul>
+  </ul>     
 </nav>
-	<div class="col-md-2" align="center">
+
+      <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="#">Atrás</a></li>
   			 <li><a href="../pages/crearPolitica.php">Crear</a></li>
  			 <li><a href="../pages/restaurarPolitica.php">Restaurar</a></li>
-		</ul>
-   </div>
-       
-      <div class="col-md-1">
-      </div>
-      
-      <div class="col-md-8">      
-     <?php
-		if($regPo!=0){
-	?>
-		<table width="100%" class="footable table-hover" data-page-size="7">
-        	<thead bgcolor="#B9B9B9">
+			 </ul>
+       </div>
+ 
+        <div class="col-md-1">
+        </div>
+        
+        <div class="col-md-8">
+        <?php 
+	   	if(!isset($resultadoListaPolitica->return)){
+	   ?>
+       		<div class="well well-small alert alert-block" align="center">
+   				<h2 style="color:#666">Atención</h2>
+    			<h4>No Existen Registros en Política</h4>
+   			</div>
+            
+         <?php }
+		 	else{
+		 ?>
+        <table width="100%" class="footable table-hover" data-page-size="7">
+      		<thead bgcolor="#B9B9B9">
 				<tr>
 					<th style="width:10%; text-align:center">Id</th>
                     <th style="width:20%; text-align:center">Nombre</th>
-                    <th style="width:25%; text-align:center">Estado</th>
+                    <th style="width:25%; text-align:center">Descripción</th>
                     <th style="width:15%; text-align:center">Editar</th>
                     <th style="width:15%; text-align:center">Eliminar</th>
                     <th style="width:15%; text-align:center">Ver</th>  
 				</tr>
 			</thead>
-            <tbody>
-            	<tr>
-				<?php
-					if($regPo>1){
-						$j=0;
-						while($j<$regPo){ ?>
-                        	<td style="text-align:center"> <?php echo $politicas->return[$j]->id?></td>
-                            <td> <?php echo $politicas->return[$j]->nombre ?></td>
-                            <td> <?php echo $politicas->return[$j]->estado ?></td>
-                            <?php 	echo '<td style="text-align:center" width="15%"><a href="../pages/editarPolitica.php?id='.$politicas->return[$j]->id.'"><button class="btn">Editar</button></td>';
-									echo '<td style="text-align:center" width="15%"><a href="../pages/eliminarPolitica.php?id='.$politicas->return[$j]->id.'"><button class="btn">Eliminar</button></td>';
-									echo '<td style="text-align:center" width="15%"><a href="../pages/verPolitica.php?id='.$politicas->return[$j]->id.'"><button class="btn">Ver</button></td>';?>
-                </tr>                
-                <?php
-							$j++;
-						}
-					}else{?>
-							<td style="text-align:center"> <?php echo $politicas->return->id ?></td>
-                            <td> <?php echo $politicas->return->nombre ?></td> 
-                            <td> <?php echo $politicas->return->estado ?></td>
-                            <?php 	echo '<td style="text-align:center" width="15%"><a href="../pages/editarPolitica.php?id='.$politicas->return->id.'"><button class="btn">Editar</button></td>';
-									echo '<td style="text-align:center" width="15%"><a href="../pages/eliminarPolitica.php?id='.$politicas->return->id.'"><button class="btn">Eliminar</button></td>';
-									echo '<td style="text-align:center" width="15%"><a href="../pages/verPolitica.php?id='.$politicas->return->id.'"><button class="btn">Ver</button></td>';?>
-               </tr>
-			<?php		 
-					}
-			}else{?>
-				<div class="well well-small alert alert-block" align="center">
-   					<h2 style="color:#666">Atención</h2>
-    				<h4 align="center"> No hay Politicas en el sistema </h4>
-   			    </div> 
-			<?php
+  <tbody>
+      <?php
+	  if(count($resultadoListaPolitica->return)>1){   
+		for ($i=0;$i<count($resultadoListaPolitica->return);$i++){
+			echo '<tr>';
+			echo '<td style="text-align:center" width="10%">'.$resultadoListaPolitica->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaPolitica->return[$i]->nombre.'</td>';
+			echo '<td width="25%">'.$resultadoListaPolitica->return[$i]->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/editarPolitica.php?id='.$resultadoListaPolitica->return[$i]->id.'"><button class="btn">Editar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/eliminarPolitica.php?id='.$resultadoListaPolitica->return[$i]->id.'"><button class="btn">Eliminar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/verPolitica.php?id='.$resultadoListaPolitica->return[$i]->id.'"><button class="btn">Ver</button></td>';
+			echo '</tr>';
 			}
-			?>
-            </tbody>
-      </table>
+	  }
+	  else{
+		  	echo '<tr>';
+			echo '<td style="text-align:center" width="10%">'.$resultadoListaPolitica->return->id.'</td>';
+			echo '<td width="20%">'.$resultadoListaPolitica->return->nombre.'</td>';
+			echo '<td width="25%">'.$resultadoListaPolitica->return->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/editarPolitica.php?id='.$resultadoListaPolitica->return->id.'"><button class="btn">Editar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/eliminarPolitica.php?id='.$resultadoListaPolitica->return->id.'"><button class="btn">Eliminar</button></td>';
+			echo '<td style="text-align:center" width="15%"><a href="../pages/verPolitica.php?id='.$resultadoListaPolitica->return->id.'"><button class="btn">Ver</button></td>';
+			echo '</tr>';
+		  
+		  }
+		?>
+		</tbody>	
+	</table>
 	<ul id="pagination" class="footable-nav"><span>Pag:</span></ul>
+	<?php }?>
     </div>
- </div>
-</div>
-</body>
 
 <script src="../js/footable.js" type="text/javascript"></script>
 <script src="../js/footable.paginate.js" type="text/javascript"></script>
@@ -131,4 +130,6 @@
       $('table').footable();
     });
   </script>
+
+</body>
 </html>

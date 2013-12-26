@@ -67,7 +67,7 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($resultadoListaSkin->return)){
+	   	if(!isset($rowSkin->return)){
 	   ?>
        		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
@@ -88,20 +88,20 @@
 			</thead>
   <tbody>
       <?php
-	  if(count($resultadoListaSkin->return)>1){   
-		for ($i=0;$i<count($resultadoListaSkin->return);$i++){
+	  if(count($rowSkin->return)>1){   
+		for ($i=0;$i<count($rowSkin->return);$i++){
 			echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$resultadoListaSkin->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaSkin->return[$i]->nombre.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaSkin->return[$i]->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowSkin->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$rowSkin->return[$i]->nombre.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowSkin->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$resultadoListaSkin->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaSkin->return->nombre.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaSkin->return->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowSkin->return->id.'</td>';
+			echo '<td width="20%">'.$rowSkin->return->nombre.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowSkin->return->id.'></td>';
 			echo '</tr>';
 		  
 		  }

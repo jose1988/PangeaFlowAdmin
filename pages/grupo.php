@@ -7,11 +7,10 @@
 	$client = new SOAPClient($wsdl_url);	
     $client->decode_utf8 = false;
 	
-	$estadoGrupo = array('borrado' => '0');
-	
-	$resultadoListaGrupo = $client->listarGruposByBorrado($estadoGrupo);
-	
+	$estadoGrupo = array('borrado' => '0');	
+	$resultadoListaGrupo = $client->listarGruposByBorrado($estadoGrupo);	
 	include("../views/grupo.php");
+	
 } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
 	iraURL('../pages/index.php');

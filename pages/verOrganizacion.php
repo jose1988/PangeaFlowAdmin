@@ -1,5 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-	require_once("../lib/nusoap.php");
+ try {
+  include("../lib/funciones.php");
+  require_once('../lib/nusoap.php');
+  
+   if(!isset($_GET['id'])){
+	   iraURL('../pages/organizacion.php');
+   }
+   
   	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';	
 	$client = new SOAPClient($wsdl_url);	
     $client->decode_utf8 = false;
@@ -13,13 +21,16 @@
 	
 	$resultadoBuscarOrganizacion = $client->buscarOrganizacion($idO);
 	
-	/*if(!isset($resultadoBuscarOrganizacion->return)){
-		$organizacion = "Organización No encontrado";
-	}else{
-		$organizacion = $resultadoBuscarOrganizacion->return;
-	}*/
-	
-	//print_r($organizacion);
+	if(!isset($resultadoBuscarOrganizacion->return)){
+		javaalert('No existe el registro de organización');
+	    iraURL('../pages/organizacion.php');	
+	}		
 	
 	include("../views/verOrganizacion.php");
+	
+	} catch (Exception $e) {
+		
+		javaalert('Lo sentimos no hay conexión');
+		iraURL('../pages/index.php');	
+	}
 ?>

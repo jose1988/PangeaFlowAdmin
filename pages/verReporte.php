@@ -1,4 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
+ try {
+  include("../lib/funciones.php");
+  require_once('../lib/nusoap.php');
+  
+   if(!isset($_GET['id'])){
+	   iraURL('../pages/reporte.php');
+   }
+   
 	require_once("../lib/nusoap.php");
   	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';	
 	$client = new SOAPClient($wsdl_url);	
@@ -13,13 +22,16 @@
 	
 	$resultadoBuscarReporte = $client->buscarReporte($idR);
 	
-	/*if(!isset($resultadoBuscarReporte->return)){
-		$reporte = "Reporte No encontrado";
-	}else{
-		$reporte = $resultadoBuscarReporte->return->nombre;
-	}*/
-	
-	//print_r($reporte);
+	if(!isset($resultadoBuscarReporte->return)){
+		javaalert('No existe el registro de reporte');
+	    iraURL('../pages/reporte.php');	
+	}		
 	
 	include("../views/verReporte.php");
+	
+	} catch (Exception $e) {
+		
+		javaalert('Lo sentimos no hay conexión');
+		iraURL('../pages/index.php');	
+	}
 ?>

@@ -1,7 +1,9 @@
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <?php
-	require_once("../lib/nusoap.php");
-	require_once("../lib/funciones.php");
-	
+  try {
+  	include("../lib/funciones.php");
+  	require_once('../lib/nusoap.php'); 
+  	
 	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
 	$client = new SOAPClient($wsdl_url);
     $client->decode_utf8 = false;
@@ -15,13 +17,18 @@
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["ciudad"]) && $_POST["ciudad"]!="" && 
 			isset($_POST["estado"]) && $_POST["estado"]!=""){
 			
-			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
-  			$client = new SOAPClient($wsdl_url);
- 			$client->decode_utf8 = false;
-			$rowOrganizacion=$client->listarOrganizacion();			
-			$nombre= array('nombreOrganizacion' => $_REQUEST['nombre']);
-			$rowOrganizacion = $client->consultarOrganizacionXNombre($nombre);
-	
+			try{
+				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
+  				$client = new SOAPClient($wsdl_url);
+ 				$client->decode_utf8 = false;
+				$rowOrganizacion=$client->listarOrganizacion();			
+				$nombre= array('nombreOrganizacion' => $_REQUEST['nombre']);
+				$rowOrganizacion = $client->consultarOrganizacionXNombre($nombre);
+			
+			} catch (Exception $e) {
+				javaalert('Lo sentimos no hay conexión');
+				iraURL('../pages/index.php');
+			}	
 			
 			if(!isset($rowOrganizacion->return)){
 				
@@ -90,12 +97,18 @@
 						'estado' => $_POST["estado"],
 						'borrado' => $borrado,
 						'idOrganizacionPadre' => $organizacionPadre);
-				
-					$registroOrganizacion= array('registroOrganizacion' => $organizacion);
-					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
-					$client = new SOAPClient($wsdl_url);
-    				$client->decode_utf8 = false;
-					$client->insertarOrganizacion($registroOrganizacion);
+					
+					try{
+						$registroOrganizacion= array('registroOrganizacion' => $organizacion);
+						$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
+						$client = new SOAPClient($wsdl_url);
+    					$client->decode_utf8 = false;
+						$client->insertarOrganizacion($registroOrganizacion);
+					
+					} catch (Exception $e) {
+						javaalert('Lo sentimos no hay conexión');
+						iraURL('../pages/index.php');
+					}
 			
 					javaalert("Organización creada");			
 					if(isset($_POST["crear_uno"])){
@@ -114,4 +127,9 @@
 		}
 	}
 	include("../views/crearOrganizacion.php");
+	
+} catch (Exception $e) {
+	javaalert('Lo sentimos no hay conexión');
+	iraURL('../pages/index.php');	
+}
 ?>

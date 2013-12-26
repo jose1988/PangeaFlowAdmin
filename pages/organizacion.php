@@ -7,11 +7,10 @@
 	$client = new SOAPClient($wsdl_url);	
     $client->decode_utf8 = false;
 	
-	$estadoOrganizacion = array('borrado' => '0');
-	
-	$resultadoListaOrganizacion = $client->listarOrganizacionByBorrado($estadoOrganizacion);
-	
+	$estadoOrganizacion = array('borrado' => '0');	
+	$resultadoListaOrganizacion = $client->listarOrganizacionByBorrado($estadoOrganizacion);	
 	include("../views/organizacion.php");
+	
 } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
 	iraURL('../pages/index.php');

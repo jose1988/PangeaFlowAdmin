@@ -1,35 +1,47 @@
 <?php
-	try{
+    try{
 		require_once("../lib/nusoap.php");
 		require_once("../lib/funciones.php");
   		$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';	
 		$client = new SOAPClient($wsdl_url);	
     	$client->decode_utf8 = false;
-	
-		$estadoGrupo = array('borrado' => '1');	
-		$resultadoListaGrupo = $client->listarGruposByBorrado($estadoGrupo);
-	
-		include("../views/restaurarGrupo.php");
-	
-	} catch (Exception $e) {
-		javaalert('Lo sentimos no hay conexión');
-		iraURL('../pages/index.php');		
-	}
-	
+		$estadoBorrado = array('borrado' => '1');	
+		$rowGrupo = $client->listarGruposByBorrado($estadoBorrado);
+		
 	if(isset($_POST["habilitar"]) && isset($_POST["ide"])){
 		try{
-			$rowGrupo=$_POST["ide"];
-			for($j=0; $j<count($_POST["ide"]); $j++){
-				echo $rowGrupo[$j];
-				$idG = array('idGrupo' => $rowGrupo[$j]);
-				$resultadoRestaurarGrupo = $client->restaurarGrupo($idG);
-			}
+			$eliminadosGrupo=$_POST["ide"];
+			$contadorEliminados=0;
 			
+			if(count($eliminadosGrupo)==1){
+			   	$idGrupo = array('idGrupo' => $eliminadosGrupo);
+				$client->restaurarGrupo($idGrupo);
+			}else{
+				for($j=0; $j<count($rowGrupo->return); $j++){
+					if(isset($eliminadosGrupo[$j])){
+			    		$idGrupo = array('idGrupo' => $eliminadosGrupo[$j]);
+						$client->restaurarGrupo($idGrupo);
+						$contadorEliminados++;
+					}
+					if($contadorEliminados==count($eliminadosGrupo)){
+						break;
+					}
+				}
+			}
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');
 			iraURL('../pages/index.php');
 		}
-		javaalert("El registro ha sido habilitado");
-		//iraURL('../pages/grupo.php');
+		javaalert("Los registros han sido habilitados");
+		iraURL('../pages/grupo.php');
+		
+	}elseif(isset($_POST["habilitar"])){
+		javaalert("Debe seleccionar al menos un registro");
+	}
+		include("../views/restaurarGrupo.php");
+
+	} catch (Exception $e) {
+		javaalert('Lo sentimos no hay conexión');
+		iraURL('../pages/index.php');		
 	}
 ?>

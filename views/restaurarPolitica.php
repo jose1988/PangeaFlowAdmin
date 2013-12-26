@@ -66,7 +66,7 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($resultadoListaPolitica->return)){
+	   	if(!isset($rowPolitica->return)){
 	   ?>
        		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
@@ -85,22 +85,22 @@
 			</thead>
   <tbody>
       <?php
-	  if(count($resultadoListaPolitica->return)>1){   
-		for ($i=0;$i<count($resultadoListaPolitica->return);$i++){
+	  if(count($rowPolitica->return)>1){   
+		for ($i=0;$i<count($rowPolitica->return);$i++){
 			echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$resultadoListaPolitica->return[$i]->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaPolitica->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaPolitica->return[$i]->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$resultadoListaPolitica->return[$i]->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowPolitica->return[$i]->id.'</td>';
+			echo '<td width="20%">'.$rowPolitica->return[$i]->nombre.'</td>';
+			echo '<td width="25%">'.$rowPolitica->return[$i]->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowPolitica->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
 	  }
 	  else{
 		  	echo '<tr>';
-			echo '<td style="text-align:center" width="10%">'.$resultadoListaPolitica->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoListaPolitica->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoListaPolitica->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$resultadoListaPolitica->return->id.'></td>';
+			echo '<td style="text-align:center" width="10%">'.$rowPolitica->return->id.'</td>';
+			echo '<td width="20%">'.$rowPolitica->return->nombre.'</td>';
+			echo '<td width="25%">'.$rowPolitica->return->descripcion.'</td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowPolitica->return->id.'></td>';
 			echo '</tr>';
 		  }
 		?>

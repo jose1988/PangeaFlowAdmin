@@ -1,19 +1,31 @@
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <?php
-	require_once("../lib/nusoap.php");
-	require_once("../lib/funciones.php");
+  try {
+  	include("../lib/funciones.php");
+  	require_once('../lib/nusoap.php');
+  
+  	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';
+	$client = new SOAPClient($wsdl_url);	
+    $client->decode_utf8 = false;
 	
 	if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 		
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && 
 			isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
 			isset($_POST["url"]) && $_POST["url"]!="" ){
-				
-			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';
-  			$client = new SOAPClient($wsdl_url);
- 			$client->decode_utf8 = false;
-			$rowReporte=$client->listarReporte();			
-			$nombre= array('nombreReporte' => $_REQUEST['nombre']);
-			$rowReporte = $client->consultarReporteXNombre($nombre);
+			
+			try{	
+				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';
+  				$client = new SOAPClient($wsdl_url);
+ 				$client->decode_utf8 = false;
+				$rowReporte=$client->listarReporte();			
+				$nombre= array('nombreReporte' => $_REQUEST['nombre']);
+				$rowReporte = $client->consultarReporteXNombre($nombre);
+			
+			} catch (Exception $e) {
+				javaalert('Lo sentimos no hay conexión');
+				iraURL('../pages/index.php');
+			}
 			
 			if(!isset($rowReporte->return)){
 				
@@ -29,11 +41,17 @@
 					'url' => $_POST["url"],
 					'borrado' => $borrado);
 				
-				$registroReporte= array('registroReporte' => $reporte);
-				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';
-				$client = new SOAPClient($wsdl_url);
-    			$client->decode_utf8 = false;
-				$client->insertarReporte($registroReporte);
+				try{
+					$registroReporte= array('registroReporte' => $reporte);
+					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';
+					$client = new SOAPClient($wsdl_url);
+    				$client->decode_utf8 = false;
+					$client->insertarReporte($registroReporte);
+				
+				} catch (Exception $e) {
+					javaalert('Lo sentimos no hay conexión');
+					iraURL('../pages/index.php');
+				}
 			
 				javaalert("Reporte creado");			
 				if(isset($_POST["crear_uno"])){
@@ -52,4 +70,9 @@
 		}
 	}
 	include("../views/crearReporte.php");
+	
+} catch (Exception $e) {
+	javaalert('Lo sentimos no hay conexión');
+	iraURL('../pages/index.php');	
+}
 ?>

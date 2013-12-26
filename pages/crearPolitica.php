@@ -1,6 +1,8 @@
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <?php
-	require_once("../lib/nusoap.php");
-	require_once("../lib/funciones.php");
+  try {
+  	include("../lib/funciones.php");
+  	require_once('../lib/nusoap.php');
 	
 	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDepolitica?wsdl';
 	$client = new SOAPClient($wsdl_url);	
@@ -11,11 +13,17 @@
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
 			isset($_POST["implementacion"]) && $_POST["implementacion"]!="" && isset($_POST["estado"]) && $_POST["estado"]!=""){
 				
-			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDepolitica?WSDL';
-			$client = new SOAPClient($wsdl_url);
-			$client->decode_utf8 = false; 
-			$nombre= array('nombrePolitica' => $_REQUEST['nombre']);
-			$rowPolitica = $client->consultarPoliticaXNombre($nombre);
+			try{	
+				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDepolitica?WSDL';
+				$client = new SOAPClient($wsdl_url);
+				$client->decode_utf8 = false; 
+				$nombre= array('nombrePolitica' => $_REQUEST['nombre']);
+				$rowPolitica = $client->consultarPoliticaXNombre($nombre);
+			
+			} catch (Exception $e) {
+				javaalert('Lo sentimos no hay conexión');
+				iraURL('../pages/index.php');
+			}
 			
 			if(!isset($rowPolitica->return)){
 						
@@ -38,8 +46,17 @@
 					'estado' => $_POST["estado"],
 					'borrado' => $borrado);
 				
-				$registroPolitica= array('registroPolitica' => $politica);  			   
-				$client->insertarPolitica($registroPolitica);
+				try{
+					$registroPolitica= array('registroPolitica' => $politica); 
+					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDepolitica?WSDL';
+					$client = new SOAPClient($wsdl_url);
+					$client->decode_utf8 = false; 			   
+					$client->insertarPolitica($registroPolitica);
+				
+				} catch (Exception $e) {
+					javaalert('Lo sentimos no hay conexión');
+					iraURL('../pages/index.php');
+				}
 				
 				javaalert("Politica creada");
 				if(isset($_POST["crear_uno"])){
@@ -58,5 +75,10 @@
 		}
 	  }
 	  
-	include("../views/crearPolitica.php");	
+	include("../views/crearPolitica.php");
+		
+} catch (Exception $e) {
+	javaalert('Lo sentimos no hay conexión');
+	iraURL('../pages/index.php');	
+}
 ?>
