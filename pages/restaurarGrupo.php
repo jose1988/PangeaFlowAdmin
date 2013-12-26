@@ -20,7 +20,7 @@
 		try{
 			$rowGrupo=$_POST["ide"];
 			for($j=0; $j<count($_POST["ide"]); $j++){
-				
+				echo $rowGrupo[$j];
 				$idG = array('idGrupo' => $rowGrupo[$j]);
 				$resultadoRestaurarGrupo = $client->restaurarGrupo($idG);
 			}
@@ -30,6 +30,6 @@
 			iraURL('../pages/index.php');
 		}
 		javaalert("El registro ha sido habilitado");
-		iraURL('../pages/grupo.php');
+		//iraURL('../pages/grupo.php');
 	}
 ?>
