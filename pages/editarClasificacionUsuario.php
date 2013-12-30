@@ -4,31 +4,32 @@
   include("../lib/funciones.php");
   require_once('../lib/nusoap.php'); 
   if(!isset($_GET['id'])){
-    iraURL('../pages/clasificacionRol.php');
+    iraURL('../pages/clasificacionUsuario.php');
    }
-  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeClasificacion_rol?WSDL';
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeClasificacion_usuario?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 
-  $idClasiRol= array('idClasifRol' => $_GET['id']);
-  $rowClasificacionRol = $client->consultarClasifRol($idClasiRol);
-		if(!isset($rowClasificacionRol->return)){
-				javaalert('No existe el registro de clasificación de rol');
-	            iraURL('../pages/clasificacionRol.php');	
+  $idClasiUsuario= array('idClaUsu' => $_GET['id']);
+  $rowClasificacionUsuario = $client->consultarClasificacionUsuario($idClasiUsuario);
+		if(!isset($rowClasificacionUsuario->return)){
+				javaalert('No existe el registro de clasificación de usuario');
+	            iraURL('../pages/clasificacionUsuario.php');	
 		}
  
 if(isset($_POST["modificar"])){
-	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" ){		
-			  if($_POST["nombre"]!=$rowClasificacionRol->return->nombre){
+	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" ){
+	
+			  if($_POST["nombre"]!=$rowClasificacionUsuario->return->nombre){
 			  try {
 				$Nombre= array('Nombre' => $_POST['nombre']);
-				$rowClasifRol = $client->consultarClasifRolXNombre($Nombre);
+				$rowClasifUsuario = $client->consultarClasifUsuarioXNombre($Nombre);
 				}catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
 					iraURL('../views/index.php');
 					}	
 			  }  
 				
-			if(!isset($rowClasifRol->return)){
+			if(!isset($rowClasifUsuario->return)){
 			 if(isset($_POST["borrado"])){
 			 $borrado="0";
 			 }else{
@@ -39,9 +40,9 @@ if(isset($_POST["modificar"])){
 			 }else{
 			 $descripcion=$_POST["descripcion"];
 			 }
-			  $registroClasifRol= 
+			  $registroClasifUsuario= 
 			  array(
-			  'id'=>$rowClasificacionRol->return->id,
+			  'id'=>$rowClasificacionUsuario->return->id,
 			  'nombre' => $_POST["nombre"],
 			  	'descripcion' => $descripcion,
 				'fechaCreacion'=>date("Y-m-d"),
@@ -49,13 +50,13 @@ if(isset($_POST["modificar"])){
 				'borrado' => $borrado);
 			
 				  try {
-				$registroClaRol= array('registroClaRol' => $registroClasifRol);	
-				$client->editarClasificacionRol($registroClaRol);
+				$registroClaUsuario= array('registroClaUsuario' => $registroClasifUsuario);	
+				$client->editarClasificacionUsuario($registroClaUsuario);
 					} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
 					iraURL('../views/index.php');
 					}			
-			iraURL('../pages/clasificacionRol.php');		
+			iraURL('../pages/clasificacionUsuario.php');		
 			}else{
 			javaalert("El nombre ya existe, por favor verifique");
 			}			
@@ -63,7 +64,7 @@ if(isset($_POST["modificar"])){
 			javaalert("Debe agregar todos los campos obligatorios, por favor verifique");
 		}
 	  } 	
-  include("../views/editarClasificacionRol.php");
+  include("../views/editarClasificacionUsuario.php");
   } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
 	iraURL('../views/index.php');	

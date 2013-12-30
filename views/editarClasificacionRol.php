@@ -85,7 +85,7 @@
 				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50"  value="<?php echo $descripcion; ?>" ></td>
 			 </tr>
 			 <th width="40%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" value="<?php echo $rowRol->return->borrado; ?>"> </td>
+				 <td><input type="checkbox" name="borrado" id="borrado"  checked> </td>
 			 </tr>
 	</table><br>
      <div class="col-md-9" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>

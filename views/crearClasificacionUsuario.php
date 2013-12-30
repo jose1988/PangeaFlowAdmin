@@ -72,7 +72,7 @@
 		 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Usuario que realiza mantenimiento " required="required"></td>
+				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Usuario que realiza mantenimiento " ></td>
 			 </tr>
 			 <th width="40%">Habilitado</th>
 				 <td><input type="checkbox" name="borrado" id="borrado" title="si no presiona estara deshabilitado"> </td>

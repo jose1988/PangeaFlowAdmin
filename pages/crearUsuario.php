@@ -38,7 +38,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 					iraURL('../views/index.php');
 					}		
 			if(!isset($rowNombreUsuario->return)){				
-			 if(!isset($_POST["borrado"])){
+			 if(isset($_POST["borrado"])){
 			 $borrado="0";
 			 }else{
 			 $borrado="1";

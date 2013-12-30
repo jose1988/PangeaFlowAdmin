@@ -52,7 +52,7 @@ if(isset($_POST["modificar"])){
 					}	
 		 }		
 			if(!isset($rowNombreUsuario->return)){				
-			 if(!isset($_POST["borrado"])){
+			 if(isset($_POST["borrado"])){
 			 $borrado="0";
 			 }else{
 			 $borrado="1";

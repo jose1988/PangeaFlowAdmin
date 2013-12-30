@@ -216,7 +216,7 @@
 			 
 			 <tr>
 			 <th width="70%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" value="<?php echo $rowUsuario->return->borrado; ?>"> </td>
+				<td><input type="checkbox" name="borrado" id="borrado"  checked> </td>
 			 </tr>
 	</table><br>
      <div class="col-md-9" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>
