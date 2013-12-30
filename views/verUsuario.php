@@ -11,11 +11,7 @@
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-    
-   	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
-	
+
 </head>
 
 <body>
@@ -200,6 +196,10 @@
 			}
 			echo '</tr>';
 			echo '<tr>';
+			echo '<th width="40%">Fecha de Creación</th>';
+			echo '<td>'. substr($rowUsuario->return->fechaCreacion,0,10).'</td>';
+			echo '</tr>';
+			echo '<tr>';
 			echo '<th width="40%">Estado</th>';
 			if(!isset($rowUsuario->return->estado)){
 				echo '<td> </td>';
@@ -209,7 +209,7 @@
 			}
 			echo '</tr>';
 			echo '<tr>';
-			echo '<th width="40%">Nombre de usuario</th>';
+			echo '<th width="40%">Nombre de Usuario</th>';
 			echo '<td>'.$rowUsuario->return->id.'</td>';
 			echo '</tr>';
 			echo '<tr>';
@@ -242,32 +242,17 @@
 		
 			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
-			if(!isset($rowUsuario->return->borrado)){
-				echo '<td> </td>';
-			}
-			else{
 				if($rowUsuario->return->borrado==1){
-					echo '<td>TRUE</td>';
+					echo '<td>Deshabilitado</td>';
 				}
 				else{
-					echo '<td>FALSE</td>';	
+					echo '<td>Habilitado</td>';	
 				}
-			}
 			echo '</tr>';
 		?>	
 	</table>
 	<?php }?>    
     </div>    
 
-
-<script src="../js/footable.js" type="text/javascript"></script>
-<script src="../js/footable.paginate.js" type="text/javascript"></script>
-<script src="../js/footable.sortable.js" type="text/javascript"></script>
- 
-  <script type="text/javascript">
-    $(function() {
-      	$('table').footable();
-    });
-  </script>
   </body>
 </html>

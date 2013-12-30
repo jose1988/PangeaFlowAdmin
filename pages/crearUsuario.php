@@ -68,11 +68,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 			 }else{
 			 $oficina=$_POST["oficina"];
 			 }
-			 if(!isset($_POST["correo"])){
-			 $correo="";
-			 }else{
-			 $correo=$_POST["correo"];
-			 }
+			 
 			 if(!isset($_POST["fax"])){
 			 $fax="";
 			 }else{
@@ -83,50 +79,60 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 			 }else{
 			 $descripcion=$_POST["descripcion"];
 			 }
-			 
-			 $Skin= array('id' => '1','borrado'=>'0');
-		     $Oganizacion= array('id' =>$_POST["organizacion"],'borrado'=>'0');
-		   	$clasificacionUsuario= array('id' =>$_POST["clasificacion"],'borrado'=>'0');
-			  $Usuario= 
-			  array(
-			  'id'=>$_POST['usuario'],
-			  'clave' => $_POST['contrasena'],				
-			  'primerNombre' => $_POST["primernombre"],
-			  'segundoNombre' => $segundonombre,
-			  'primerApellido' => $_POST["primerapellido"],
-			  'segundoApellido' => $segundoapellido,			  
-				'cedula' => $_POST["cedula"],
-				'rif' => $rif,
-				'telefonosPersonal' => $personal,
-				'telefonosOficina' => $oficina,
-				'mail' => $correo,
-				'fax' => $fax,
-				'direccionPersonal' => $_POST["direccionp"],
-				'direccionOficina' => $_POST["direcciono"],
-				'descripcion' => $descripcion,
-				'estado' => $_POST["estado"],
-				'fechaCreacion'=>'10-10-13',
-				'fechaActualizacionClave'=>'10-10-13',
-				'borrado' => $borrado,
-				'diasValidezClave'=>'10',
-				'idSkin'=>$Skin,
-				'idOrganizacion'=>$Oganizacion,
-				'idClasificacionUsuario'=>$clasificacionUsuario);
-				$registroUsu= array('registroUsuario' => $Usuario);				
-				try {
-			    $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
-  			   	$client = new SOAPClient($wsdl_url);
- 			    $client->decode_utf8 = false; 
-				$client->insertarUsuario($registroUsu);
-				} catch (Exception $e) {
-					javaalert('Lo sentimos no hay conexión');
-					iraURL('../views/index.php');
-					}
-				if(isset($_POST["crear_uno"])){
-						iraURL('../pages/usuario.php');		
-						}else{
-						iraURL('../pages/crearUsuario.php');	
+			 if(!isset($_POST["correo"])){
+			 $correo="";
+			 }else{
+			 if(preg_match('{^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$}',$_POST["correo"])){						
+						$correo=$_POST["correo"];
+						$Skin= array('id' => '1','borrado'=>'0');
+						  $Oganizacion= array('id' =>$_POST["organizacion"],'borrado'=>'0');
+						  $clasificacionUsuario= array('id' =>$_POST["clasificacion"],'borrado'=>'0');
+						  $Usuario= 
+						  array(
+						  'id'=>$_POST['usuario'],
+						  'clave' => $_POST['contrasena'],				
+						  'primerNombre' => $_POST["primernombre"],
+						  'segundoNombre' => $segundonombre,
+						  'primerApellido' => $_POST["primerapellido"],
+						  'segundoApellido' => $segundoapellido,			  
+							'cedula' => $_POST["cedula"],
+							'rif' => $rif,
+							'telefonosPersonal' => $personal,
+							'telefonosOficina' => $oficina,
+							'mail' => $correo,
+							'fax' => $fax,
+							'direccionPersonal' => $_POST["direccionp"],
+							'direccionOficina' => $_POST["direcciono"],
+							'descripcion' => $descripcion,
+							'estado' => $_POST["estado"],
+							'fechaCreacion'=>'10-10-13',
+							'fechaActualizacionClave'=>'10-10-13',
+							'borrado' => $borrado,
+							'diasValidezClave'=>'10',
+							'idSkin'=>$Skin,
+							'idOrganizacion'=>$Oganizacion,
+							'idClasificacionUsuario'=>$clasificacionUsuario);
+							$registroUsu= array('registroUsuario' => $Usuario);				
+							try {
+							$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
+							$client = new SOAPClient($wsdl_url);
+							$client->decode_utf8 = false; 
+							$client->insertarUsuario($registroUsu);
+							if(isset($_POST["crear_uno"])){
+								iraURL('../pages/usuario.php');		
+								}else{
+								iraURL('../pages/crearUsuario.php');	
 							}	
+							} catch (Exception $e) {
+								javaalert('Lo sentimos no hay conexión');
+								iraURL('../views/index.php');
+								}
+									}
+						else{
+							javaalert("El formato del correo es incorrecto, por favor verifique");
+						
+						}
+			 }	
 		}else{
 				javaalert('El nombre de usuario ya existe , por favor verifique');
 				} 				

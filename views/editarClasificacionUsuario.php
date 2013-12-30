@@ -72,7 +72,7 @@
 	   	<div class="col-md-2">
         </div>
          <div class="col-md-4">  
-         <form method="POST">    
+         <form method="POST" id="formulario">    
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
@@ -97,12 +97,13 @@
 <script type="text/javascript" src="../js/jquery-2.0.3.js" ></script> 
  
 <script type="text/javascript">
+var nombreTiene=document.forms.formulario.nombre.value;
  $(document).ready(function() {
  <!-- Codigo para verificar si el nombre del Rol ya existe --> 
    $('#nombre').blur(function(){
-	   if($(this).val()!=""){
+	   if($(this).val()!="" && $(this).val()!=nombreTiene){
 		           $('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
-		   }
+		   
         var nombre = $(this).val();        
         var dataString = 'nombre='+nombre;
         $.ajax({
@@ -112,7 +113,8 @@
             success: function(data) {
                 $('#Info').fadeIn(1000).html(data);
             }
-        });     
+        });  
+      }		
  });
  });
  

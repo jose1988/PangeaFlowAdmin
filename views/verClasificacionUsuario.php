@@ -93,6 +93,18 @@
 			}
 			echo '</tr>';
 			echo '<tr>';
+			echo '<th width="40%">Fecha de Creación</th>';
+			echo '<td>'.substr($rowClasificacionUsuario->return->fechaCreacion,0,10).'</td>';
+			echo '</tr>';
+			echo '<tr>';
+			echo '<th width="40%">Última Modificación</th>';
+			if(isset($rowClasificacionUsuario->return->fechaModificacion)){
+			echo '<td>'.substr($rowClasificacionUsuario->return->fechaModificacion,0,10).'</td>';
+			}else{
+			echo '<td>No se modificado</td>';
+			}
+			echo '</tr>';
+			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
 			if(!isset($rowClasificacionUsuario->return->borrado)){
 				echo'<td> </td>';

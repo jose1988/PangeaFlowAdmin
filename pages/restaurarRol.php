@@ -13,6 +13,11 @@
 			$contadorEliminados=0;
 			//echo '<pre>'; print_r($eliminadosRol) ;
 			if(count($eliminadosRol)==1){
+			if(isset($eliminadosRol[0])){
+			$idRol = array('idRol' => $eliminadosRol[0]);
+			 } else{
+			$idRol = array('idRol' => $eliminadosRol);
+			 }
 			   $idRol = array('idRol' => $eliminadosRol);
 				$client->restaurarRol($idRol);
 			}else{

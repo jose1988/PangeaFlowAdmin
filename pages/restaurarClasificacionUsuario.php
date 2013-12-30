@@ -12,7 +12,11 @@
 			$registrosAEliminar=$_POST["ide"];
 			$contadorEliminados=0;
 			if(count($registrosAEliminar)==1){
-			   $idClasifUsuario = array('idClaUsu' => $registrosAEliminar);
+			   if(isset($registrosAEliminar[0])){
+			  $idClasifUsuario = array('idClaUsu' => $registrosAEliminar[0]);
+			 } else{
+			  $idClasifUsuario = array('idClaUsu' => $registrosAEliminar);
+			 }
 				$client->restaurarClasificacionUsuario($idClasifUsuario);
 			}else{
 			for($j=0; $j<count($rowClasifUsuario->return); $j++){

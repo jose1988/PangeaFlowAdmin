@@ -75,7 +75,7 @@
 	}else{
 	
 	?>
-		<table width="100%" class="footable table-striped table-hover" data-page-size="5">
+		<table width="100%" class="footable table-hover" data-page-size="5">
       <thead>
 				<tr>
 				  <th data-class="expand" data-sort-initial="true" data-type="numeric">

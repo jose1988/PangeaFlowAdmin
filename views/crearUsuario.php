@@ -96,7 +96,10 @@
 				 <td><input type="text" name="oficina" id="oficina" maxlength="19" size="30" title="Ingrese un teléfono de oficina" placeholder="Ej. 0212-4563789" ></td>		
 			 </tr>
 			 <th width="70%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" title="Ingrese un correo" placeholder="Ej. juanvillamizar@gmail.com" ></td>		
+				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" title="Ingrese un correo" placeholder="Ej. juanvillamizar@gmail.com">
+				 <div id="Info2" style="float:right"></div>
+				 </td>		
+			 	
 			 </tr>
 			 <th width="70%">Fax</th>
 				 <td><input type="text" name="fax" id="fax" maxlength="19" size="30" title="Ingrese un número de fax" placeholder="Ej. 0212-4563789" ></td>		
@@ -161,7 +164,7 @@
 			 </tr>
 			 <tr>
 			 <th width="70%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" title="si no presiona estara deshabilitado"> </td>
+				 <td><input type="checkbox" name="borrado" id="borrado" title="si no esta seleccionado estara deshabilitado" checked> </td>
 			 </tr>
 	</table><br>
      <div class="col-md-9" align="center"><button class="btn" id="crear_uno" name="crear_uno" type="submit">Guardar</button></div>
@@ -245,7 +248,22 @@
             }
         });
     });  
- 
+ <!-- Codigo para verificar si el Correo lleva el formato correcto --> 
+		$('#correo').blur(function(){
+			if($(this).val()!=""){
+				$('#Info2').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			}
+			var correo = $(this).val();
+        	var dataString = 'correo='+correo;
+        	$.ajax({
+            	type: "POST",
+            	url: "../ajax/chequeoCorreo.php",
+            	data: dataString,
+            	success: function(data) {
+                	$('#Info2').fadeIn(1000).html(data);
+            	}
+        	});     
+ 		});	
 });
 
  <!-- Codigo para verificar la fortaleza de la contraseña --> 

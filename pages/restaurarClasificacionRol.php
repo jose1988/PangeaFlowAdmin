@@ -12,7 +12,11 @@
 			$registrosAEliminar=$_POST["ide"];
 			$contadorEliminados=0;
 			if(count($registrosAEliminar)==1){
-			   $idClasifRol = array('idClasifRol' => $registrosAEliminar);
+			 if(isset($registrosAEliminar[0])){
+			 $idClasifRol = array('idClasifRol' => $registrosAEliminar[0]);
+			 } else{
+			 $idClasifRol = array('idClasifRol' => $registrosAEliminar);
+			 }
 				$client->restaurarClasificacionRol($idClasifRol);
 			}else{
 			for($j=0; $j<count($rowClasifRol->return); $j++){

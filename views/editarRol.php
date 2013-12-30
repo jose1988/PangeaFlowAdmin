@@ -7,10 +7,7 @@
 	
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
-	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-	 	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
+	<link href="../css/bootstrap-theme.css" rel="stylesheet"> 
 	<link href="../css/estiloVerificacionNombre.css" rel="stylesheet">
 	
 	
@@ -88,7 +85,7 @@
 	   	<div class="col-md-2">
         </div>
          <div class="col-md-5">  
-         <form method="POST">    
+         <form method="POST" id="formulario" >   		 
         <table width="100%" class="table-striped table-bordered table-condensed"> 
 			<tr>
 			 <th width="40%">Nombre</th>			
@@ -127,21 +124,21 @@
 				 <td><input type="checkbox" name="borrado" id="borrado"  checked> </td>
 			 </tr>
 	</table><br>
-     <div class="col-md-9" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>
+	     <div class="col-md-9" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>
+
 </form>  
     </div>
-<script src="../js/footable.js" type="text/javascript"></script>
-<script src="../js/footable.paginate.js" type="text/javascript"></script>
-<script src="../js/footable.sortable.js" type="text/javascript"></script>
+
 <script type="text/javascript" src="../js/jquery-2.0.3.js" ></script> 
  
 <script type="text/javascript">
+var nombreTiene=document.forms.formulario.nombre.value;
  $(document).ready(function() {
  <!-- Codigo para verificar si el nombre del Rol ya existe --> 
    $('#nombre').blur(function(){
-	   if($(this).val()!=""){
+	   if($(this).val()!="" && $(this).val()!=nombreTiene){
 		           $('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
-		   }
+		   
         var nombre = $(this).val();        
         var dataString = 'nombre='+nombre;
         $.ajax({
@@ -151,7 +148,8 @@
             success: function(data) {
                 $('#Info').fadeIn(1000).html(data);
             }
-        });     
+        });  
+   }		
  });
  });
  

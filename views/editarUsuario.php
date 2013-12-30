@@ -132,7 +132,9 @@
 				 <td><input type="text" name="oficina" id="oficina" maxlength="19" size="30" value="<?php echo $telfO; ?>" ></td>		
 			 </tr>
 			 <th width="70%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" value="<?php echo $mail; ?>" ></td>		
+				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" value="<?php echo $mail; ?>" >
+				 <div id="Info2" style="float:right"></div>
+				 </td>		
 			 </tr>
 			 <th width="70%">Fax</th>
 				 <td><input type="text" name="fax" id="fax" maxlength="19" size="30" value="<?php echo $fax; ?>" ></td>		
@@ -230,23 +232,24 @@
 <script type="text/javascript">
  $(document).ready(function() {
  
- 
+ var nombreTiene=document.forms.formulario.usuario.value;
  
  <!-- Codigo para verificar si el nombre del usuario ya existe --> 
    $('#usuario').blur(function(){
-	   if($(this).val()!=""){
+	   if($(this).val()!="" && $(this).val()!=nombreTiene){
 		           $('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
-		   }
+		   
         var nombre = $(this).val();        
         var dataString = 'nombre='+nombre;
         $.ajax({
             type: "POST",
-            url: "../ajax/chequeoNombreUsuario.php?contra="+con+"",
+            url: "../ajax/chequeoNombreUsuario.php",
             data: dataString,
             success: function(data) {
                 $('#Info').fadeIn(1000).html(data);
             }
-        });     
+        });  
+	}	
  });
  
 
@@ -299,7 +302,22 @@
             }
         });
     });  
- 
+  <!-- Codigo para verificar si el Correo lleva el formato correcto --> 
+		$('#correo').blur(function(){
+			if($(this).val()!=""){
+				$('#Info2').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			}
+			var correo = $(this).val();
+        	var dataString = 'correo='+correo;
+        	$.ajax({
+            	type: "POST",
+            	url: "../ajax/chequeoCorreo.php",
+            	data: dataString,
+            	success: function(data) {
+                	$('#Info2').fadeIn(1000).html(data);
+            	}
+        	});     
+ 		});	
 });
 
  <!-- Codigo para verificar la fortaleza de la contraseña --> 
