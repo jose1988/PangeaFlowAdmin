@@ -137,7 +137,7 @@
 				echo '<td> </td>';
 			}
 			else{
-				echo '<td>'.$resultadoBuscarGrupo->return->idOrganizacion->id.'</td>';
+				echo '<td>'.$resultadoBuscarGrupo->return->idOrganizacion->nombre.'</td>';
 			}
 			echo '</tr>';
 			echo '<tr>';

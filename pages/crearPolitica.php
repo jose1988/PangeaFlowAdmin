@@ -22,7 +22,7 @@
 			
 			} catch (Exception $e) {
 				javaalert('Lo sentimos no hay conexión');
-				iraURL('../pages/index.php');
+				iraURL('../views/index.php');
 			}
 			
 			if(!isset($rowPolitica->return)){
@@ -55,7 +55,7 @@
 				
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
-					iraURL('../pages/index.php');
+					iraURL('../views/index.php');
 				}
 				
 				javaalert("Politica creada");
@@ -79,6 +79,6 @@
 		
 } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');	
+	iraURL('../views/index.php');	
 }
 ?>

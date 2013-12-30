@@ -33,6 +33,6 @@
 	} catch (Exception $e) {
 		
 		javaalert('Lo sentimos no hay conexión');
-		iraURL('../pages/index.php');	
+		iraURL('../views/index.php');	
 	}
 ?>

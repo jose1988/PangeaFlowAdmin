@@ -27,7 +27,7 @@
 			
 			} catch (Exception $e) {
 				javaalert('Lo sentimos no hay conexión');
-				iraURL('../pages/index.php');
+				iraURL('../views/index.php');
 			}	
 			
 			if(!isset($rowOrganizacion->return)){
@@ -107,7 +107,7 @@
 					
 					} catch (Exception $e) {
 						javaalert('Lo sentimos no hay conexión');
-						iraURL('../pages/index.php');
+						iraURL('../views/index.php');
 					}
 			
 					javaalert("Organización creada");			
@@ -130,6 +130,6 @@
 	
 } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
-	iraURL('../pages/index.php');	
+	iraURL('../views/index.php');	
 }
 ?>

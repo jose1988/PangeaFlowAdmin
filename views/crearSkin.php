@@ -14,7 +14,9 @@
     
    	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
+	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../css/estiloVerificacionNombre.css" rel="stylesheet">
 	
 </head>
 

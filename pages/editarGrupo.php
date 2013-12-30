@@ -1,59 +1,64 @@
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <?php
-	require_once("../lib/nusoap.php");
-	require_once("../lib/funciones.php");
+try {
+  include("../lib/funciones.php");
+  require_once('../lib/nusoap.php'); 
+  if(!isset($_GET['id'])){
+   	iraURL('../pages/grupo.php');
+  }
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?WSDL';
+  $client = new SOAPClient($wsdl_url);
+  $client->decode_utf8 = false; 
+  $estadoBorrado= array('borrado' => '0');
+  $rowOrganizacion = $client->listarOrganizacionByBorrado($estadoBorrado);
+  $cantOrga=count($rowOrganizacion->return);
+  
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?WSDL';
+  $client = new SOAPClient($wsdl_url);
+  $client->decode_utf8 = false; 
+  $idGrupo= array('idGrupo' =>$_GET['id'] );
+  $rowGrupo = $client->buscarGrupo($idGrupo);
+  
+	if(isset($_POST["modificar"])){
 	
-	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';	
-	$client = new SOAPClient($wsdl_url);	
-    $client->decode_utf8 = false;	
-	$id = $_GET["id"];
-	
-	if($id==""){
-		$id=0;		
-	}	
-	$idG = array('idGrupo' => $id);	
-	$resultadoBuscarGrupo = $client->buscarGrupo($idG);
-	
-	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
-	$client = new SOAPClient($wsdl_url);
-    $client->decode_utf8 = false;
-	
-	$contarOrga = $client->contarOrganizacion();
-	$canOrga = $contarOrga->return;
-	$resultadoListaOrganizacion = $client->listarOrganizacion();
-	
-	//Fecha del sistema
-	$fecha = $resultadoBuscarGrupo->return->fechaCreacion;
-	
-	if(isset($_POST["editar"])){
-		
-	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
-			isset($_POST["documentacion"]) && $_POST["documentacion"]!="" && $fecha!="" && isset($_POST["tipo"]) && $_POST["tipo"]!="" && 
-			isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){				
-				
-			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
-  			$client = new SOAPClient($wsdl_url);
- 			$client->decode_utf8 = false;
-			$rowGrupo=$client->listarGrupos();
+	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && 
+			isset($_POST["tipo"]) && $_POST["tipo"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){				
 			
-			for($i=0; $i<count($rowGrupo->return);$i++)
-			{
-				 if($rowGrupo->return[$i]->nombre==$_POST["nombre"]){
-				 	$existeNombre=true;
-				 	break;
-				 }
+			$fecha=$rowGrupo->return->fechaCreacion;
+							
+			if($_POST["nombre"]!=$rowGrupo->return->nombre){
+				try {
+					$Nombre= array('nombreGrupo' => $_POST['nombre']);
+					$rowGrupoXNombre = $client->consultarGrupoXNombre($Nombre);
+				} catch (Exception $e) {
+					javaalert('Lo sentimos no hay conexión ');
+					iraURL('../views/index.php');
+				}
 			}
-			
-			if($existeNombre!=true){
-					
-				//Borrado 0 es FALSE y 1 TRUE
-			 	if(!isset($_POST["borrado"])){
+				
+			if(!isset($rowGrupoXNombre->return)){
+				if(!isset($_POST["borrado"])){
 			 		$borrado="0";
 			 	}else{
 			 		$borrado="1";
 			 	}
-			 
-				$organizacion= array('id' => $_POST["organizacion"],'borrado'=>'0');
-			 	$grupo= array('nombre' => $_POST["nombre"],
+				
+			 	if(!isset($_POST["documentacion"])){
+			 		$documentacion="";
+			 	}else{
+			 		$documentacion=$_POST["documentacion"];
+			 	}
+				
+				if(!isset($_POST["estado"])){
+			 		$estado="";
+			 	}else{
+			 		$estado=$_POST["estado"];
+				}
+				
+			 	$organizacion= array('id' => $_POST["organizacion"],'borrado'=>'0');
+			 	$grupo= array(
+					'id'=>$_GET['id'],
+					'nombre' => $_POST["nombre"],
 			  		'descripcion' => $_POST["descripcion"],
 					'documentacion' => $_POST["documentacion"],
 					'fechaCreacion' => $fecha,
@@ -61,28 +66,30 @@
 					'estado' => $_POST["estado"],
 					'borrado' => $borrado,
 					'idOrganizacion' => $organizacion);
-				
-				$registroGrupo= array('registroGrupo' => $grupo);
-				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
-  				$client = new SOAPClient($wsdl_url);
- 				$client->decode_utf8 = false;
-				$client->insertarGrupo($registroGrupo);
-			
-				javaalert("Grupo creado");
-				if(isset($_POST["editar"])){
-					iraURL('../pages/grupo.php');
+					
+				try{
+					$registroGrupo= array('registroGrupo' => $grupo);
+					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
+  					$client = new SOAPClient($wsdl_url);
+ 					$client->decode_utf8 = false;
+					$client->editarGrupo($registroGrupo);
+					
+				} catch (Exception $e) {
+					javaalert('Lo sentimos no hay conexión');
+					iraURL('../views/index.php');
 				}
-				else{
-					iraURL('../pages/crearGrupo.php');
-				}
-			}
-			else{
+				 iraURL('../pages/grupo.php');				
+			}else{
 				javaalert("El nombre ya existe, por favor verifique");
-			}
+			}		
+		}else{
+			javaalert("Debe agregar todos los campos obligatorios, por favor verifique");
 		}
-		else{
-			javaalert("Debe agregar todos los campos, por favor verifique");
-		}
-	}	
-	include("../views/editarGrupo.php");
+	} 	
+  	include("../views/editarGrupo.php");
+  
+} catch (Exception $e) {
+	javaalert('Lo sentimos no hay conexión');
+	iraURL('../views/index.php');	
+}
 ?>

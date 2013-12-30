@@ -16,7 +16,7 @@
 		
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');
-		iraURL('../pages/index.php');		
+		iraURL('../views/index.php');		
 	}
 	include("../views/eliminarSkin.php");	
 	
@@ -25,7 +25,7 @@
 			$resultadoEliminarSkin = $client->eliminarSkin($idS);
 		  	} catch (Exception $e) {
 				javaalert('Lo sentimos no hay conexión');
-				iraURL('../pages/index.php');
+				iraURL('../views/index.php');
 			}	
 			javaalert("El registro ha sido eliminado");
 			iraURL('../pages/skin.php');
