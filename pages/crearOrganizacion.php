@@ -76,12 +76,14 @@
 			 				$correo=$_POST["correo"];
 						}
 						else{
+							$correo="";
 							javaalert("El formato del correo es incorrecto, por favor verifique");
 						}
 					}
 					
-					if(!isset($_POST["organizacion"])){
-			 			$organizacionPadre="";
+					if(!isset($_POST["organizacion"]) || $_POST["organizacion"]==""){
+			 			$organizacionPadre= "";
+						echo "Entro";
 			 		}else{
 			 			$organizacionPadre= array('id' => $_POST["organizacion"],'borrado'=>'0');
 					}
@@ -89,7 +91,7 @@
 			 		$organizacion= array('nombre' => $_POST["nombre"],
 			  			'descripcion' => $descripcion,
 						'tipo' => $tipo,
-						'direccion' => $descripcion,
+						'direccion' => $direccion,
 						'telefono' => $telefono,
 						'fax' => $fax,
 						'mail' => $correo,
@@ -97,6 +99,8 @@
 						'estado' => $_POST["estado"],
 						'borrado' => $borrado,
 						'idOrganizacionPadre' => $organizacionPadre);
+						
+						print_r($organizacion);
 					
 					try{
 						$registroOrganizacion= array('registroOrganizacion' => $organizacion);

@@ -75,11 +75,12 @@ try {
 			 				$correo=$_POST["correo"];
 						}
 						else{
+							$correo="";
 							javaalert("El formato del correo es incorrecto, por favor verifique");
 						}
 					}
 					
-					if(!isset($_POST["organizacion"])){
+					if(!isset($_POST["organizacion"]) || $_POST["organizacion"]==""){
 			 			$organizacionPadre="";
 			 		}else{
 			 			$organizacionPadre= array('id' => $_POST["organizacion"],'borrado'=>'0');
