@@ -15,64 +15,48 @@ try {
   
 	if(isset($_POST["modificar"])){
 	
-	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && 
-			isset($_POST["tipo"]) && $_POST["tipo"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){				
-			
-			$fecha=$rowGrupo->return->fechaCreacion;
+	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && 
+			isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
+			isset($_POST["url"]) && $_POST["url"]!="" ){
 							
-			if($_POST["nombre"]!=$rowGrupo->return->nombre){
+			if($_POST["nombre"]!=$rowReporte->return->nombre){
 				try {
-					$Nombre= array('nombreGrupo' => $_POST['nombre']);
-					$rowGrupoXNombre = $client->consultarGrupoXNombre($Nombre);
+					$Nombre= array('nombreReporte' => $_POST['nombre']);
+					$rowReporteXNombre = $client->consultarReporteXNombre($Nombre);
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión ');
 					iraURL('../views/index.php');
 				}
 			}
 				
-			if(!isset($rowGrupoXNombre->return)){
+			if(!isset($rowReporteXNombre->return)){
 				if(!isset($_POST["borrado"])){
 			 		$borrado="0";
 			 	}else{
 			 		$borrado="1";
 			 	}
 				
-			 	if(!isset($_POST["documentacion"])){
-			 		$documentacion="";
-			 	}else{
-			 		$documentacion=$_POST["documentacion"];
-			 	}
-				
-				if(!isset($_POST["estado"])){
-			 		$estado="";
-			 	}else{
-			 		$estado=$_POST["estado"];
-				}
-				
-			 	$organizacion= array('id' => $_POST["organizacion"],'borrado'=>'0');
-			 	$grupo= array(
+			 	$reporte= array(
 					'id'=>$_GET['id'],
 					'nombre' => $_POST["nombre"],
 			  		'descripcion' => $_POST["descripcion"],
-					'documentacion' => $_POST["documentacion"],
-					'fechaCreacion' => $fecha,
-					'tipo' => $_POST["tipo"],
-					'estado' => $_POST["estado"],
-					'borrado' => $borrado,
-					'idOrganizacion' => $organizacion);
+					'url' => $_POST["url"],
+					'borrado' => $borrado);
 					
 				try{
-					$registroGrupo= array('registroGrupo' => $grupo);
-					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeGrupo?wsdl';
-  					$client = new SOAPClient($wsdl_url);
- 					$client->decode_utf8 = false;
-					$client->editarGrupo($registroGrupo);
+					$registroReporte= array('registroReporte' => $reporte);
+					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarReporte?wsdl';
+					$client = new SOAPClient($wsdl_url);
+    				$client->decode_utf8 = false;
+					$client->editarReporte($registroReporte);
 					
 				} catch (Exception $e) {
 					javaalert('Lo sentimos no hay conexión');
 					iraURL('../views/index.php');
 				}
-				 iraURL('../pages/grupo.php');				
+				javaalert("Reporte modificado");
+				iraURL('../pages/reporte.php');	
+							
 			}else{
 				javaalert("El nombre ya existe, por favor verifique");
 			}		
@@ -80,7 +64,7 @@ try {
 			javaalert("Debe agregar todos los campos obligatorios, por favor verifique");
 		}
 	} 	
-  	include("../views/editarGrupo.php");
+  	include("../views/editarReporte.php");
   
 } catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');

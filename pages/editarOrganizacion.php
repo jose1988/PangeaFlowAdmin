@@ -110,7 +110,9 @@ try {
 					javaalert('Lo sentimos no hay conexión');
 					iraURL('../views/index.php');
 				}
-				 iraURL('../pages/organizacion.php');				
+				
+				javaalert("Organizacion modificada");
+				iraURL('../pages/organizacion.php');				
 			}else{
 				javaalert("El nombre ya existe, por favor verifique");
 			}		

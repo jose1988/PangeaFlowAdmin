@@ -78,7 +78,9 @@ try {
 					javaalert('Lo sentimos no hay conexión');
 					iraURL('../views/index.php');
 				}
-				 iraURL('../pages/grupo.php');				
+				javaalert("Grupo modificado");
+				iraURL('../pages/grupo.php');
+								
 			}else{
 				javaalert("El nombre ya existe, por favor verifique");
 			}		

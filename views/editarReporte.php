@@ -20,6 +20,21 @@
 	
 </head>
 
+<?php 
+	$nombre="";
+	$descripcion="";
+	$url="";
+	if(isset($rowReporte->return->nombre)){
+		$nombre=$rowReporte->return->nombre;
+	}
+	if(isset($rowReporte->return->descripcion)){
+		$descripcion=$rowReporte->return->descripcion;
+	}
+	if(isset($rowReporte->return->url)){
+		$url=$rowReporte->return->url;
+	}
+?>
+
 <body>
 <nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
@@ -70,7 +85,7 @@
         
         <div class="col-md-4">
         <?php 
-	   	if(!isset($resultadoBuscarReporte->return)){
+	   	if(!isset($rowReporte->return)){
 	   ?>
        		<div class="alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
@@ -84,15 +99,18 @@
         <table width="100%" class="table-striped table-bordered table-condensed">
 			 <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" value="<?php echo $resultadoBuscarReporte->return->nombre;?>" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Reporte" autofocus required></td>
+				 <td>
+                 	<input type="text" name="nombre" id="nombre" value="<?php echo $nombre;?>" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Reporte" autofocus required>
+                     <div id="Info" style="float:right"></div>
+                 </td>
 			 </tr>
 			 <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" value="<?php echo $resultadoBuscarReporte->return->descripcion;?>" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Reporte" required="required"></td>
+				 <td><input type="text" name="descripcion" id="descripcion" value="<?php echo $descripcion;?>" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Reporte" required="required"></td>
 			 </tr>
              <tr>
              <th width="40%">Url</th>
-				 <td><input type="text" name="url" id="url" value="<?php echo $resultadoBuscarReporte->return->url;?>" maxlength="149" size="80" title="Ingrese el URL" placeholder="Ej. http//pangea.com " required="required"></td>		
+				 <td><input type="text" name="url" id="url" value="<?php echo $url;?>" maxlength="149" size="80" title="Ingrese el URL" placeholder="Ej. http//pangea.com " required="required"></td>		
 			 </tr>
 			 <tr>
 			 <th width="40%">Habilitado</th>
@@ -100,7 +118,7 @@
 			 </tr>
 	</table>
     <br />
-     <div class="col-md-12" align="center"><button class="btn" id="editar" name="editar" type="submit">Editar</button></div>
+     <div class="col-md-12" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>
   </form>
 <?php }?>
 </div>
@@ -111,8 +129,29 @@
  
   <script type="text/javascript">
     $(function() {
-      $('table').footable();
+      	$('table').footable();
     });
   </script>
+  
+  <script type="text/javascript">
+	$(document).ready(function() {
+ 	<!-- Codigo para verificar si el nombre del Reporte ya existe --> 
+   		$('#nombre').blur(function(){
+			if($(this).val()!=""){
+				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			}
+        	var nombre = $(this).val();        
+        	var dataString = 'nombre='+nombre;
+        	$.ajax({
+            	type: "POST",
+            	url: "../ajax/chequeoNombreReporte.php",
+            	data: dataString,
+            	success: function(data) {
+                	$('#Info').fadeIn(1000).html(data);
+            	}
+        	});     
+ 		});
+	});
+ </script>
   </body>
 </html>
