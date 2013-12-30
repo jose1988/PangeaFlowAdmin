@@ -1,90 +1,127 @@
+<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <?php
-	require_once("../lib/nusoap.php");
-	require_once("../lib/funciones.php");
+try {
+  include("../lib/funciones.php");
+  require_once('../lib/nusoap.php'); 
+  if(!isset($_GET['id'])){
+   	iraURL('../pages/organizacion.php');
+  }
+  $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?WSDL';
+  $client = new SOAPClient($wsdl_url);
+  $client->decode_utf8 = false; 
+  $estadoBorrado= array('borrado' => '0');
+  $listaOrganizacion = $client->listarOrganizacionByBorrado($estadoBorrado);  
+  $cantOrga=count($listaOrganizacion->return);
+  
+  $idOrganizacion= array('idOrganizacion' =>$_GET['id'] );
+  $rowOrganizacion = $client->buscarOrganizacion($idOrganizacion);
+  
+	if(isset($_POST["modificar"])){
 	
-	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';	
-	$client = new SOAPClient($wsdl_url);	
-    $client->decode_utf8 = false;	
-	$id = $_GET["id"];
-	
-	if($id==""){
-		$id=0;		
-	}	
-	$idO = array('idOrganizacion' => $id);	
-	$resultadoBuscarOrganizacion = $client->buscarOrganizacion($idO);
-	
-	$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
-	$client = new SOAPClient($wsdl_url);
-    $client->decode_utf8 = false;
-	
-	$contarOrga = $client->contarOrganizacion();
-	$canOrga = $contarOrga->return;
-	$resultadoListaOrganizacion = $client->listarOrganizacion();
-	
-	if(isset($_POST["editar"])){
-		
-	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&
-			isset($_POST["tipo"]) && $_POST["tipo"]!="" && isset($_POST["direccion"]) && $_POST["direccion"]!="" && 
-			isset($_POST["telefono"]) && $_POST["telefono"]!="" && isset($_POST["fax"]) && $_POST["fax"]!="" && 
-			isset($_POST["correo"]) && $_POST["correo"]!="" && isset($_POST["ciudad"]) && $_POST["ciudad"]!="" && 
-			isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["organizacion"]) && $_POST["organizacion"]!=""){
-			
-			$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
-  			$client = new SOAPClient($wsdl_url);
- 			$client->decode_utf8 = false;
-			$rowOrganizacion=$client->listarOrganizacion();
-			
-			for($i=0; $i<count($rowOrganizacion->return);$i++)
-			{
-				 if($rowOrganizacion->return[$i]->nombre==$_POST["nombre"]){
-				 	$existeNombre=true;
-				 	break;
-				 }
+	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["ciudad"]) && $_POST["ciudad"]!="" && 
+			isset($_POST["estado"]) && $_POST["estado"]!=""){
+							
+			if($_POST["nombre"]!=$rowOrganizacion->return->nombre){
+				try {
+					$Nombre= array('nombreOrganizacion' => $_POST['nombre']);
+					$rowOrganizacionXNombre = $client->consultarOrganizacionXNombre($Nombre);
+				} catch (Exception $e) {
+					javaalert('Lo sentimos no hay conexión ');
+					iraURL('../views/index.php');
+				}
 			}
-			
-			if($existeNombre!=true){
 				
-				//Borrado 0 es FALSE y 1 TRUE
-			 	if(!isset($_POST["borrado"])){
+			if(!isset($rowGrupoXNombre->return)){
+				if(!isset($_POST["borrado"])){
 			 		$borrado="0";
 			 	}else{
 			 		$borrado="1";
 			 	}
-			 
-			 	$organizacionPadre= array('id' => $_POST["organizacion"],'borrado'=>'0');
-			 	$organizacion= array('nombre' => $_POST["nombre"],
-			  		'descripcion' => $_POST["descripcion"],
-					'tipo' => $_POST["tipo"],
-					'direccion' => $_POST["direccion"],
-					'telefono' => $_POST["telefono"],
-					'fax' => $_POST["fax"],
-					'mail' => $_POST["correo"],
+				
+			 	if(!isset($_POST["descripcion"])){
+			 			$descripcion="";
+			 		}else{
+			 			$descripcion=$_POST["descripcion"];
+					}
+					
+					if(!isset($_POST["tipo"])){
+			 			$tipo="";
+			 		}else{
+			 			$tipo=$_POST["tipo"];
+					}
+					
+					if(!isset($_POST["direccion"])){
+			 			$direccion="";
+			 		}else{
+			 			$direccion=$_POST["direccion"];
+					}
+					
+					if(!isset($_POST["telefono"])){
+			 			$telefono="";
+			 		}else{
+			 			$telefono=$_POST["telefono"];
+					}
+					
+					if(!isset($_POST["fax"])){
+			 			$fax="";
+			 		}else{
+			 			$fax=$_POST["fax"];
+					}
+					
+					if(!isset($_POST["correo"])){
+			 			$correo="";
+			 		}else{
+						if(preg_match('{^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$}',$_POST["correo"])){						
+			 				$correo=$_POST["correo"];
+						}
+						else{
+							javaalert("El formato del correo es incorrecto, por favor verifique");
+						}
+					}
+					
+					if(!isset($_POST["organizacion"])){
+			 			$organizacionPadre="";
+			 		}else{
+			 			$organizacionPadre= array('id' => $_POST["organizacion"],'borrado'=>'0');
+					}
+					
+			 	$organizacion= array(
+					'id'=>$_GET['id'],
+					'nombre' => $_POST["nombre"],
+			  		'descripcion' => $descripcion,
+					'tipo' => $tipo,
+					'direccion' => $descripcion,
+					'telefono' => $telefono,
+					'fax' => $fax,
+					'mail' => $correo,
 					'ciudad' => $_POST["ciudad"],
 					'estado' => $_POST["estado"],
 					'borrado' => $borrado,
 					'idOrganizacionPadre' => $organizacionPadre);
-				
-				$registroOrganizacion= array('registroOrganizacion' => $organizacion);
-				$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
-				$client = new SOAPClient($wsdl_url);
-    			$client->decode_utf8 = false;
-				$client->insertarOrganizacion($registroOrganizacion);
-			
-				javaalert("Organización creada");			
-				if(isset($_POST["crear_uno"])){
-					iraURL('../pages/organizacion.php');
+					
+				try{
+					$registroOrganizacion= array('registroOrganizacion' => $organizacion);
+					$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
+					$client = new SOAPClient($wsdl_url);
+    				$client->decode_utf8 = false;
+					$client->editarOrganizacion($registroOrganizacion);
+					
+				} catch (Exception $e) {
+					javaalert('Lo sentimos no hay conexión');
+					iraURL('../views/index.php');
 				}
-				else{
-					iraURL('../pages/crearOrganizacion.php');
-				}
-			}
-			else{
+				 iraURL('../pages/organizacion.php');				
+			}else{
 				javaalert("El nombre ya existe, por favor verifique");
-			}
-			
+			}		
 		}else{
-			javaalert("Debe agregar todos los campos, por favor verifique");
+			javaalert("Debe agregar todos los campos obligatorios, por favor verifique");
 		}
-	}
-	include("../views/editarOrganizacion.php");
+	} 	
+  	include("../views/editarOrganizacion.php");
+  
+} catch (Exception $e) {
+	javaalert('Lo sentimos no hay conexión');
+	iraURL('../views/index.php');	
+}
 ?>

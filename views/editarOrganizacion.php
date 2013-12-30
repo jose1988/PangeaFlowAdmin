@@ -14,9 +14,57 @@
     
    	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
 	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
+	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../css/estiloVerificacionNombre.css" rel="stylesheet">  
 	
 </head>
+
+<?php 
+	$nombre="";
+	$descripcion="";
+	$tipo="";
+	$direccion="";
+	$telefono="";
+	$fax="";
+	$correo="";
+	$ciudad="";
+	$estado="";
+	$idOrganizacionPadre="";
+	$organizacionPadre="Seleccionar:";
+	if(isset($rowOrganizacion->return->nombre)){
+		$nombre=$rowOrganizacion->return->nombre;
+	}
+	if(isset($rowOrganizacion->return->descripcion)){
+		$descripcion=$rowOrganizacion->return->descripcion;
+	}
+	if(isset($rowOrganizacion->return->tipo)){
+		$tipo=$rowOrganizacion->return->tipo;
+	}
+	if(isset($rowOrganizacion->return->direccion)){
+		$direccion=$rowOrganizacion->return->direccion;
+	}
+	if(isset($rowOrganizacion->return->telefono)){
+		$telefono=$rowOrganizacion->return->telefono;
+	}
+	if(isset($rowOrganizacion->return->fax)){
+		$fax=$rowOrganizacion->return->fax;
+	}
+	if(isset($rowOrganizacion->return->mail)){
+		$correo=$rowOrganizacion->return->mail;
+	}
+	if(isset($rowOrganizacion->return->ciudad)){
+		$ciudad=$rowOrganizacion->return->ciudad;
+	}	
+	if(isset($rowOrganizacion->return->estado)){
+		$estado=$rowOrganizacion->return->estado;
+	}
+	if(isset($rowOrganizacion->return->idOrganizacionPadre->id)){
+		$idOrganizacionPadre=$rowOrganizacion->return->idOrganizacionPadre->id;
+		$organizacionPadre=$rowOrganizacion->return->idOrganizacionPadre->nombre;
+	}
+?>
+
 
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -68,7 +116,7 @@
         
         <div class="col-md-4">
         <?php 
-	   	if(!isset($resultadoBuscarOrganizacion->return)){
+	   	if(!isset($rowOrganizacion->return)){
 	   ?>
        		<div class="alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
@@ -82,61 +130,56 @@
         <table width="100%" class="table-striped table-bordered table-condensed">
 			  <tr>
 			 <th width="40%">Nombre</th>
-				 <td><input type="text" name="nombre" id="nombre" value="<?php echo $resultadoBuscarOrganizacion->return->nombre;?>" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Organizacion" autofocus required></td>
+				 <td>
+                 	<input type="text" name="nombre" id="nombre" value="<?php echo $nombre;?>" maxlength="49" size="50" title="Ingrese el nombre" placeholder="Ej. Organizacion" autofocus required>
+                    <div id="Info" style="float:right"></div>
+                 </td>
 			 </tr>
 			  <tr>
 			 <th width="40%">Descripión</th>
-				 <td><input type="text" name="descripcion" id="descripcion" value="<?php echo $resultadoBuscarOrganizacion->return->descripcion;?>" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Grupo" required="required"></td>
+				 <td><input type="text" name="descripcion" id="descripcion" value="<?php echo $descripcion;?>" maxlength="149" size="50" title="Ingrese la descripción" placeholder="Ej. Descripción Grupo"></td>
 			 </tr>
              <tr>
              <th width="40%">Tipo</th>
-				 <td><input type="text" name="tipo" id="tipo" value="<?php echo $resultadoBuscarOrganizacion->return->tipo;?>" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx " required="required"></td>		
+				 <td><input type="text" name="tipo" id="tipo" value="<?php echo $tipo;?>" maxlength="149" size="50" title="Ingrese el tipo" placeholder="Ej. Tipoxx "></td>		
 			 </tr>
              <tr>
              <th width="40%">Dirección</th>
-				 <td><input type="text" name="direccion" id="direccion" value="<?php echo $resultadoBuscarOrganizacion->return->direccion;?>" maxlength="149" size="50" title="Ingrese la dirección" placeholder="Ej. Direcciónxx " required="required"></td>		
+				 <td><input type="text" name="direccion" id="direccion" value="<?php echo $direccion;?>" maxlength="149" size="50" title="Ingrese la dirección" placeholder="Ej. Direcciónxx "></td>		
 			 </tr>
              <tr>
              <th width="40%">Teléfono</th>
-				 <td><input type="text" name="telefono" id="telefono" value="<?php echo $resultadoBuscarOrganizacion->return->telefono;?>" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 04161234567 " required="required"></td>		
+				 <td><input type="text" name="telefono" id="telefono" value="<?php echo $telefono;?>" maxlength="149" size="50" title="Ingrese el teléfono" placeholder="Ej. 04161234567 "></td>		
 			 </tr>
              <tr>
              <th width="40%">Fax</th>
-				 <td><input type="text" name="fax" id="fax" value="<?php echo $resultadoBuscarOrganizacion->return->fax;?>" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 012769876543 " required="required"></td>		
+				 <td><input type="text" name="fax" id="fax" value="<?php echo $fax;?>" maxlength="149" size="50" title="Ingrese el fax" placeholder="Ej. 012769876543 "></td>		
 			 </tr>
              <tr>
              <th width="40%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" value="<?php echo $resultadoBuscarOrganizacion->return->mail;?>" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@pangeatech.com.ve " required="required"></td>		
+				 <td>
+                 	<input type="text" name="correo" id="correo" value="<?php echo $correo;?>" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@pangeatech.com.ve ">
+                    <div id="Info2" style="float:right"></div>
+                </td>		
 			 </tr>
              <tr>
              <th width="40%">Ciudad</th>
-				 <td><input type="text" name="ciudad" id="ciudad" value="<?php echo $resultadoBuscarOrganizacion->return->ciudad;?>" maxlength="149" size="50" title="Ingrese la ciudad" placeholder="Ej. Ciudadxx " required="required"></td>		
+				 <td><input type="text" name="ciudad" id="ciudad" value="<?php echo $ciudad;?>" maxlength="149" size="50" title="Ingrese la ciudad" placeholder="Ej. Ciudadxx " required="required"></td>		
 			 </tr>
              <tr>
              <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" value="<?php echo $resultadoBuscarOrganizacion->return->estado;?>" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
+				 <td><input type="text" name="estado" id="estado" value="<?php echo $estado;?>" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
 			 </tr>
 			 <tr>
 			 <th width="40%">Organización Padre</th>
 				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
-				 <?php
-				 if($resultadoBuscarOrganizacion->return->idOrganizacionPadre->id!=""){
-					echo '<option value="'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre->id.'" style="display:none">'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre->nombre.'</option>'; 
-				 	for ($i=0;$i<$canOrga;$i++)
+				<?php
+					echo '<option value="'.$idOrganizacionPadre.'" style="display:none">'.$organizacionPadre.'</option>'; 
+				 	for ($i=0;$i<$cantOrga;$i++)
 					{
-						if(($resultadoListaOrganizacion->return[$i]->id)!=($resultadoBuscarOrganizacion->return->idOrganizacion->id)){
-							echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
+						if($listaOrganizacion->return[$i]->id!=$idOrganizacionPadre){
+							echo '<option value="'.$listaOrganizacion->return[$i]->id.'">'.$listaOrganizacion->return[$i]->nombre.'</option>';
 						}
-					}
-				 }
-				 else{?>
-					 <option value="" style="display:none">Seleccionar:</option> 
-				 <?php
-				 		for ($i=0;$i<$canOrga;$i++)
-						{
-							echo '<option value="'.$resultadoListaOrganizacion->return[$i]->id.'">'.$resultadoListaOrganizacion->return[$i]->nombre.'</option>';
-						}
-					 
 					}
 				  ?>
                  </select></td>
@@ -147,7 +190,7 @@
 			 </tr>
 	</table>
     <br />
-     <div class="col-md-12" align="center"><button class="btn" id="editar" name="editar" type="submit">Editar</button></div>
+     <div class="col-md-12" align="center"><button class="btn" id="modificar" name="modificar" type="submit">Modificar</button></div>
     </form>
   <?php }?> 
 </div>
@@ -161,5 +204,43 @@
       $('table').footable();
     });
   </script>
+  
+  <script type="text/javascript">
+	$(document).ready(function() {
+ 	<!-- Codigo para verificar si el nombre de la Organización ya existe --> 
+   		$('#nombre').blur(function(){
+			if($(this).val()!=""){
+				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			}
+        	var nombre = $(this).val();        
+        	var dataString = 'nombre='+nombre;
+        	$.ajax({
+            	type: "POST",
+            	url: "../ajax/chequeoNombreOrganizacion.php",
+            	data: dataString,
+            	success: function(data) {
+                	$('#Info').fadeIn(1000).html(data);
+            	}
+        	});     
+ 		});
+		
+	<!-- Codigo para verificar si el Correo lleva el formato correcto --> 
+		$('#correo').blur(function(){
+			if($(this).val()!=""){
+				$('#Info2').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			}
+			var correo = $(this).val();
+        	var dataString = 'correo='+correo;
+        	$.ajax({
+            	type: "POST",
+            	url: "../ajax/chequeoCorreo.php",
+            	data: dataString,
+            	success: function(data) {
+                	$('#Info2').fadeIn(1000).html(data);
+            	}
+        	});     
+ 		});	
+	});
+ </script>
   </body>
 </html>

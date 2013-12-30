@@ -18,6 +18,15 @@
 	
 </head>
 
+<?php 
+$idOrganizacionPadre="";
+$organizacionPadre="";
+	if(isset($resultadoBuscarOrganizacion->return->idOrganizacionPadre->id)){
+		$idOrganizacionPadre=$resultadoBuscarOrganizacion->return->idOrganizacionPadre->id;
+		$organizacionPadre=$resultadoBuscarOrganizacion->return->idOrganizacionPadre->nombre;
+	}
+?>
+
 <body>
 <nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
@@ -192,14 +201,8 @@
 			echo '</tr>';
 			
 			echo '<tr>';
-			echo '<th>Id de la Organización Padre</th>';
-			if(!isset($resultadoBuscarOrganizacion->return->idOrganizacionPadre->id)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$resultadoBuscarOrganizacion->return->idOrganizacionPadre->nombre.'</td>';
-			}
-			echo '</tr>';
+			echo '<th>Organización Padre</th>';
+				echo '<td>'.$organizacionPadre.'</td>';
 		?>	
 	</table> 
     <?php } ?>
