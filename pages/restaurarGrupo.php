@@ -14,8 +14,15 @@
 			$contadorEliminados=0;
 			
 			if(count($eliminadosGrupo)==1){
+				
+			  	if(isset($eliminadosGrupo[0])){
+					$idGrupo = array('idGrupo' => $eliminadosGrupo[0]);
+			 	} else{
+					$idGrupo = array('idGrupo' => $eliminadosGrupo);
+			 	}
 			   	$idGrupo = array('idGrupo' => $eliminadosGrupo);
 				$client->restaurarGrupo($idGrupo);
+				
 			}else{
 				for($j=0; $j<count($rowGrupo->return); $j++){
 					if(isset($eliminadosGrupo[$j])){

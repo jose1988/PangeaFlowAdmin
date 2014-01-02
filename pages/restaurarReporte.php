@@ -14,8 +14,15 @@
 			$contadorEliminados=0;
 			
 			if(count($eliminadosReporte)==1){
+				
+			   	if(isset($eliminadosReporte[0])){
+					$idReporte = array('idReporte' => $eliminadosReporte[0]);
+			 	} else{
+					$idReporte = array('idReporte' => $eliminadosReporte);
+			 	}
 			   	$idReporte = array('idReporte' => $eliminadosReporte);
 				$client->restaurarReporte($idReporte);
+				
 			}else{
 				for($j=0; $j<count($rowReporte->return); $j++){
 					if(isset($eliminadosReporte[$j])){

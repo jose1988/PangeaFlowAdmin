@@ -10,11 +10,7 @@
 	
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
-	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-    
-   	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />    
+	<link href="../css/bootstrap-theme.css" rel="stylesheet">  
 	
 </head>
 
@@ -95,10 +91,10 @@
 			}
 			else{
 				if($bskins->return->borrado==1){
-					echo '<td>TRUE</td>';
+					echo '<td>Deshabilitado</td>';
 				}
 				else{
-					echo '<td>FALSE</td>';	
+					echo '<td>Habilitado</td>';	
 				}
 			}
 			echo '</tr>';
@@ -112,16 +108,5 @@
    			</div>
         <?php } ?>
    </div>
-
-<script src="../js/footable.js" type="text/javascript"></script>
-<script src="../js/footable.paginate.js" type="text/javascript"></script>
-<script src="../js/footable.sortable.js" type="text/javascript"></script>
- 
-  <script type="text/javascript">
-    $(function() {
-      	$('table').footable();
-    });
-  </script>
-
 </body>
 </html>

@@ -95,7 +95,7 @@
 			 </tr>
 			 <tr>
 			 <th width="40%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no presiona estará deshabilitado"> </td>
+				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no esta seleccionado estará deshabilitado" checked> </td>
 			 </tr>
 	</table>
     <br />

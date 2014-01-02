@@ -11,11 +11,6 @@
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-theme.css" rel="stylesheet">
-    
-   	<link href="../css/footable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.sortable-0.1.css" rel="stylesheet" type="text/css" />
-	<link href="../css/footable.paginate.css" rel="stylesheet" type="text/css" />
-    
     <link href="../css/estiloVerificacionNombre.css" rel="stylesheet">  
 	
 </head>
@@ -126,7 +121,7 @@
          <?php }
 		 	else{
 		 ?>  
-         <form method="POST">    
+         <form method="POST" id="formulario">    
         <table width="100%" class="table-striped table-bordered table-condensed">
 			  <tr>
 			 <th width="40%">Nombre</th>
@@ -186,7 +181,7 @@
 			 </tr>
 			 <tr>
 			 <th width="40%">Habilitado</th>
-				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no presiona estará deshabilitado"> </td>
+				 <td><input type="checkbox" name="borrado" id="borrado" title="Si no esta seleccionado estará deshabilitado"> </td>
 			 </tr>
 	</table>
     <br />
@@ -194,34 +189,26 @@
     </form>
   <?php }?> 
 </div>
-
-<script src="../js/footable.js" type="text/javascript"></script>
-<script src="../js/footable.paginate.js" type="text/javascript"></script>
-<script src="../js/footable.sortable.js" type="text/javascript"></script>
  
   <script type="text/javascript">
-    $(function() {
-      $('table').footable();
-    });
-  </script>
-  
-  <script type="text/javascript">
+  	var nombreTiene=document.forms.formulario.nombre.value;
 	$(document).ready(function() {
  	<!-- Codigo para verificar si el nombre de la Organización ya existe --> 
    		$('#nombre').blur(function(){
-			if($(this).val()!=""){
-				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
+			if($(this).val()!="" && $(this).val()!=nombreTiene){
+				
+				$('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);			
+        		var nombre = $(this).val();        
+        		var dataString = 'nombre='+nombre;
+        		$.ajax({
+            		type: "POST",
+            		url: "../ajax/chequeoNombreOrganizacion.php",
+            		data: dataString,
+            		success: function(data) {
+                		$('#Info').fadeIn(1000).html(data);
+            		}
+        		});
 			}
-        	var nombre = $(this).val();        
-        	var dataString = 'nombre='+nombre;
-        	$.ajax({
-            	type: "POST",
-            	url: "../ajax/chequeoNombreOrganizacion.php",
-            	data: dataString,
-            	success: function(data) {
-                	$('#Info').fadeIn(1000).html(data);
-            	}
-        	});     
  		});
 		
 	<!-- Codigo para verificar si el Correo lleva el formato correcto --> 

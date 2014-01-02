@@ -14,8 +14,15 @@
 			$contadorEliminados=0;
 			
 			if(count($eliminadosSkin)==1){
+				
+			   	if(isset($eliminadosSkin[0])){
+					$idSkin = array('idSkin' => $eliminadosSkin[0]);
+			 	} else{
+					$idSkin = array('idSkin' => $eliminadosSkin);
+			 	}
 			   	$idSkin = array('idSkin' => $eliminadosSkin);
 				$client->restaurarSkin($idSkin);
+				
 			}else{
 				for($j=0; $j<count($rowSkin->return); $j++){
 					if(isset($eliminadosSkin[$j])){
