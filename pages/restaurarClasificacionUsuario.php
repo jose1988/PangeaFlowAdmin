@@ -11,14 +11,6 @@
 		try{
 			$registrosAEliminar=$_POST["ide"];
 			$contadorEliminados=0;
-			if(count($registrosAEliminar)==1){
-			   if(isset($registrosAEliminar[0])){
-			  $idClasifUsuario = array('idClaUsu' => $registrosAEliminar[0]);
-			 } else{
-			  $idClasifUsuario = array('idClaUsu' => $registrosAEliminar);
-			 }
-				$client->restaurarClasificacionUsuario($idClasifUsuario);
-			}else{
 			for($j=0; $j<count($rowClasifUsuario->return); $j++){
 			    if(isset($registrosAEliminar[$j])){
 				$idClasifUsuario = array('idClaUsu' => $registrosAEliminar[$j]);
@@ -28,7 +20,6 @@
 				if($contadorEliminados==count($_POST["ide"])){
 					break;
 				}
-			}
 			}
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');

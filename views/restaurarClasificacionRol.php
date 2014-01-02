@@ -104,7 +104,7 @@
 			echo '<td style="text-align:center" width="10%">'.$rowClasifRol->return->id.'</td>';
 			echo '<td width="20%">'.$rowClasifRol->return->nombre.'</td>';
 			echo '<td width="25%">'.$rowClasifRol->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowClasifRol->return->id.'></td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide[0]" id="ide[0]" value='.$rowClasifRol->return->id.'></td>';
 			echo '</tr>';
 		  
 		  }

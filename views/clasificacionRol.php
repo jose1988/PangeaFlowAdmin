@@ -57,19 +57,21 @@
    </div>
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="#">Atrás</a></li>
+ 			 <li><a href="../views/index.php">Atrás</a></li>
   			 <li><a href="crearClasificacionRol.php">Crear</a></li>
  			 <li><a href="restaurarClasificacionRol.php">Restaurar</a></li>
 			 </ul>
        </div>
+         <div class="col-md-1">
+        </div>
         
-        <div class="col-md-9">
+        <div class="col-md-8">
 		 <?php
 	if($cantClasifRol == 0){
     ?>
 	 <div class="well well-small alert alert-block" align="center">
     		<h2 style="color:#666">Atención</h2>
-    		<h4>No Existen Registros en clasificación de rol</h4>
+    		<h4>No existen registros en clasificación de rol</h4>
     	</div>
      <?php 
 	}else{

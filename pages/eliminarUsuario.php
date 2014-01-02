@@ -10,6 +10,15 @@
     $client->decode_utf8 = false;	
 	$idUsuario = array('idUsuario' => $_GET["id"]);	
 	$rowUsuario = $client->consultarUsuario($idUsuario);
+	if(!isset($rowUsuario->return)){
+				javaalert('No existe el usuario');
+	            iraURL('../pages/usuario.php');	
+		}
+	$Dependencias = $client->consultarDependenciasUsuario($idUsuario);	
+			if($Dependencias->return==-1){
+			    javaalert('No existe el usuario');
+	            iraURL('../pages/usuario.php');	
+			}
 	} catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
 	iraURL('../views/index.php');	

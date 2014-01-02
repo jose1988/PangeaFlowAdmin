@@ -57,13 +57,16 @@
    </div>
       <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
- 			 <li><a href="#">Atrás</a></li>
+ 			 <li><a href="../views/index.php">Atrás</a></li>
   			 <li><a href="crearClasificacionUsuario.php">Crear</a></li>
  			 <li><a href="restaurarClasificacionUsuario.php">Restaurar</a></li>
 			 </ul>
        </div>
         
-        <div class="col-md-9">
+         <div class="col-md-1">
+        </div>
+        
+        <div class="col-md-8">
 		 <?php
 	if($cantClasifUsuario == 0){
     ?>

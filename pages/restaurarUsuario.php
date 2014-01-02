@@ -11,11 +11,6 @@
 		try{
 			$registrosAEliminar=$_POST["ide"];
 			$contadorEliminados=0;
-			//echo '<pre>'; print_r($_POST["ide"]);
-			if(count($registrosAEliminar)==1){
-			   $idUsuario = array('idUsuario' => $registrosAEliminar);
-				$client->restaurarUsuario($idUsuario);
-			}else{
 			for($j=0; $j<count($rowUsuario->return); $j++){
 			    if(isset($registrosAEliminar[$j])){
 				$idUsuario = array('idUsuario' => $registrosAEliminar[$j]);
@@ -25,10 +20,7 @@
 				if($contadorEliminados==count($_POST["ide"])){
 					break;
 				}
-			}
-			}
-			
-			
+			}	
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');
 			iraURL('../views/index.php');

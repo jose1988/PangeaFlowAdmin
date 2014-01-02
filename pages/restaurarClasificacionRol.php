@@ -11,14 +11,6 @@
 		try{
 			$registrosAEliminar=$_POST["ide"];
 			$contadorEliminados=0;
-			if(count($registrosAEliminar)==1){
-			 if(isset($registrosAEliminar[0])){
-			 $idClasifRol = array('idClasifRol' => $registrosAEliminar[0]);
-			 } else{
-			 $idClasifRol = array('idClasifRol' => $registrosAEliminar);
-			 }
-				$client->restaurarClasificacionRol($idClasifRol);
-			}else{
 			for($j=0; $j<count($rowClasifRol->return); $j++){
 			    if(isset($registrosAEliminar[$j])){
 				$idClasifRol = array('idClasifRol' => $registrosAEliminar[$j]);
@@ -28,7 +20,6 @@
 				if($contadorEliminados==count($_POST["ide"])){
 					break;
 				}
-			}
 			}
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');

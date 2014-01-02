@@ -9,6 +9,10 @@
   $estadoBorrado= array('borrado' => '0');
   $rowClasifRol = $client->listarClasificacionRol($estadoBorrado);
   $cantClasifRol=count($rowClasifRol->return);
+  if(!isset($rowClasifRol)){
+   javaalert("Lo sentimos no se pueden crear roles porque no hay ninguna clasificación de rol existente");
+  iraURL('../pages/rol.php');
+  }
  
 if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && isset($_POST["estado"]) && $_POST["estado"]!="" && isset($_POST["clasificacion"]) && $_POST["clasificacion"]!="" ){		

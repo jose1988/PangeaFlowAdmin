@@ -11,26 +11,15 @@
 		try{
 			$eliminadosRol=$_POST["ide"];
 			$contadorEliminados=0;
-			//echo '<pre>'; print_r($eliminadosRol) ;
-			if(count($eliminadosRol)==1){
-			if(isset($eliminadosRol[0])){
-			$idRol = array('idRol' => $eliminadosRol[0]);
-			 } else{
-			$idRol = array('idRol' => $eliminadosRol);
-			 }
-			   $idRol = array('idRol' => $eliminadosRol);
-				$client->restaurarRol($idRol);
-			}else{
 			for($j=0; $j<count($rowRol->return); $j++){
-			if(isset($eliminadosRol[$j])){
-			    $idRol = array('idRol' => $eliminadosRol[$j]);
-				$client->restaurarRol($idRol);
-				$contadorEliminados++;
-			}
-			if($contadorEliminados==count($eliminadosRol)){
-				break;
-			}
-			}
+				if(isset($eliminadosRol[$j])){
+					$idRol = array('idRol' => $eliminadosRol[$j]);
+					$client->restaurarRol($idRol);
+					$contadorEliminados++;
+				}
+				if($contadorEliminados==count($eliminadosRol)){
+					break;
+				}
 			}
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');

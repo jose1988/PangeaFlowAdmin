@@ -68,9 +68,9 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($rowClasifUsuario->return)){
+	   	if($Dependencias->return>0)){
 	   ?>
-       		<div class="alert alert-block" align="center">
+       		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>
     			<h4>No se puede eliminar el registro de clasificación de usuario</h4>
    			</div>

@@ -10,6 +10,16 @@
     $client->decode_utf8 = false;	
 	$idClasifRol = array('idClasifRol' => $_GET["id"]);	
 	$rowClasifRol = $client->consultarClasifRol($idClasifRol);
+	    if(!isset($rowClasifRol->return)){
+				javaalert('No existe el registro de clasificación de rol');
+	            iraURL('../pages/clasificacionRol.php');	
+		}
+	$Dependencias = $client->consultarDependenciasClasRol($idClasifRol);	
+			if($Dependencias->return==-1){
+			    javaalert('No existe el registro de clasificación de rol');
+	            iraURL('../pages/clasificacionRol.php');	
+			}
+			
 	} catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
 	iraURL('../views/index.php');	

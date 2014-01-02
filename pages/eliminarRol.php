@@ -10,6 +10,16 @@
     $client->decode_utf8 = false;	
 	$idRol = array('idRol' => $_GET["id"]);	
 	$rowRol = $client->consultarRol($idRol);
+	if(!isset($rowRol->return)){
+				javaalert('No existe el registro de rol');
+	            iraURL('../pages/rol.php');	
+		}
+	$Dependencias = $client->consultarDependenciasRol($idRol);	
+			if($Dependencias->return==-1){
+			    javaalert('No existe el registro de rol');
+	            iraURL('../pages/rol.php');	
+			}
+	
 	} catch (Exception $e) {
 	javaalert('Lo sentimos no hay conexión');
 	iraURL('../views/index.php');	
