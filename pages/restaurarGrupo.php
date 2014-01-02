@@ -12,29 +12,18 @@
 		try{
 			$eliminadosGrupo=$_POST["ide"];
 			$contadorEliminados=0;
-			
-			if(count($eliminadosGrupo)==1){
 				
-			  	if(isset($eliminadosGrupo[0])){
-					$idGrupo = array('idGrupo' => $eliminadosGrupo[0]);
-			 	} else{
-					$idGrupo = array('idGrupo' => $eliminadosGrupo);
-			 	}
-			   	$idGrupo = array('idGrupo' => $eliminadosGrupo);
-				$client->restaurarGrupo($idGrupo);
-				
-			}else{
-				for($j=0; $j<count($rowGrupo->return); $j++){
-					if(isset($eliminadosGrupo[$j])){
-			    		$idGrupo = array('idGrupo' => $eliminadosGrupo[$j]);
-						$client->restaurarGrupo($idGrupo);
-						$contadorEliminados++;
-					}
-					if($contadorEliminados==count($eliminadosGrupo)){
-						break;
-					}
+			for($j=0; $j<count($rowGrupo->return); $j++){
+				if(isset($eliminadosGrupo[$j])){
+			   		$idGrupo = array('idGrupo' => $eliminadosGrupo[$j]);
+					$client->restaurarGrupo($idGrupo);
+					$contadorEliminados++;
+				}
+				if($contadorEliminados==count($eliminadosGrupo)){
+					break;
 				}
 			}
+			
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');
 			iraURL('../views/index.php');

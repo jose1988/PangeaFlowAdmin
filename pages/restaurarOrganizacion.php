@@ -13,27 +13,17 @@
 			$eliminadosOrganizacion=$_POST["ide"];
 			$contadorEliminados=0;
 			
-			if(count($eliminadosOrganizacion)==1){
-			   	if(isset($eliminadosOrganizacion[0])){
-					$idOrganizacion = array('idOrganizacion' => $eliminadosOrganizacion[0]);
-			 	} else{
-					$idOrganizacion = array('idOrganizacion' => $eliminadosOrganizacion);
-			 	}
-			   	$idOrganizacion = array('idOrganizacion' => $eliminadosOrganizacion);
-				$client->restaurarOrganizacion($idOrganizacion);
-				
-			}else{
-				for($j=0; $j<count($rowOrganizacion->return); $j++){
-					if(isset($eliminadosOrganizacion[$j])){
-			    		$idOrganizacion = array('idOrganizacion' => $eliminadosOrganizacion[$j]);
-						$client->restaurarOrganizacion($idOrganizacion);
-						$contadorEliminados++;
-					}
-					if($contadorEliminados==count($eliminadosOrganizacion)){
-						break;
-					}
+			for($j=0; $j<count($rowOrganizacion->return); $j++){
+				if(isset($eliminadosOrganizacion[$j])){
+			   		$idOrganizacion = array('idOrganizacion' => $eliminadosOrganizacion[$j]);
+					$client->restaurarOrganizacion($idOrganizacion);
+					$contadorEliminados++;
+				}
+				if($contadorEliminados==count($eliminadosOrganizacion)){
+					break;
 				}
 			}
+			
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');
 			iraURL('../views/index.php');

@@ -13,28 +13,17 @@
 			$eliminadosSkin=$_POST["ide"];
 			$contadorEliminados=0;
 			
-			if(count($eliminadosSkin)==1){
-				
-			   	if(isset($eliminadosSkin[0])){
-					$idSkin = array('idSkin' => $eliminadosSkin[0]);
-			 	} else{
-					$idSkin = array('idSkin' => $eliminadosSkin);
-			 	}
-			   	$idSkin = array('idSkin' => $eliminadosSkin);
-				$client->restaurarSkin($idSkin);
-				
-			}else{
-				for($j=0; $j<count($rowSkin->return); $j++){
-					if(isset($eliminadosSkin[$j])){
-			    		$idSkin = array('idSkin' => $eliminadosSkin[$j]);
-						$client->restaurarSkin($idSkin);
-						$contadorEliminados++;
-					}
-					if($contadorEliminados==count($eliminadosSkin)){
-						break;
-					}
+			for($j=0; $j<count($rowSkin->return); $j++){
+				if(isset($eliminadosSkin[$j])){
+			   		$idSkin = array('idSkin' => $eliminadosSkin[$j]);
+					$client->restaurarSkin($idSkin);
+					$contadorEliminados++;
+				}
+				if($contadorEliminados==count($eliminadosSkin)){
+					break;
 				}
 			}
+			
 		 } catch (Exception $e) {
 			javaalert('Lo sentimos no hay conexión');
 			iraURL('../views/index.php');

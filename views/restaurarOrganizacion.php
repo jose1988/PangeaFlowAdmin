@@ -81,7 +81,7 @@
 				<tr>
 					<th style="width:10%; text-align:center">Id</th>
                     <th style="width:20%; text-align:center">Nombre</th>
-                    <th style="width:25%; text-align:center">Ciudad</th>
+                    <th style="width:25%; text-align:center">Descripción</th>
                     <th style="width:15%; text-align:center">Habilitar</th>
 				</tr>
 			</thead></tr>
@@ -93,7 +93,12 @@
 			echo '<tr>';
 			echo '<td style="text-align:center" width=10%">'.$rowOrganizacion->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$rowOrganizacion->return[$i]->nombre.'</td>';
-			echo '<td width="25%">'.$rowOrganizacion->return[$i]->ciudad.'</td>';
+			if(!isset($rowOrganizacion->return[$i]->descripcion)){
+				echo '<td> </td>';
+			}
+			else{
+				echo '<td>'.$rowOrganizacion->return[$i]->descripcion.'</td>';
+			}
 			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide['.$i.']" id="ide['.$i.']" value='.$rowOrganizacion->return[$i]->id.'></td>';
 			echo '</tr>';
 			}
@@ -102,8 +107,13 @@
 		  	echo '<tr>';
 			echo '<td style="text-align:center" width=10%">'.$rowOrganizacion->return->id.'</td>';
 			echo '<td width="20%">'.$rowOrganizacion->return->nombre.'</td>';
-			echo '<td width="25%">'.$rowOrganizacion->return->ciudad.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowOrganizacion->return->id.'></td>';
+			if(!isset($rowOrganizacion->return->descripcion)){
+				echo '<td> </td>';
+			}
+			else{
+				echo '<td>'.$rowOrganizacion->return->descripcion.'</td>';
+			}
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide[0]" id="ide[0]" value='.$rowOrganizacion->return->id.'></td>';
 			echo '</tr>';
 		  }
 		?>

@@ -102,9 +102,6 @@
   <tbody>
       <?php
 	  if(count($resultadoBuscarReporte->return)){
-			//id usado para la función javascript
-			$id=$resultadoBuscarReporte->return->id;
-		  
 		  	echo '<tr>';
 			echo '<td width="10%">'.$resultadoBuscarReporte->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoBuscarReporte->return->nombre.'</td>';

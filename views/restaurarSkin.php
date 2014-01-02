@@ -101,7 +101,7 @@
 		  	echo '<tr>';
 			echo '<td style="text-align:center" width="10%">'.$rowSkin->return->id.'</td>';
 			echo '<td width="20%">'.$rowSkin->return->nombre.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowSkin->return->id.'></td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide[0]" id="ide[0]" value='.$rowSkin->return->id.'></td>';
 			echo '</tr>';
 		  
 		  }

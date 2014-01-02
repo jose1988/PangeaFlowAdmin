@@ -100,7 +100,7 @@
 			echo '<td style="text-align:center" width="10%">'.$rowReporte->return->id.'</td>';
 			echo '<td width="20%">'.$rowReporte->return->nombre.'</td>';
 			echo '<td width="25%">'.$rowReporte->return->descripcion.'</td>';
-			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide" id="ide" value='.$rowReporte->return->id.'></td>';
+			echo '<td style="text-align:center" width="15%"><input type="checkbox" name="ide[0]" id="ide[0]" value='.$rowReporte->return->id.'></td>';
 			echo '</tr>';
 		  }
 		?>

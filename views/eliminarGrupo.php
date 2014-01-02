@@ -101,14 +101,11 @@
 	 </thead>
   <tbody>
       <?php
-	  if(count($resultadoBuscarGrupo->return)){
-			//id usado para la función javascript
-			$id=$resultadoBuscarGrupo->return->id;
-		  
+	  if(count($resultadoBuscarGrupo->return)){		  
 		  	echo '<tr>';
 			echo '<td width="10%">'.$resultadoBuscarGrupo->return->id.'</td>';
-			echo '<td width="20%">'.$resultadoBuscarGrupo->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoBuscarGrupo->return->descripcion.'</td>';
+			echo '<td width="20%">'.$resultadoBuscarGrupo->return->nombre.'</td>';			
+			echo '<td width="20%">'.$resultadoBuscarGrupo->return->descripcion.'</td>';
 			echo '</tr>';
 		  
 		  }

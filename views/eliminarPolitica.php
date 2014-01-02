@@ -102,14 +102,10 @@
   <tbody>
       <?php
 	  if(count($resultadoBuscarPolitica->return)){
-			//id usado para la función javascript
-			$id=$resultadoBuscarPolitica->return->id;
-		  
 		  	echo '<tr>';
 			echo '<td width="10%">'.$resultadoBuscarPolitica->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoBuscarPolitica->return->nombre.'</td>';
 			echo '<td width="25%">'.$resultadoBuscarPolitica->return->descripcion.'</td>';
-
 			echo '</tr>';
 		  
 		  }

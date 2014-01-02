@@ -101,16 +101,17 @@
 	 </thead>
   <tbody>
       <?php
-	  if(count($resultadoBuscarOrganizacion->return)){
-			//id usado para la función javascript
-			$id=$resultadoBuscarOrganizacion->return->id;
-		  
+	  if(count($resultadoBuscarOrganizacion->return)){		  
 		  	echo '<tr>';
 			echo '<td width="10%">'.$resultadoBuscarOrganizacion->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoBuscarOrganizacion->return->nombre.'</td>';
-			echo '<td width="25%">'.$resultadoBuscarOrganizacion->return->descripcion.'</td>';
-			echo '</tr>';
-		  
+			if(!isset($resultadoBuscarOrganizacion->return->descripcion)){
+				echo '<td> </td>';
+			}
+			else{
+				echo '<td>'.$resultadoBuscarOrganizacion->return->descripcion.'</td>';
+			}
+			echo '</tr>';		  
 		  }
 		?>
 		</tbody>	

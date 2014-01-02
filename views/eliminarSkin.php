@@ -99,9 +99,6 @@
   <tbody>
       <?php
 	  if(count($resultadoBuscarSkin->return)){
-			//id usado para la funci�n javascript
-			$id=$resultadoBuscarSkin->return->id;
-		  
 		  	echo '<tr>';
 			echo '<td width="10%">'.$resultadoBuscarSkin->return->id.'</td>';
 			echo '<td width="20%">'.$resultadoBuscarSkin->return->nombre.'</td>';
