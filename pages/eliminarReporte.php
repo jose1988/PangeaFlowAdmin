@@ -12,7 +12,17 @@
 			$id=0;		
 		}	
 		$idR = array('idReporte' => $id);	
-		$resultadoBuscarReporte = $client->buscarReporte($idR);
+		$resultadoBuscarReporte = $client->buscarReporte($idR);		
+		
+		if(!isset($resultadoBuscarReporte->return)){
+			javaalert('No existe el registro de reporte');
+	    	iraURL('../pages/reporte.php');	
+		}
+		$Dependencias = $client->consultarDependenciasReporte($idR);	
+		if($Dependencias->return==-1){
+			javaalert('No existe el registro de reporte');
+	        iraURL('../pages/reporte.php');	
+		}
 	
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');

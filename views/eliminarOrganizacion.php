@@ -68,7 +68,7 @@
         
         <div class="col-md-8">
         <?php 
-	   	if(!isset($resultadoBuscarOrganizacion->return)){
+	   	if(!isset($resultadoBuscarOrganizacion->return) || ($Dependencias->return>0)){
 	   ?>
        		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>

@@ -13,6 +13,16 @@
 		}	
 		$idP = array('idPolitica' => $id);	
 		$resultadoBuscarPolitica = $client->buscarPolitica($idP);
+		
+		if(!isset($resultadoBuscarPolitica->return)){
+			javaalert('No existe el registro de politica');
+	    	iraURL('../pages/politica.php');	
+		}
+		$Dependencias = $client->consultarDependenciasPolitica($idP);	
+		if($Dependencias->return==-1){
+			javaalert('No existe el registro de politica');
+	        iraURL('../pages/politica.php');	
+		}
 	
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');

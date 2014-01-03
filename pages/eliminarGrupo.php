@@ -14,6 +14,16 @@
 		$idG = array('idGrupo' => $id);	
 		$resultadoBuscarGrupo = $client->buscarGrupo($idG);
 		
+		if(!isset($resultadoBuscarGrupo->return)){
+			javaalert('No existe el registro de grupo');
+	    	iraURL('../pages/grupo.php');	
+		}
+		$Dependencias = $client->consultarDependenciasGrupo($idG);	
+		if($Dependencias->return==-1){
+			javaalert('No existe el registro de grupo');
+	        iraURL('../pages/grupo.php');	
+		}
+		
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');
 		iraURL('../views/index.php');		
