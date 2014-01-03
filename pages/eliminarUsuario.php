@@ -13,6 +13,9 @@
 	if(!isset($rowUsuario->return)){
 				javaalert('No existe el usuario');
 	            iraURL('../pages/usuario.php');	
+		}elseif($rowUsuario->return->borrado==1){
+				javaalert('No existe el usuario');
+	            iraURL('../pages/usuario.php');	
 		}
 	$Dependencias = $client->consultarDependenciasUsuario($idUsuario);	
 			if($Dependencias->return==-1){

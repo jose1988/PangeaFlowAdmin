@@ -1,3 +1,8 @@
+<?php
+if(!isset($rowClasificacionUsuario->return)){
+echo '<script language="javascript"> window.location = "../pages/clasificacionUsuario.php"; </script>';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -76,12 +81,7 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Nombre</th>';
-			if(!isset($rowClasificacionUsuario->return->nombre)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowClasificacionUsuario->return->nombre.'</td>';
-			}
+			echo '<td>'.$rowClasificacionUsuario->return->nombre.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Descripión</th>';
@@ -101,22 +101,13 @@
 			if(isset($rowClasificacionUsuario->return->fechaModificacion)){
 			echo '<td>'.substr($rowClasificacionUsuario->return->fechaModificacion,0,10).'</td>';
 			}else{
-			echo '<td>No se modificado</td>';
+			echo '<td>No se ha modificado</td>';
 			}
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
-			if(!isset($rowClasificacionUsuario->return->borrado)){
-				echo'<td> </td>';
-			}
-			else{
-			if($rowClasificacionUsuario->return->borrado == '1'){
-			$rowClasificacionUsuario->return->borrado='Habilitado';
-			}else{
-			$rowClasificacionUsuario->return->borrado='Deshabilitado';
-			}
-				echo '<td>'.$rowClasificacionUsuario->return->borrado.'</td>';
-			}
+			echo '<td>Habilitado</td>';
+
 			echo '</tr>';
 		?>	
 	</table>

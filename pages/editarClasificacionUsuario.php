@@ -14,6 +14,9 @@
 		if(!isset($rowClasificacionUsuario->return)){
 				javaalert('No existe el registro de clasificación de usuario');
 	            iraURL('../pages/clasificacionUsuario.php');	
+		}elseif($rowClasificacionUsuario->return->borrado==1){
+				javaalert('No existe el registro de clasificación de usuario');
+	            iraURL('../pages/clasificacionUsuario.php');	
 		}
  
 if(isset($_POST["modificar"])){

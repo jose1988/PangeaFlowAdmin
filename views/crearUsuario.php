@@ -4,7 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <title>Pangea Flow</title>
 
+		<!-- javascript -->
 	
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<script type='text/javascript' src="../js/bootstrap.js"></script>
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-theme.css" rel="stylesheet">

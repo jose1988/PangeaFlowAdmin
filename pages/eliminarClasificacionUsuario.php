@@ -13,6 +13,9 @@
 	if(!isset($rowClasifUsuario->return)){
 				javaalert('No existe el registro de clasificación de usuario');
 	            iraURL('../pages/clasificacionUsuario.php');	
+		}elseif($rowClasifUsuario->return->borrado==1){
+			javaalert('No existe el registro de clasificación de usuario');
+	            iraURL('../pages/clasificacionUsuario.php');	
 		}
 	$Dependencias = $client->consultarDependenciasClasUsuario($idClasifUsuario);	
 			if($Dependencias->return==-1){

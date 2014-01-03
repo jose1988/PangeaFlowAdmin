@@ -13,6 +13,9 @@
 	if(!isset($rowRol->return)){
 				javaalert('No existe el registro de rol');
 	            iraURL('../pages/rol.php');	
+		}elseif($rowRol->return->borrado==1){
+				javaalert('No existe el registro de rol');
+	            iraURL('../pages/rol.php');	
 		}
 	$Dependencias = $client->consultarDependenciasRol($idRol);	
 			if($Dependencias->return==-1){

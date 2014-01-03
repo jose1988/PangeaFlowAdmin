@@ -11,7 +11,10 @@
   $client->decode_utf8 = false; 
   $estadoBorrado= array('borrado' => '0');
   $rowClasifRol = $client->listarClasificacionRol($estadoBorrado);
-  $cantClasifRol=count($rowClasifRol->return);
+  $cantClasifRol=0;
+  if(isset($rowClasifRol->return)){
+    $cantClasifRol=count($rowClasifRol->return);
+  }
   $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeRol?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 

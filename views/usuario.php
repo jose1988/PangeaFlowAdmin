@@ -1,3 +1,8 @@
+<?php
+if(!isset($rowUsuario->return)){
+echo '<script language="javascript"> window.location = "../views/index.php"; </script>';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -71,44 +76,32 @@
     ?>
     <div class="well well-small alert alert-block" align="center">
     		<h2 style="color:#666">Atención</h2>
-    		<h4>No Existen Registros en usuario</h4>
+    		<h4>No existen registros en usuario</h4>
     	</div>
      <?php 
 	}else{
 	
 	?>
-		<table width="100%" class="footable table-hover" data-page-size="5">
-      <thead>
+		<table width="100%" class="footable table-hover" data-page-size="7">
+	  <thead bgcolor="#B9B9B9">
 				<tr>
-				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
-					<span>Usuario</span>
-				  </th>
-				  <th data-hide="phone" data-sort-ignore="true">
-					Primer Nombre
-				  </th>
-                    <th data-hide="phone" data-sort-ignore="true">
-					Primer Apellido
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-					<span class="add-on"> <i class="icon-pencil"></i> </span> Editar 
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-				<span class="add-on"><i class="icon-trash"></i></span> Eliminar 
-				  </th>
-          		 <th data-hide="phone,mediatablet" data-sort-ignore="true">
-				<span class="add-on"><i class="icon-eye-open"></i></span> Ver 
-				  </th>
+					<th style="width:10%; text-align:center">Usuario</th>
+                    <th style="width:20%; text-align:center">Primer Nombre</th>
+                    <th style="width:25%; text-align:center">Primer Apellido</th>
+                    <th style="width:15%; text-align:center">Editar</th>
+                    <th style="width:15%; text-align:center">Eliminar</th>
+                    <th style="width:15%; text-align:center">Ver</th>  
 				</tr>
-	 </thead>
+			</thead>
   <tbody>
       <?php 
 	  if($cantUsuarios==1){
 			echo '<td width="15%">'.$rowUsuario->return->id.'</td>';
 			echo '<td width="20%">'.$rowUsuario->return->primerNombre.'</td>';
 			echo '<td width="20%">'.$rowUsuario->return->primerApellido.'</td>';
-			echo '<td width="15%"><a href="editarUsuario.php?id='.$rowUsuario->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarUsuario.php?id='.$rowUsuario->return->id.'"> <button class="btn " type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
-			echo '<td width="13%"><a href="verUsuario.php?id='.$rowUsuario->return->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '<td style="text-align:center" width="15%"><a href="editarUsuario.php?id='.$rowUsuario->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td style="text-align:center" width="16%"><a href="eliminarUsuario.php?id='.$rowUsuario->return->id.'"> <button class="btn " type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td style="text-align:center" width="13%"><a href="verUsuario.php?id='.$rowUsuario->return->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 	  }elseif($cantUsuarios>1){      
 		for ($i=0;$i<$cantUsuarios;$i++)
@@ -116,9 +109,9 @@
 			echo '<td width="15%">'.$rowUsuario->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$rowUsuario->return[$i]->primerNombre.'</td>';
 			echo '<td width="20%">'.$rowUsuario->return[$i]->primerApellido.'</td>';
-			echo '<td width="15%"><a href="editarUsuario.php?id='.$rowUsuario->return[$i]->id.'"><button class="btn "> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarUsuario.php?id='.$rowUsuario->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
-			echo '<td width="13%"><a href="verUsuario.php?id='.$rowUsuario->return[$i]->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '<td style="text-align:center" width="15%"><a href="editarUsuario.php?id='.$rowUsuario->return[$i]->id.'"><button class="btn "> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td style="text-align:center" width="16%"><a href="eliminarUsuario.php?id='.$rowUsuario->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td  style="text-align:center" width="13%"><a href="verUsuario.php?id='.$rowUsuario->return[$i]->id.'"> <button class="btn"> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 			}
 	    }

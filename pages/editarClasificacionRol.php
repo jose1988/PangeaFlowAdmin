@@ -14,6 +14,9 @@
 		if(!isset($rowClasificacionRol->return)){
 				javaalert('No existe el registro de clasificación de rol');
 	            iraURL('../pages/clasificacionRol.php');	
+		}elseif($rowClasificacionRol->return->borrado==1){
+				javaalert('No existe el registro de clasificación de rol');
+	            iraURL('../pages/clasificacionRol.php');	
 		}
  
 if(isset($_POST["modificar"])){

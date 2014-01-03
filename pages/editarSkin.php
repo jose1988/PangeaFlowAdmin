@@ -14,6 +14,9 @@
 	if(!isset($rowSkin->return)){
 				javaalert('No existe el registro de skin');
 	            iraURL('../pages/skin.php');	
+		}elseif($rowSkin->return->borrado==1){
+				javaalert('No existe el registro de skin');
+	            iraURL('../pages/skin.php');	
 		}
 	if(isset($_POST["modificar"])){
 		

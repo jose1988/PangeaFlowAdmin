@@ -1,3 +1,8 @@
+<?php
+if(!isset($rowClasifRol->return)){
+echo '<script language="javascript"> window.location = "../views/index.php"; </script>';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -77,38 +82,26 @@
 	}else{
 	
 	?>
-		<table width="100%" class="footable table-hover" data-page-size="5">
-      <thead>
+		<table width="100%" class="footable table-hover" data-page-size="7">
+	 <thead bgcolor="#B9B9B9">
 				<tr>
-				  <th data-class="expand" data-sort-initial="true" data-type="numeric">
-					<span>Id</span>
-				  </th>
-				  <th data-hide="phone" data-sort-ignore="true">
-					Nombre
-				  </th>
-                    <th data-hide="phone" data-sort-ignore="true">
-					Descripción
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-					<span class="add-on"> <i class="icon-pencil"></i> </span> Editar 
-				  </th>
-				  <th data-hide="phone,mediatablet" data-sort-ignore="true">
-				<span class="add-on"><i class="icon-trash"></i></span> Eliminar 
-				  </th>
-          		 <th data-hide="phone,mediatablet" data-sort-ignore="true">
-				<span class="add-on"><i class="icon-eye-open"></i></span> Ver 
-				  </th>
+					<th style="width:10%; text-align:center">Id</th>
+                    <th style="width:20%; text-align:center">Nombre</th>
+                    <th style="width:25%; text-align:center">Descripción</th>
+                    <th style="width:15%; text-align:center">Editar</th>
+                    <th style="width:15%; text-align:center">Eliminar</th>
+                    <th style="width:15%; text-align:center">Ver</th>  
 				</tr>
-	 </thead>
+			</thead>
   <tbody>
       <?php 
 	  if($cantClasifRol==1){
 			echo '<td width="15%">'.$rowClasifRol->return->id.'</td>';
 			echo '<td width="20%">'.$rowClasifRol->return->nombre.'</td>';
 			echo '<td width="20%">'.$rowClasifRol->return->descripcion.'</td>';
-			echo '<td width="15%"><a href="editarClasificacionRol.php?id='.$rowClasifRol->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarClasificacionRol.php?id='.$rowClasifRol->return->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
-			echo '<td width="13%"><a href="verClasificacionRol.php?id='.$rowClasifRol->return->id.'"> <button class="btn "> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '<td style="text-align:center" width="15%"><a href="editarClasificacionRol.php?id='.$rowClasifRol->return->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td style="text-align:center" width="16%"><a href="eliminarClasificacionRol.php?id='.$rowClasifRol->return->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td style="text-align:center" width="13%"><a href="verClasificacionRol.php?id='.$rowClasifRol->return->id.'"> <button class="btn "> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 	  }elseif($cantClasifRol>1){      
 		for ($i=0;$i<$cantClasifRol;$i++)
@@ -116,9 +109,9 @@
 			echo '<td width="15%">'.$rowClasifRol->return[$i]->id.'</td>';
 			echo '<td width="20%">'.$rowClasifRol->return[$i]->nombre.'</td>';
 			echo '<td width="20%">'.$rowClasifRol->return[$i]->descripcion.'</td>';
-			echo '<td width="15%"><a href="editarClasificacionRol.php?id='.$rowClasifRol->return[$i]->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
-			echo '<td width="16%"><a href="eliminarClasificacionRol.php?id='.$rowClasifRol->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
-			echo '<td width="13%"><a href="verClasificacionRol.php?id='.$rowClasifRol->return[$i]->id.'"> <button class="btn "> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
+			echo '<td style="text-align:center" width="15%"><a href="editarClasificacionRol.php?id='.$rowClasifRol->return[$i]->id.'"><button class="btn"> <span class="add-on"><i class="icon-pencil"></i> </span> Editar  </button> </td>';
+			echo '<td style="text-align:center" width="16%"><a href="eliminarClasificacionRol.php?id='.$rowClasifRol->return[$i]->id.'"> <button class="btn" type="button"  name="eliminar"> <span class="add-on"><i class="icon-trash"></i></span> Eliminar</button> </td>';
+			echo '<td style="text-align:center" width="13%"><a href="verClasificacionRol.php?id='.$rowClasifRol->return[$i]->id.'"> <button class="btn "> <span class="add-on"><i class="icon-eye-open"></i></span> Ver</button> </td>';
 			echo '</tr>';
 			}
 	    }

@@ -1,3 +1,8 @@
+<?php
+if(!isset($rowUsuario->return)){
+echo '<script language="javascript"> window.location = "../pages/usuario.php"; </script>';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -5,7 +10,7 @@
 <title>Pangea Flow</title>
 
 	<!-- javascript -->	
-	<script type="text/javascript" src="../js/jquery-2.0.2.js"></script>
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
 	<script type='text/javascript' src="../js/bootstrap.js"></script>	
 	
 	<!-- styles -->
@@ -80,12 +85,7 @@
         <table width="100%" class="table-striped table-bordered table-condensed">
         	<?php
 			echo '<th width="40%">Primer Nombre</th>';
-			if(!isset($rowUsuario->return->primerNombre)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->primerNombre.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->primerNombre.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Segundo Nombre</th>';
@@ -98,12 +98,7 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Primer Apellido</th>';
-			if(!isset($rowUsuario->return->primerApellido)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->primerApellido.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->primerApellido.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Segundo Apellido</th>';
@@ -116,12 +111,7 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Cédula</th>';
-			if(!isset($rowUsuario->return->cedula)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->cedula.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->cedula.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">RIF</th>';
@@ -168,23 +158,13 @@
 				echo '<td>'.$rowUsuario->return->fax.'</td>';
 			}
 			echo '</tr>';
-		   echo '<tr>';
+		    echo '<tr>';
 			echo '<th width="40%">Dirección Personal</th>';
-			if(!isset($rowUsuario->return->direccionPersonal)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->direccionPersonal.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->direccionPersonal.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Dirección de Oficina</th>';
-			if(!isset($rowUsuario->return->direccionOficina)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->direccionOficina.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->direccionOficina.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Descripción</th>';
@@ -201,12 +181,7 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Estado</th>';
-			if(!isset($rowUsuario->return->estado)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->estado.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->estado.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Nombre de Usuario</th>';
@@ -214,40 +189,20 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Clasificación de Usuario</th>';
-			if(!isset($rowUsuario->return->idClasificacionUsuario->nombre)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->idClasificacionUsuario->nombre.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->idClasificacionUsuario->nombre.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Organización</th>';
-			if(!isset($rowUsuario->return->idOrganizacion->nombre)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->idOrganizacion->nombre.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->idOrganizacion->nombre.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Skin</th>';
-			if(!isset($rowUsuario->return->idSkin->nombre)){
-				echo '<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowUsuario->return->idSkin->nombre.'</td>';
-			}
+			echo '<td>'.$rowUsuario->return->idSkin->nombre.'</td>';
 			echo '</tr>';
-		
 			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
-				if($rowUsuario->return->borrado==1){
-					echo '<td>Deshabilitado</td>';
-				}
-				else{
-					echo '<td>Habilitado</td>';	
-				}
+			echo '<td>Habilitado</td>';
+
 			echo '</tr>';
 		?>	
 	</table>

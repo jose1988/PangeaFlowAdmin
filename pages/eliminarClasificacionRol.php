@@ -13,6 +13,9 @@
 	    if(!isset($rowClasifRol->return)){
 				javaalert('No existe el registro de clasificación de rol');
 	            iraURL('../pages/clasificacionRol.php');	
+		}elseif($rowClasifRol->return->borrado==1){
+				javaalert('No existe el registro de clasificación de rol');
+	            iraURL('../pages/clasificacionRol.php');	
 		}
 	$Dependencias = $client->consultarDependenciasClasRol($idClasifRol);	
 			if($Dependencias->return==-1){

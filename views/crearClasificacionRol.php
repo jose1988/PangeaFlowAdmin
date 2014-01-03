@@ -4,7 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
 <title>Pangea Flow</title>
 
+		<!-- javascript -->
 	
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<script type='text/javascript' src="../js/bootstrap.js"></script>
 	<!-- styles -->
 	<link href="../css/bootstrap.css" rel="stylesheet">
 	<link href="../css/bootstrap-theme.css" rel="stylesheet">
@@ -36,7 +39,7 @@
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="clasificacionRol">Clasificación Rol</a></li>
+          <li><a href="clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
           <li><a href="clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
@@ -56,7 +59,7 @@
 <div class="col-md-2" align="center">
         <ul class="nav nav-stacked nav-tabs-justified">
  			 <li><a href="clasificacionRol.php">Atrás</a></li>
- 			 <li><a href="#">Restaurar</a></li>
+ 			 <li><a href="restaurarClasificacionRol.php">Restaurar</a></li>
 			 </ul>
        </div>
 	   	<div class="col-md-2">

@@ -105,14 +105,15 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 							'direccionOficina' => $_POST["direcciono"],
 							'descripcion' => $descripcion,
 							'estado' => $_POST["estado"],
-							'fechaCreacion'=>'10-10-13',
-							'fechaActualizacionClave'=>'10-10-13',
+							'fechaCreacion'=>date("Y-m-d"),
+							'fechaActualizacionClave'=>date("Y-m-d"),
 							'borrado' => $borrado,
 							'diasValidezClave'=>'10',
 							'idSkin'=>$Skin,
 							'idOrganizacion'=>$Oganizacion,
 							'idClasificacionUsuario'=>$clasificacionUsuario);
-							$registroUsu= array('registroUsuario' => $Usuario);				
+							$registroUsu= array('registroUsuario' => $Usuario);	
+//echo '<pre>';print_r($registroUsu);							
 							try {
 							$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
 							$client = new SOAPClient($wsdl_url);

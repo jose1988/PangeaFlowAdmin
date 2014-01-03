@@ -1,3 +1,8 @@
+<?php
+if(!isset($rowClasifUsuario->return)){
+echo '<script language="javascript"> window.location = "../pages/clasificacionUsuario.php"; </script>';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -68,7 +73,7 @@
         
         <div class="col-md-8">
         <?php 
-	   	if($Dependencias->return>0)){
+	   	if($Dependencias->return>0){
 	   ?>
        		<div class="well well-small alert alert-block" align="center">
    				<h2 style="color:#666">Atención</h2>

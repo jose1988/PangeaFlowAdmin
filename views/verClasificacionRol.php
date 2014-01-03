@@ -1,3 +1,8 @@
+<?php
+if(!isset($rowClasificacionRol->return)){
+echo '<script language="javascript"> window.location = "../pages/clasificacionRol.php"; </script>';
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -76,12 +81,7 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Nombre</th>';
-			if(!isset($rowClasificacionRol->return->nombre)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowClasificacionRol->return->nombre.'</td>';
-			}
+			echo '<td>'.$rowClasificacionRol->return->nombre.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Descripión</th>';
@@ -92,7 +92,7 @@
 				echo '<td>'.$rowClasificacionRol->return->descripcion.'</td>';
 			}
 			echo '</tr>';
-						echo '<tr>';
+			echo '<tr>';
 			echo '<th width="40%">Fecha de Creación</th>';
 			echo '<td>'.substr($rowClasificacionRol->return->fechaCreacion,0,10).'</td>';
 			echo '</tr>';
@@ -101,22 +101,12 @@
 			if(isset($rowClasificacionRol->return->fechaModificacion)){
 			echo '<td>'.substr($rowClasificacionRol->return->fechaModificacion,0,10).'</td>';
 			}else{
-			echo '<td>No se modificado</td>';
+			echo '<td>No se ha modificado</td>';
 			}
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
-			if(!isset($rowClasificacionRol->return->borrado)){
-				echo'<td> </td>';
-			}
-			else{
-			if($rowClasificacionRol->return->borrado == '1'){
-			$rowClasificacionRol->return->borrado='Habilitado';
-			}else{
-			$rowClasificacionRol->return->borrado='Deshabilitado';
-			}
-				echo '<td>'.$rowClasificacionRol->return->borrado.'</td>';
-			}
+			echo '<td>Habilitado</td>';
 			echo '</tr>';
 		?>	
 	</table>

@@ -11,23 +11,25 @@
   $client->decode_utf8 = false; 
   $estadoBorrado= array('borrado' => '0');
   $rowClasiUsuario = $client->listarClasificacionUsuario($estadoBorrado);
-  $cantClaUsuario=count($rowClasiUsuario->return);
+  $cantClaUsuario=0;
+  if(isset($rowClasiUsuario->return)){
+   $cantClaUsuario=count($rowClasiUsuario->return);
+  }
   $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionarSkin?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 
   $rowSkin = $client->listarXBorrado($estadoBorrado);
-  $cantSkin=count($rowSkin->return);
+  $cantSkin=0;
+  if(isset($rowSkin->return)){
+   $cantSkin=count($rowSkin->return);
+  }
   $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?WSDL';
   $client = new SOAPClient($wsdl_url);
   $client->decode_utf8 = false; 
   $rowOrganizacion = $client->listarOrganizacionByBorrado($estadoBorrado);
-  $cantOrganizacion=count($rowOrganizacion->return);
-  if(!isset($rowOrganizacion->return)){
-  javaalert("Lo sentimos no se pueden crear usuarios porque no hay ninguna organización existente");
-  iraURL('../pages/usuario.php');
-  }elseif(!isset($rowClasiUsuario->return)){
-  javaalert("Lo sentimos no se pueden crear usuarios porque no hay ninguna clasificación de usuario existente");
-  iraURL('../pages/usuario.php');
+  $cantOrganizacion=0;
+  if(isset($rowOrganizacion->return)){
+   $cantOrganizacion=count($rowOrganizacion->return);
   }
   $wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeUsuarios?WSDL';
   $client = new SOAPClient($wsdl_url);
@@ -37,6 +39,9 @@
    // echo '<pre>';print_r($rowUsuario);
 
 		if(!isset($rowUsuario->return)){
+				javaalert('No existe el registro de usuario');
+	            iraURL('../pages/usuario.php');	
+		}elseif($rowUsuario->return->borrado==1){
 				javaalert('No existe el registro de usuario');
 	            iraURL('../pages/usuario.php');	
 		}

@@ -14,6 +14,9 @@
 	if(!isset($rowPolitica->return)){
 				javaalert('No existe el registro de política');
 	            iraURL('../pages/politica.php');	
+		}elseif($rowPolitica->return->borrado==1){
+				javaalert('No existe el registro de política');
+	            iraURL('../pages/politica.php');
 		}
 	if(isset($_POST["modificar"])){
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" &&

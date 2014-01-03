@@ -1,3 +1,8 @@
+<?php
+if(!isset($rowRol->return)){
+	 iraURL('../pages/rol.php');	
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -76,21 +81,11 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Nombre</th>';
-			if(!isset($rowRol->return->nombre)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowRol->return->nombre.'</td>';
-			}
+			echo '<td>'.$rowRol->return->nombre.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Descripión</th>';
-			if(!isset($rowRol->return->descripcion)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowRol->return->descripcion.'</td>';
-			}
+			echo '<td>'.$rowRol->return->descripcion.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Documentación</th>';
@@ -103,26 +98,12 @@
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Clasificación de Rol</th>';
-			if(!isset($rowRol->return->idClasificacionRol->nombre)){
-				echo'<td> </td>';
-			}
-			else{
-				echo '<td>'.$rowRol->return->idClasificacionRol->nombre.'</td>';
-			}
+			echo '<td>'.$rowRol->return->idClasificacionRol->nombre.'</td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<th width="40%">Borrado</th>';
-			if(!isset($rowRol->return->borrado)){
-				echo'<td> </td>';
-			}
-			else{
-			if($rowRol->return->borrado == '1'){
-			$rowRol->return->borrado='Habilitado';
-			}else{
-			$rowRol->return->borrado='Deshabilitado';
-			}
-				echo '<td>'.$rowRol->return->borrado.'</td>';
-			}
+				echo '<td>Habilitado</td>';
+
 			echo '</tr>';
 		?>	
 	</table>
