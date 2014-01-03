@@ -17,7 +17,11 @@
 		if(!isset($resultadoBuscarPolitica->return)){
 			javaalert('No existe el registro de politica');
 	    	iraURL('../pages/politica.php');	
+		}elseif($resultadoBuscarPolitica->return->borrado==1){
+			javaalert('No existe el registro de politica');
+	        iraURL('../pages/politica.php');	
 		}
+		
 		$Dependencias = $client->consultarDependenciasPolitica($idP);	
 		if($Dependencias->return==-1){
 			javaalert('No existe el registro de politica');

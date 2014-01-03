@@ -19,6 +19,14 @@ try {
   $idGrupo= array('idGrupo' =>$_GET['id'] );
   $rowGrupo = $client->buscarGrupo($idGrupo);
   
+  if(!isset($rowGrupo->return)){
+  		javaalert('No existe el registro de grupo');
+		iraURL('../pages/grupo.php');	
+  }elseif($rowGrupo->return->borrado==1){
+		javaalert('No existe el registro de grupo');
+		iraURL('../pages/grupo.php');	
+  }
+  
 	if(isset($_POST["modificar"])){
 	
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["descripcion"]) && $_POST["descripcion"]!="" && 

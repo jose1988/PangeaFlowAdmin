@@ -14,6 +14,20 @@
 		$idS = array('idSkin' => $id);	
 		$resultadoBuscarSkin = $client->buscarSkin($idS);
 		
+		if(!isset($resultadoBuscarSkin->return)){
+			javaalert('No existe el registro de skin');
+	    	iraURL('../pages/skin.php');	
+		}elseif($resultadoBuscarSkin->return->borrado==1){
+			javaalert('No existe el registro de skin');
+	        iraURL('../pages/skin.php');	
+		}
+		
+		$Dependencias = $client->consultarDependenciasSkin($idS);	
+		if($Dependencias->return==-1){
+			javaalert('No existe el registro de skin');
+	        iraURL('../pages/skin.php');	
+		}
+		
 	} catch (Exception $e) {
 		javaalert('Lo sentimos no hay conexión');
 		iraURL('../views/index.php');		

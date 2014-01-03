@@ -13,6 +13,14 @@ try {
   $idReporte= array('idReporte' =>$_GET['id'] );
   $rowReporte = $client->buscarReporte($idReporte);
   
+  if(!isset($rowReporte->return)){
+  		javaalert('No existe el registro de reporte');
+		iraURL('../pages/reporte.php');	
+  }elseif($rowReporte->return->borrado==1){
+		javaalert('No existe el registro de reporte');
+		iraURL('../pages/reporte.php');	
+  }
+  
 	if(isset($_POST["modificar"])){
 	
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && 

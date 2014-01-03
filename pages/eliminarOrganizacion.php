@@ -17,7 +17,11 @@
 		if(!isset($resultadoBuscarOrganizacion->return)){
 			javaalert('No existe el registro de organizacion');
 	    	iraURL('../pages/organizacion.php');	
+		}elseif($resultadoBuscarOrganizacion->return->borrado==1){
+			javaalert('No existe el registro de organizacion');
+	        iraURL('../pages/organizacion.php');	
 		}
+		
 		$Dependencias = $client->consultarDependenciasOrganizacion($idO);	
 		if($Dependencias->return==-1){
 			javaalert('No existe el registro de organizacion');

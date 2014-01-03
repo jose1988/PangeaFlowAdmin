@@ -17,7 +17,11 @@
 		if(!isset($resultadoBuscarGrupo->return)){
 			javaalert('No existe el registro de grupo');
 	    	iraURL('../pages/grupo.php');	
+		}elseif($resultadoBuscarGrupo->return->borrado==1){
+			javaalert('No existe el registro de grupo');
+	        iraURL('../pages/grupo.php');	
 		}
+		
 		$Dependencias = $client->consultarDependenciasGrupo($idG);	
 		if($Dependencias->return==-1){
 			javaalert('No existe el registro de grupo');

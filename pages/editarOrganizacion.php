@@ -16,6 +16,14 @@ try {
   $idOrganizacion= array('idOrganizacion' =>$_GET['id'] );
   $rowOrganizacion = $client->buscarOrganizacion($idOrganizacion);
   
+  if(!isset($rowOrganizacion->return)){
+  		javaalert('No existe el registro de organizacion');
+		iraURL('../pages/organizacion.php');	
+  }elseif($rowOrganizacion->return->borrado==1){
+		javaalert('No existe el registro de organizacion');
+		iraURL('../pages/organizacion.php');	
+  }
+  
 	if(isset($_POST["modificar"])){
 	
 	 	if(isset($_POST["nombre"]) && $_POST["nombre"]!="" && isset($_POST["ciudad"]) && $_POST["ciudad"]!="" && 

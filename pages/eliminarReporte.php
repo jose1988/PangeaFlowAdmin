@@ -17,7 +17,11 @@
 		if(!isset($resultadoBuscarReporte->return)){
 			javaalert('No existe el registro de reporte');
 	    	iraURL('../pages/reporte.php');	
+		}elseif($resultadoBuscarReporte->return->borrado==1){
+			javaalert('No existe el registro de reporte');
+	        iraURL('../pages/reporte.php');	
 		}
+		
 		$Dependencias = $client->consultarDependenciasReporte($idR);	
 		if($Dependencias->return==-1){
 			javaalert('No existe el registro de reporte');
