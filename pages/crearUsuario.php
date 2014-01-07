@@ -106,7 +106,7 @@ if(isset($_POST["crear_uno"]) || isset($_POST["crear_otro"])){
 							'descripcion' => $descripcion,
 							'estado' => $_POST["estado"],
 							'fechaCreacion'=>date("Y-m-d"),
-							'fechaActualizacionClave'=>date("Y-m-d"),
+							'fechaActualizacionClave'=>date("Y-m-d", strtotime(date("Y-m-d")." +3 month")),
 							'borrado' => $borrado,
 							'diasValidezClave'=>'10',
 							'idSkin'=>$Skin,

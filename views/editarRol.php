@@ -66,7 +66,7 @@ echo '<script language="javascript"> window.location = "../pages/rol.php"; </scr
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="clasificacionRol">Clasificación Rol</a></li>
+          <li><a href="clasificacionRol.php">Clasificación Rol</a></li>
           <li class="divider"></li>
           <li><a href="clasificacionUsuario.php">Clasificación Usuario</a></li>
           <li class="divider"></li>
@@ -102,12 +102,12 @@ echo '<script language="javascript"> window.location = "../pages/rol.php"; </scr
                  </td>
 		 </tr>
 			 <tr>
-			 <th width="40%">Descripión</th>
+			 <th width="40%">Descripción</th>
 				 <td><input type="text" name="descripcion" id="descripcion" maxlength="149" size="50" value="<?php echo $descripcion; ?>" required="required"></td>
 			 </tr>
 			 <tr>
 			 <th width="40%">Documentación</th>
-				 <td><textarea name="documentacion" id="documentacion" maxlength="499"  value="<?php echo $documentacion; ?>" ></textarea></td>		
+				 <td><textarea name="documentacion" id="documentacion" maxlength="499" ><?php echo $documentacion; ?></textarea></td>		
 			 </tr>
               <tr>
 			 <th width="40%">Estado</th>

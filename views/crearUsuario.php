@@ -188,7 +188,6 @@
    $('#usuario').blur(function(){
 	   if($(this).val()!=""){
 		           $('#Info').html('<img src="../images/loader.gif" alt="" />').fadeOut(1000);
-		   }
         var nombre = $(this).val();        
         var dataString = 'nombre='+nombre;
         $.ajax({
@@ -199,6 +198,7 @@
                 $('#Info').fadeIn(1000).html(data);
             }
         });     
+		}
  });
  
 
