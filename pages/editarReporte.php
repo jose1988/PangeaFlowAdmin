@@ -38,7 +38,8 @@ try {
 			}
 				
 			if(!isset($rowReporteXNombre->return)){
-				if(!isset($_POST["borrado"])){
+				//Borrado 0 es FALSE y 1 TRUE
+				if(isset($_POST["borrado"])){
 			 		$borrado="0";
 			 	}else{
 			 		$borrado="1";

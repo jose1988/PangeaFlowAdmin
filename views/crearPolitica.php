@@ -91,7 +91,7 @@
 			 </tr>
              <tr>
              <th width="40%">Estado</th>
-				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx "></td>		
+				 <td><input type="text" name="estado" id="estado" maxlength="149" size="50" title="Ingrese el estado" placeholder="Ej. Estadoxx " required="required"></td>		
 			 </tr>
 			 <tr>
 			 <th width="40%">Habilitado</th>

@@ -26,8 +26,9 @@
 			}
 			
 			if(!isset($rowPolitica->return)){
-						
-				if(!isset($_POST["borrado"])){
+				
+				//Borrado 0 es FALSE y 1 TRUE	
+				if(isset($_POST["borrado"])){
 			 		$borrado="1";
 			 	}else{
 			 		$borrado="0";
