@@ -77,7 +77,7 @@ try {
 			 			$fax=$_POST["fax"];
 					}
 					
-					if(!isset($_POST["correo"])){
+					if(!isset($_POST["correo"]) || $_POST["correo"]==""){
 			 			$correo="";
 			 		}else{
 						if(preg_match('{^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$}',$_POST["correo"])){						
@@ -90,7 +90,7 @@ try {
 					}
 					
 					if(!isset($_POST["organizacion"]) || $_POST["organizacion"]==""){
-			 			$organizacionPadre="";
+			 			$organizacionPadre= "";
 			 		}else{
 			 			$organizacionPadre= array('id' => $_POST["organizacion"],'borrado'=>'0');
 					}

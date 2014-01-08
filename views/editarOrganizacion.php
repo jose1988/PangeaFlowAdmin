@@ -172,7 +172,7 @@ if(!isset($rowOrganizacion->return)){
 			 </tr>
 			 <tr>
 			 <th width="40%">Organización Padre</th>
-				 <td><select id="organizacion" name="organizacion"  required  title="Ingrese la organización">
+				 <td><select id="organizacion" name="organizacion" title="Ingrese la organización">
 				<?php
 					echo '<option value="'.$idOrganizacionPadre.'" style="display:none">'.$organizacionPadre.'</option>'; 
 				 	for ($i=0;$i<$cantOrga;$i++)
