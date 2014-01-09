@@ -89,8 +89,8 @@ try {
 						}
 					}
 					
-					if(!isset($_POST["organizacion"]) || $_POST["organizacion"]==""){
-			 			$organizacionPadre= "";
+					if(!isset($_POST["organizacion"]) || $_POST["organizacion"]=="" || $_POST["organizacion"]==NULL){
+						$organizacionPadre= NULL;
 			 		}else{
 			 			$organizacionPadre= array('id' => $_POST["organizacion"],'borrado'=>'0');
 					}
@@ -100,7 +100,7 @@ try {
 					'nombre' => $_POST["nombre"],
 			  		'descripcion' => $descripcion,
 					'tipo' => $tipo,
-					'direccion' => $descripcion,
+					'direccion' => $direccion,
 					'telefono' => $telefono,
 					'fax' => $fax,
 					'mail' => $correo,

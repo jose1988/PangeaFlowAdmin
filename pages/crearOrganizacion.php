@@ -82,8 +82,7 @@
 					}
 					
 					if(!isset($_POST["organizacion"]) || $_POST["organizacion"]==""){
-			 			$organizacionPadre= "";
-						echo "Entro";
+			 			$organizacionPadre= NULL;
 			 		}else{
 			 			$organizacionPadre= array('id' => $_POST["organizacion"],'borrado'=>'0');
 					}
@@ -99,9 +98,7 @@
 						'estado' => $_POST["estado"],
 						'borrado' => $borrado,
 						'idOrganizacionPadre' => $organizacionPadre);
-						
-						print_r($organizacion);
-					
+											
 					try{
 						$registroOrganizacion= array('registroOrganizacion' => $organizacion);
 						$wsdl_url = 'http://localhost:15362/CapaDeServiciosAdmin/GestionDeOrganizacion?wsdl';
