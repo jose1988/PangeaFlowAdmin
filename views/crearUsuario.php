@@ -99,7 +99,7 @@
 				 <td><input type="text" name="oficina" id="oficina" maxlength="19" size="30" title="Ingrese un teléfono de oficina" placeholder="Ej. 0212-4563789" ></td>		
 			 </tr>
 			 <th width="70%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" title="Ingrese un correo" placeholder="Ej. juanvillamizar@gmail.com">
+				 <td><input type="email" name="correo" id="correo" maxlength="19" size="30" title="Ingrese un correo" placeholder="Ej. juanvillamizar@gmail.com">
 				 <div id="Info2" style="float:right"></div>
 				 </td>		
 			 	

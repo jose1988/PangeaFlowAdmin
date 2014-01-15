@@ -139,7 +139,7 @@ echo '<script language="javascript"> window.location = "../pages/usuario.php"; <
 				 <td><input type="text" name="oficina" id="oficina" maxlength="19" size="30" value="<?php echo $telfO; ?>" ></td>		
 			 </tr>
 			 <th width="70%">Correo</th>
-				 <td><input type="text" name="correo" id="correo" maxlength="19" size="30" value="<?php echo $mail; ?>" >
+				 <td><input type="email" name="correo" id="correo" maxlength="19" size="30" value="<?php echo $mail; ?>" >
 				 <div id="Info2" style="float:right"></div>
 				 </td>		
 			 </tr>
