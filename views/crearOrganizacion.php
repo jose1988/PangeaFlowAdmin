@@ -100,7 +100,7 @@
              <tr>
              <th width="40%">Correo</th>
 				 <td>
-                 	<input type="text" name="correo" id="correo" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@gmail.com">
+                 	<input type="email" name="correo" id="correo" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@gmail.com">
                  	<div id="Info2" style="float:right"></div>
                  </td>		
 			 </tr>

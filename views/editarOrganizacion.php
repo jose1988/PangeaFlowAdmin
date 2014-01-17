@@ -158,7 +158,7 @@ if(!isset($rowOrganizacion->return)){
              <tr>
              <th width="40%">Correo</th>
 				 <td>
-                 	<input type="text" name="correo" id="correo" value="<?php echo $correo;?>" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@pangeatech.com.ve ">
+                 	<input type="email" name="correo" id="correo" value="<?php echo $correo;?>" maxlength="149" size="50" title="Ingrese el correo" placeholder="Ej. nombre@pangeatech.com.ve ">
                     <div id="Info2" style="float:right"></div>
                 </td>		
 			 </tr>
